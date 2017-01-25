@@ -1,0 +1,74 @@
+﻿<style type="text/css">
+    .small_checkbox {
+        margin-top: 10px !important;
+    }
+</style>
+<div class="row">
+    <div class="tabbable-panel col-md-12">
+        <h3 class="page_geader">Create Questions</h3>
+    </div>
+</div>
+<div class="col-md-12 no-pad" ng-controller="QuestionController">
+    <div class="col-lg-12 no-pad">
+        <div class="control-group col-lg-6">
+            <label class="control-label" for="ddlSubjectID">Sub Objective Name</label>
+            <div class="controls">
+                <select data-ng-model="SubObjectivesID" class="form-control" id="ddlSubObjectivesID">
+                    <option value="Select" selected="selected">Select</option>
+                    <option ng-repeat="x in SubObjectives" value="{{x.SubObjectivesID}}">{{x.SubObjectiveName}}</option>
+                </select>
+            </div>
+        </div>
+        <div class="control-group col-lg-6">
+            <label class="control-label" for="txtQuestionCode">Question Code</label>
+            <div class="controls">
+                <input type="text" ng-model="QuestionCode" id="txtQuestionCode" class="form-control" />
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-12 no-pad">
+        <div class="control-group col-lg-6">
+            <label class="control-label" for="txtQuestionContent">Content</label>
+            <div class="controls">
+                <input type="text" ng-model="QuestionContent" id="txtQuestionContent" class="form-control" />
+            </div>
+        </div>
+        <div class="control-group col-lg-6">
+            <label class="control-label" for="ddlSubObjectivesID">Difficulty</label>
+            <div class="controls">
+                <select data-ng-model="Difficulty" class="form-control" id="ddlSubObjectivesID">
+                    <option value="Select" selected="selected">Select</option>
+                    <option value="1">High</option>
+                    <option value="2">Medium</option>
+                    <option value="3">Low</option>
+                </select>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-12 no-pad">
+        <div class="control-group col-lg-6">
+            <label class="control-label" for="checkSlave">Is Active</label>
+            <div class="controls">
+                <input id="chkActive" type="checkbox" ng-checked="IsActive" class="small_checkbox" />
+            </div>
+        </div>
+        <div class="control-group col-lg-6">
+            <label class="control-label" for="ddlQuestionType">Question Type</label>
+            <div class="controls">
+                <select ng-model="QuestionTypeId" class="form-control" id="ddlQuestionType">
+                    <option value="Select" selected="selected">Select</option>
+                    <option ng-repeat="x in QuestionTypes" value="{{x.QuestionTypeId}}">{{x.QuestionType}}</option>
+                </select>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-12">
+        <div class="control-group no-pad text-right">
+            <div class="controls">
+                <input id="submit" name="Save" value="Save" type="button" class="btn btn-primary" ng-click="SaveQuestion()" data-dismiss="modal" />
+                <button type="button" class="btn btn-primary" data-dismiss="modal" ng-click="clear()">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+

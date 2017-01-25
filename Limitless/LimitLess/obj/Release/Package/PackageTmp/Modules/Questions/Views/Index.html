@@ -1,0 +1,113 @@
+﻿<div class="row">
+    <div class="tabbable-panel col-md-12">
+        <h3 class="page_geader col-md-6" style="color:gray;">Questions</h3>
+        <span class="pull-right addbtn plusbutton"><span style="text-decoration:none; cursor:pointer" data-toggle="modal" data-target="#myModal" ng-click="clear()">Add</span></span>
+    </div>
+</div>
+<div class="col-md-12 no-pad" ng-controller="QuestionController">
+    <div class="col-md-12">
+        <div class="row">
+            <table class="table table-responsive mytable board-members">
+                <thead class="table_head">
+                    <tr>
+                        <td width="20%" align="left">Question Code</td>
+                        <td width="20%" align="left">Question Content</td>
+                        <td width="10%" align="left">Difficulty</td>
+                        <td width="10%" align="center">Status</td>
+                        <td width="25%" align="center">Question Type</td>
+                        <td width="15%" align="center"></td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="q in Records track by q.QuestionID">
+                        <td align="left">{{q.QuestionCode}}</td>
+                        <td align="left">{{q.QuestionContent}}</td>
+                        <td align="left">{{q.Difficulty}}</td>
+                        <td align="center">{{q.IsActive}}</td>
+                        <td align="center">{{q.QuestionType}} </td>
+                        <td>
+                            <span data-toggle="modal" data-target="#myModal" data-id="{{q.QuestionID}}" ng-click="EditQuestion($event)" style="text-decoration:none; cursor:pointer; color: #337ab7 !important;">Edit</span><span style="color:#000 !important;padding-left:5px">|</span>
+                            <input type="submit" value="Delete" class="board-members" onclick="return confirm('Are you sure you want to delete record?')" />
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <input type="hidden" id="hidQuestionID" ng-model="QuestionID" />
+    <div class="modal fade" id="myModal" role="dialog" data-backdrop="static" data-keyboard="false">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" ng-click="clear()">&times;</button>
+                    <h4 class="modal-title">Sub Objective Details</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="col-lg-12 no-pad">
+                        <div class="control-group col-lg-6">
+                            <label class="control-label" for="ddlSubjectID">Sub Objective Name</label>
+                            <div class="controls">
+                                <select ng-model="SubObjectiveID" class="form-control" id="ddlSubObjectivesID">
+                                    <option value="Select" selected="selected">Select</option>
+                                    <option ng-repeat="x in SubObjectives" ng-selected="x.SubObjectivesID==SubObjectiveID" value="{{x.SubObjectivesID}}">{{x.SubObjectiveName}}</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="control-group col-lg-6">
+                            <label class="control-label" for="txtQuestionCode">Question Code</label>
+                            <div class="controls">
+                                <input type="text" ng-model="QuestionCode" id="txtQuestionCode" class="form-control" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-12 no-pad">
+                        <div class="control-group col-lg-6">
+                            <label class="control-label" for="txtQuestionContent">Content</label>
+                            <div class="controls">
+                                <input type="text" ng-model="QuestionContent" id="txtQuestionContent" class="form-control" />
+                            </div>
+                        </div>
+                        <div class="control-group col-lg-6">
+                            <label class="control-label" for="ddlSubObjectivesID">Difficulty</label>
+                            <div class="controls">
+                                <select ng-model="Difficulty" class="form-control" id="ddlSubObjectivesID">
+                                    <option value="Select">Select</option>
+                                    <option value="1">High</option>
+                                    <option value="2">Medium</option>
+                                    <option value="3">Low</option>
+                                </select>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="col-lg-12 no-pad">
+                        <div class="control-group col-lg-6">
+                            <label class="control-label" for="checkSlave">Is Active</label>
+                            <div class="controls">
+                                <input id="chkActive" type="checkbox" ng-checked="IsActive" class="small_checkbox" />
+                            </div>
+                        </div>
+                        <div class="control-group col-lg-6">
+                            <label class="control-label" for="ddlQuestionType">Question Type</label>
+                            <div class="controls">
+                                <select ng-model="QuestionTypeId" class="form-control" id="ddlQuestionType">
+                                    <option value="Select" selected="selected">Select</option>
+                                    <option ng-repeat="x in QuestionTypes" ng-selected="x.QuestionTypeId==QuestionTypeId" value="{{x.QuestionTypeId}}">{{x.QuestionType}}</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <div class="col-lg-12">
+                            <div class="control-group no-pad text-right">
+                                <div class="controls">
+                                    <input id="submit" name="Save" value="Save" type="button" class="btn btn-primary" ng-click="SaveQuestion()" data-dismiss="modal" />
+                                    <button type="button" class="btn btn-primary" data-dismiss="modal" ng-click="clear()">Close</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>

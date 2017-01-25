@@ -1,0 +1,149 @@
+/* == quick_reset */
+ul, ol {
+    list-style: none outside none;
+}
+#container {
+    width: 80%;
+    padding: 0px 50px;
+    margin: 0 auto;
+}
+
+a:link, a:visited {
+    color: #fff;
+    text-decoration: none;
+}
+
+a:hover {
+    color: #666;
+}
+
+/*  == tab heading */
+.tabs {
+    *border: 1px solid #ccc;
+    overflow: hidden;
+}
+
+    .tabs li {
+        float: left;
+        width: 33.3%;
+        background:#a5d7a4;
+    }
+
+        .tabs li a {
+            border-left: 1px solid #ccc;
+            color: #fff !important;
+            display: block;
+            font-weight: bold;
+           padding: 10px;
+    text-align: center;
+}
+        }
+
+        .tabs li:first-child a {
+            border-left: none;
+        }
+
+        .tabs li a:hover, .tabs li a:focus {
+            color: #D54E21;
+            background:#6ec46b;
+            text-decoration:none;
+        }
+
+    .tabs .active a {
+        color: #000;
+       * padding: 15px;
+        background:#6ec46b;
+    }
+
+/* == accordion */
+.accordion_tabs {
+    display: none;
+    border-top: 1px solid #ccc;
+    padding: 10px;
+    font-weight: bold;
+    background: #eee;
+}
+
+.tab_content_wrapper > .accordion_tabs:first-child {
+    border-top: none;
+}
+
+a.accordion_tabs:link, a.accordion_tabs:visited {
+    color: #21759B;
+}
+
+a.accordion_tabs:hover, a.accordion_tabs:focus {
+    color: #D54E21;
+}
+
+a.accordion_tabs.active {
+    color: #000;
+    border-bottom: 1px solid #ccc;
+}
+
+/*  == tab content  */
+.tab_content_wrapper {
+    overflow: hidden;
+    position: relative;
+    transition: all .3s ease-in-out .3s;
+}
+
+.tab_content {
+    transition: all .6s ease-in-out;
+    *padding: 15px;
+    background: #f6f6f6;
+    width: 100%;
+    height: 100%;
+}
+
+.toggle_display {
+    display: block;
+}
+
+.toggle_position {
+    position: absolute;
+}
+
+.toggle_border {
+   * border: 1px solid #ccc;
+    border-width: 0 1px 1px 1px;
+}
+
+.invert_border {
+    border-width: 1px 1px 0 1px;
+}
+
+/* Media Queries
+***********************/
+@media screen and (max-width: 600px) {
+    #container {
+        width: 90%;
+        padding: 40px 20px;
+    }
+
+    .accordion_tabs {
+        display: block;
+    }
+
+    .tab_content_wrapper {
+        height: auto !important;
+    }
+
+    .tab_content {
+        transition: none;
+        padding: 10px;
+        width: 100%;
+    }
+
+    .toggle_display {
+        display: none;
+    }
+
+    .toggle_position {
+        position: relative;
+    }
+
+    .toggle_border {
+        border-width: 1px;
+    }
+}

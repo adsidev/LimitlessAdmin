@@ -1,0 +1,72 @@
+﻿<div class="row">
+    <div class="tabbable-panel col-md-12">
+        <h3 class="page_geader col-md-6">Lessons</h3>
+        <span class="pull-right addbtn plusbutton"><span style="text-decoration:none; cursor:pointer" data-toggle="modal" data-target="#myModal" ng-click="clear()">Add</span></span>
+    </div>
+</div>
+<div class="col-md-12 no-pad" ng-controller="LessonController">
+    <div class="col-md-12">
+        <div class="row">
+            <table class="table table-responsive mytable board-members">
+                <thead class="table_head">
+                    <tr>
+                        <td width="20%" align="left">Lesson ID</td>
+                        <td width="20%" align="left">Lesson Content</td>
+                        <td width="20%" align="center">Status</td>
+                        <td width="20%" align="center">Created Date</td>
+                        <td width="20%" align="center"></td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="sub in Records track by sub.LessonID">
+                        <td align="left">{{sub.LessonID}}</td>
+                        <td align="left">{{sub.LessonContent}}</td>
+                        <td align="center">{{sub.IsActive}}</td>
+                        <td align="center">{{sub.CreatedDate}} </td>
+                        <td>
+                            <span data-toggle="modal" data-target="#myModal" data-id="{{sub.LessonID}}" ng-click="EditLesson($event)" style="text-decoration:none; cursor:pointer; color: #337ab7 !important;">Edit</span><span style="color:#000 !important;padding-left:5px">|</span>
+                            <input type="submit" value="Delete" class="board-members" data-id="{{sub.LessonID}}" ng-click="DeleteLesson($event)" />
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <input type="hidden" id="hidSubjectID" ng-model="LessonID" />
+    <div class="modal fade" id="myModal" role="dialog" data-backdrop="static" data-keyboard="false">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" ng-click="clear()">&times;</button>
+                    <h4 class="modal-title">Lesson Details</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="col-lg-12 no-pad" style="margin-top:20px;">
+                        <div class="control-group col-lg-6">
+                            <label class="control-label" for="txtLessonContent">Lesson Content</label>
+                            <div class="controls">
+                                <input type="text" ng-model="LessonContent" id="txtLessonContent" class="form-control" />
+                            </div>
+                        </div>
+                        <div class="control-group col-lg-6">
+                            <label class="control-label" for="checkSlave">Is Active</label>
+                            <div class="controls">
+                                <input id="chkActive" type="checkbox" ng-checked="IsActive" class="small_checkbox" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <div class="col-lg-12">
+                        <div class="control-group no-pad text-right">
+                            <div class="controls">
+                                <input id="submit" name="Save" value="Save" type="button" class="btn btn-primary" ng-click="SaveLesson()" data-dismiss="modal" />
+                                <button type="button" class="btn btn-primary" data-dismiss="modal" ng-click="clear()">Close</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

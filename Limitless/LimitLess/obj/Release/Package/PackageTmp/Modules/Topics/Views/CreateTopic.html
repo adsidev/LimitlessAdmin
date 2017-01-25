@@ -1,0 +1,53 @@
+﻿<style type="text/css">
+    .small_checkbox {
+        margin-top: 10px !important;
+    }
+</style>
+<div class="row">
+    <div class="tabbable-panel col-md-12">
+        <h3 class="page_geader">Create Topics</h3>
+    </div>
+</div>
+<div class="col-md-12 no-pad" ng-controller="TopicController">
+    <div class="col-lg-12 no-pad">
+        <div class="control-group col-lg-6">
+            <label class="control-label" for="txtTopiName">Name</label>
+            <div class="controls">
+                <input type="text" ng-model="TopicName" id="txtTopiName" class="form-control" />
+            </div>
+        </div>
+        <div class="control-group col-lg-6">
+            <label class="control-label" for="txtDescription">Description</label>
+            <div class="controls">
+                <input type="text" ng-model="TopicDescription" id="txtDescription" class="form-control" />
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-12 no-pad">
+        <div class="control-group col-lg-6">
+            <label class="control-label" for="ddlSubjectID">Subject Name</label>
+            <div class="controls">
+                <select data-ng-model="SubjectID" class="form-control" id="ddlSubjectID">
+                    <option value="Select" selected="selected">Select</option>
+                    <option ng-repeat="x in Subjects track by x.SubjectID" value="{{x.SubjectID}}">{{x.SubjectName}}</option>
+                </select>
+            </div>
+        </div>
+        <div class="control-group col-lg-6">
+            <label class="control-label" for="checkSlave">Is Active</label>
+            <div class="controls">
+                <input id="chkActive" type="checkbox" ng-checked="IsActive" class="small_checkbox" />
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-lg-12">
+        <div class="control-group no-pad text-right">
+            <div class="controls">
+                <input id="submit" name="Save" value="Save" type="button" class="btn btn-primary" ng-click="SaveTopics()" />
+                <input id="button" name="Cancel" value="Cancel" type="button" class="btn btn-primary disabled" />
+            </div>
+        </div>
+    </div>
+</div>
+

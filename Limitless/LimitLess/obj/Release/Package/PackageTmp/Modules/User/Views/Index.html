@@ -1,0 +1,119 @@
+﻿<div class="row">
+    <div class="tabbable-panel col-md-12">
+        <h3 class="page_geader col-md-6">Users</h3>
+        <span class="pull-right addbtn plusbutton"><span style="text-decoration:none; cursor:pointer" data-toggle="modal" data-target="#myModal" ng-click="clear()">Add</span></span>
+    </div>
+</div>
+<div class="col-md-12 no-pad" ng-controller="UserController">
+    <div class="col-md-12">
+        <div class="row">
+            <table class="table table-responsive mytable board-members">
+                <thead class="table_head">
+                    <tr>
+                        <td width="15%" align="left">User Name</td>
+                        <td width="20%" align="left">Organization Name</td>
+                        <td width="15%" align="center">First Name</td>
+                        <td width="15%" align="center">Last name</td>
+                        <td width="20%" align="center">Email ID</td>
+                        <td width="15%"></td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="sub in Records track by sub.UserID">
+                        <td align="left" width="15%">{{sub.UserName}}</td>
+                        <td align="left" width="20%">{{sub.OrganizationName}}</td>
+                        <td align="center" width="15%">{{sub.FName}}</td>
+                        <td align="center" width="15%">{{sub.LName}} </td>
+                        <td align="center" width="20%">{{sub.Email}} </td>
+                        <td width="15%">
+                            <span data-toggle="modal" data-target="#myModal" data-id="{{sub.UserID}}" ng-click="EditUser($event)" style="text-decoration:none; cursor:pointer; color: #337ab7 !important;">Edit</span><span style="color:#000 !important;padding-left:5px">|</span>
+                            <input type="submit" value="Delete" class="board-members" onclick="return confirm('Are you sure you want to delete record?')" />
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <input type="hidden" id="hidUserID" ng-model="UserID" />
+    <div class="modal fade" id="myModal" role="dialog" data-backdrop="static" data-keyboard="false">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" ng-click="clear()">&times;</button>
+                    <h4 class="modal-title">User Details</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="col-lg-12 no-pad">
+                        <div class="control-group col-lg-6" style="margin-top:20px;">
+                            <label class="control-label" for="txtUserName">User Name</label>
+                            <div class="controls">
+                                <input type="text" ng-model="UserName" id="txtUserName" class="form-control" />
+                            </div>
+                        </div>
+                        <div class="control-group col-lg-6" style="margin-top:20px;">
+                            <label class="control-label" for="txtFName">First Name</label>
+                            <div class="controls">
+                                <input type="text" ng-model="FName" id="txtFName" class="form-control" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-12 no-pad">
+                        <div class="control-group col-lg-6">
+                            <label class="control-label" for="txtLName">Last Name</label>
+                            <div class="controls">
+                                <input type="text" ng-model="LName" id="txtLName" class="form-control" />
+                            </div>
+                        </div>
+                        <div class="control-group col-lg-6">
+                            <label class="control-label" for="txtOrganizationID">Organization Name</label>
+                            <div class="controls">
+                                <select class="form-control" id="ddlOrganizationID" ng-model="OrganizationID">
+                                    <option value="Select" selected="selected">Select</option>
+                                    <option ng-repeat="x in Organizations" value="{{x.OrganizationID}}" ng-selected="x.OrganizationID == OrganizationID">{{x.OrganizationName}}</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-12 no-pad">
+                        <div class="control-group col-lg-6" style="margin-top:20px;">
+                            <label class="control-label" for="txtPassword">Password</label>
+                            <div class="controls">
+                                <input type="password" ng-model="Password" id="txtPassword" class="form-control" />
+                            </div>
+                        </div>
+                        <div class="control-group col-lg-6" style="margin-top:20px;">
+                            <label class="control-label" for="txtCPassword">Confirm Password</label>
+                            <div class="controls">
+                                <input type="password" ng-model="Password" id="txtCPassword" class="form-control" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-12 no-pad">
+                        <div class="control-group col-lg-6">
+                            <label class="control-label" for="txtEmail">Email ID</label>
+                            <div class="controls">
+                                <input id="txtEmail" type="email" ng-model="Email" />
+                            </div>
+                        </div>
+                        <div class="control-group col-lg-6">
+                            <label class="control-label" for="cHkIsActive">Is Active</label>
+                            <div class="controls">
+                                <input id="chkActive" type="checkbox" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <div class="col-lg-12">
+                        <div class="control-group no-pad text-right">
+                            <div class="controls">
+                                <input id="submit" name="Save" value="Save" type="button" class="btn btn-primary" ng-click="SaveUser()" />
+                                <button type="button" class="btn btn-primary" data-dismiss="modal" ng-click="clear()">Close</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

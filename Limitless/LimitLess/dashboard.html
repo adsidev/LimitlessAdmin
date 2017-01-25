@@ -1,0 +1,77 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Limitless</title>
+
+    <link href="Content/Admincss/bootstrap-theme.min.css" rel="stylesheet" />
+    <link href="Content/Admincss/bootstrap.css" rel="stylesheet" />
+    <link href="Content/Admincss/style.css" rel="stylesheet" />
+    <link href="Content/toastr.min.css" rel="stylesheet" />
+    <script src="Scripts/jquery-1.10.2.js"></script>
+    <script src="Scripts/bootstrap.min.js"></script>
+    <script src="Scripts/angular.js"></script>
+    <script src="Scripts/angular-route.min.js"></script>
+    <script src="Scripts/angular-cookies.js"></script>
+    <script src="Scripts/toastr.min.js"></script>
+    <script src="Scripts/app.js"></script>
+    <script src="Modules/Subjects/Controller/SubjectController.js"></script>
+    <script src="Modules/Lessons/Controller/LessonController.js"></script>
+    <script src="Modules/Objectives/Controller/ObjectiveController.js"></script>
+    <script src="Modules/Topics/Controller/TopicController.js"></script>
+    <script src="Modules/Organizations/Controller/OrganizationController.js"></script>
+    <script src="Modules/Questions/Controller/QuestionController.js"></script>
+    <script src="Modules/Subobjectives/Controller/SubOjectiveController.js"></script>
+    <script src="Modules/Answers/Controller/AnswerController.js"></script>
+    <script src="Modules/User/Controller/UserController.js"></script>
+    <script src="Scripts/sha1.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('.list-group-item').click(function () {
+                $('.list-group-item').removeClass('active');
+                $(this).addClass('active');
+                $(this).blur();
+            });
+        });
+    </script>
+</head>
+<body ng-app="app">
+    <div class="container-fluid" ng-controller="loginController">
+        <div class="container access-page">
+            <div class="row design"> </div>
+            <div class="row">
+                <div class="col-md-7"> <a href="~/home/home"><img src="images/vipfa.png" title="VIPFA Logo" alt="VIPFA Logo" class="logo" /></a> </div>
+                <div class="col-md-2 no-pad hey">
+                    <h5 class="date" style="text-transform: none; margin-left: 43px;}"> Tuesday, November29, 2016</h5>
+                </div>
+                <div class="col-md-3 design-2">
+                    <h5 class="heading-welcome">Welcome!<span id="spanUsername" style="padding-left:10px;text-transform:uppercase;"></span>| <span id="spanLogout" style="cursor:pointer;" ng-click="Logout()">Logout</span></h5>
+                </div>
+            </div>
+            <div class="row border">
+                <div class="col-md-12">
+                    <div class="col-md-3 list-panel sec_gap  no-pad">
+                        <ul id="tabs" class="list-group list-ele">
+                            <li class="list-group-item active"><a href="#organization" style="width:100%;"><div style="width:100%;">Organization</div></a></li>
+                            <li class="list-group-item"><a href="#subjects" style="width:100%;"><div style="width:100%;">Subjects</div></a></li>
+                            <li class="list-group-item"><a href="#topics" style="width:100%;"><div style="width:100%;">Topics</div></a></li>
+                            <li class="list-group-item"><a href="#objectives"><div style="width:100%;">Objectives</div></a></li>
+                            <li class="list-group-item"><a href="#lessons"><div style="width:100%;">Lessons</div></a></li>
+                            <li class="list-group-item"><a href="#subobjectives"><div style="width:100%;">Sub Objectives</div></a></li>
+                            <li class="list-group-item"><a href="#questions"><div style="width:100%;">Questions</div></a></li>
+                            <li class="list-group-item"><a href="#answers"><div style="width:100%;">Answers</div></a></li>
+                            <li class="list-group-item"><a href="#users"><div style="width:100%;">Users</div></a></li>
+                        </ul>
+                    </div>
+                    <div class="col-md-9" ng-view>
+
+                    </div>
+                </div>
+                <div class="col-md-12 text-center panel-footer">
+                    <h6>&copy; 2016 Public Finance Authority</h6>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

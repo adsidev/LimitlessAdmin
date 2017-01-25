@@ -1,0 +1,69 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title> 
+</head>
+<body>
+    <h3 class="page_geader" style="color:gray;">Create Questions</h3>
+    <br />
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-3">
+                <label>Subject</label>
+                <select id="ddlSubject">
+                    <option value="Select" selected="selected">Select</option>
+                    <option value="DotNet">.NET</option>
+                    <option value="Java">Java</option>
+                    <option value="Oracle">Oracle</option>
+                    <option value="Hadoop">Hadoop</option>
+                </select>
+            </div>
+            <div class="col-sm-3">
+                <label>Sub Objectives</label>
+                <select id="ddlSubObjectives">
+                    <option value="Select" selected="selected">Select</option>
+                    <option value="ASPNet">ASP.NET</option>
+                    <option value="Java">Core Java</option>
+                    <option value="Oracle">Oracle Apps</option>
+                    <option value="Hadoop">Hadoop</option>
+                </select>
+            </div>
+        </div>
+        <br />
+        <div class="row">
+            <div class="col-sm-3">
+                <label>Question Code</label>
+                <input type="text" id="txtQuestionType" />
+            </div>
+            <div class="col-sm-3">
+                <label>Question Content</label>
+                <input type="text" id="txtQuestionContent" />
+            </div>
+        </div>
+        <br />
+        <div class="row">
+            <div class="col-sm-3">
+                <label>Difficulty</label>
+                <select id="ddlDifficulty">
+                    <option value="Select" selected="selected">Select</option>
+                    <option value="High">High</option>
+                    <option value="Low">Low</option>
+                    <option value="Medium">Medium</option>
+                </select>
+            </div>
+            <div class="col-sm-3">
+                <label>Is Ative</label>
+                <input type="checkbox" id="ckbIsActive" />
+            </div>
+        </div>
+        <br />
+        <div class="row col-sm-6">
+            <div class="text-right">
+                <button type="button" class="btn btn-primary" ng-click="saveQuestions()">Add</button>
+                <input type="button" class="btn btn-default" value="Cancel" />
+            </div>
+        </div>
+    </div>
+</body>
+</html>

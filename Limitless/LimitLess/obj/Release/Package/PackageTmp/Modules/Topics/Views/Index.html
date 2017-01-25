@@ -1,0 +1,94 @@
+﻿<div class="row">
+    <div class="tabbable-panel col-md-12">
+        <h3 class="page_geader col-md-6">Topics</h3>
+        <span class="pull-right addbtn plusbutton"><span style="text-decoration:none; cursor:pointer" data-toggle="modal" data-target="#myModal" ng-click="clear()">Add</span></span>
+    </div>
+    <style type="text/css">
+        .small_checkbox {
+            margin-top: 10px !important;
+        }
+    </style>
+</div>
+<div class="col-md-12 no-pad" ng-controller="TopicController">
+    <div class="col-md-12">
+        <div class="row">
+            <table class="table table-responsive mytable board-members">
+                <thead class="table_head">
+                    <tr>
+                        <td width="20%" align="left">Topic ID</td>
+                        <td width="20%" align="left">Topic Name</td>
+                        <td width="20%" align="center">Status</td>
+                        <td width="20%" align="center">Created Date</td>
+                        <td width="20%" align="center"></td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="sub in Records track by sub.TopicID">
+                        <td align="left">{{sub.TopicID}}</td>
+                        <td align="left">{{sub.TopicName}}</td>
+                        <td align="center">{{sub.IsActive}}</td>
+                        <td align="center">{{sub.CreatedDate}} </td>
+                        <td>
+                            <span data-toggle="modal" data-target="#myModal" data-id="{{sub.TopicID}}" ng-click="EditTopic($event)" style="text-decoration:none; cursor:pointer; color: #337ab7 !important;">Edit</span><span style="color:#000 !important;padding-left:5px">|</span>
+                            <input type="submit" value="Delete" class="board-members" onclick="return confirm('Are you sure you want to delete record?')" />
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <input type="hidden" id="hidTopicID" ng-model="TopicID" />
+    <div class="modal fade" id="myModal" role="dialog" data-backdrop="static" data-keyboard="false">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" ng-click="clear()">&times;</button>
+                    <h4 class="modal-title">Topic Details</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="col-lg-12 no-pad" style="margin-top:20px;">
+                        <div class="control-group col-lg-6">
+                            <label class="control-label" for="txtTopiName">Name</label>
+                            <div class="controls">
+                                <input type="text" ng-model="TopicName" id="txtTopiName" class="form-control" />
+                            </div>
+                        </div>
+                        <div class="control-group col-lg-6">
+                            <label class="control-label" for="txtDescription">Description</label>
+                            <div class="controls">
+                                <input type="text" ng-model="TopicDescription" id="txtDescription" class="form-control" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-12 no-pad">
+                        <div class="control-group col-lg-6">
+                            <label class="control-label" for="ddlSubjectID">Subject Name</label>
+                            <div class="controls">
+                                <select class="form-control" id="ddlSubjectID" ng-model="SubjectID">
+                                    <option value="Select" selected="selected">Select</option>
+                                    <option ng-repeat="x in Subjects track by x.SubjectID" ng-selected="x.SubjectID == SubjectID" value="{{x.SubjectID}}">{{x.SubjectName}}</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="control-group col-lg-6">
+                            <label class="control-label" for="checkSlave">Is Active</label>
+                            <div class="controls">
+                                <input id="chkActive" type="checkbox" class="small_checkbox" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <div class="col-lg-12">
+                        <div class="control-group no-pad text-right">
+                            <div class="controls">
+                                <input id="submit" name="Save" value="Save" type="button" class="btn btn-primary" ng-click="SaveTopics()" />
+                                <button type="button" class="btn btn-primary" data-dismiss="modal" ng-click="clear()">Close</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

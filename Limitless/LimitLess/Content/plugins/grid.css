@@ -1,0 +1,303 @@
+﻿
+ 
+.addRemoveColumn.dropMenu > ul {
+    height: 250px;
+    overflow: auto;
+    padding: 0;
+}
+
+.dropList {
+    position: relative;
+}
+
+.addRemoveColumn {
+    *height: 300px;
+    overflow: auto;
+    padding: 0;
+    width: 100%;
+}
+
+.chosen-single > span {
+    color: #647d89 !important;
+}
+
+.DropdownTopIcon i {
+    font-size: 19px;
+}
+
+.addRemoveColumn li h4 {
+    font-weight: bold;
+    padding: 0 20px;
+}
+
+.addRemoveColumn.dropMenu {
+    border: 0 none;
+    box-shadow: 0 0 5px !important;
+    top: -7px;
+    width: 300px;
+    z-index: 1;
+}
+
+.addRemoveColumn li {
+    border-top: 1px solid #c1c1c1;
+    font-size: 16px;
+    padding: 5px 0 0 34px;
+    margin-top: 0;
+}
+
+
+.breadcrumb .dropMenu {
+    top: -9px;
+    left: 70px;
+}
+
+.dropMenu {
+    background-clip: padding-box;
+    background-color: #ffffff;
+    border: 1px solid #1e9de9;
+    border-radius: 0;
+    box-shadow: none;
+    display: none;
+    float: left;
+    font-size: 18px;
+    list-style: outside none none;
+    margin: 2px 0 0;
+    min-width: 160px;
+    padding: 0;
+    position: absolute;
+    text-align: left;
+    top: 100%;
+    z-index: 1000;
+    right:0;
+}
+.DropdownTopIcon {
+    padding: 12px;
+    text-align: right;
+}
+.DropdownSearch {
+    padding: 12px;
+background: #4d5057;
+}
+   .gridDropSearch {
+    background-color: #4d5057;
+    padding: 8px 10px;
+}
+   .gridDropSearch .search_btn {
+    background: rgba(0, 0, 0, 0) none repeat scroll 0 0;
+    border: medium none;
+    color: #a6b8bf;
+    display: inline-block;
+    font-size: 18px;
+    height: 42px;
+    line-height: 46px;
+    margin: 0;
+    position: absolute;
+    right: 20px;
+    top: 55px;
+}
+   .gridDropSearch input[type="text"] {
+    background: #fff none repeat scroll 0 0 !important;
+    border: medium none !important;
+    border-radius: 4px !important;
+    display: block !important;
+    font-family: proxima_sb, Arial, sans-serif !important;
+    font-size: 14px !important;
+    padding: 4px 42px 4px 12px !important;
+    width: 100% !important;
+}
+
+
+    .dropMenu > li > a:hover, .dropMenu > li > a:focus {
+        background-color: #f5f5f5;
+        color: #262626;
+        text-decoration: none;
+    }
+
+    .dropMenu > li > a {
+        clear: both;
+        color: #333333;
+        display: block;
+        font-weight: 400;
+        line-height: 1.42857;
+        padding: 3px 20px;
+        white-space: nowrap;
+    }
+
+    .dropMenu > .selected > a, .dropMenu > .selected > a:hover, .dropMenu > .selected > a:focus, .dropMenu > .active > a, .dropMenu > .active > a:hover, .dropMenu > .active > a:focus {
+        background-color: #1e9de9;
+        color: #ffffff;
+    }
+
+.grid tbody tr:hover {
+    background-color: #f2f0f0;
+    color: #000!important;
+    *border: 1px solid #ddd;
+    cursor: pointer;
+}
+
+.grid {
+    border: 0;
+}
+
+    .grid td, th span {
+        text-align: left;
+    }
+
+.gridnumofRecords {
+    line-height: 45px;
+    font-weight: normal;
+    font-size: 14px;
+}
+
+.gridfooterdiv {
+    height: 45px;
+}
+.gridHideViewOptions {
+	float: left;
+	cursor: pointer;
+    position:relative;
+}
+
+.gridSearchField {
+	background: #b8d1eb;
+	width: 375px;
+	padding: 7px 20px;
+	border-radius: 25px;
+	float: left;
+	position: relative;
+}
+.search-icon {
+	background: #84a6ca;
+	border: 2px solid #fff;
+	border-radius: 50%;
+	padding: 5px;
+	margin: -5px 3px;
+	position: absolute;
+	right: 0;
+	cursor: pointer;
+	height: 36px;
+	width: 36px;
+}
+.search-icon:hover {
+	background: #00b5f4;
+}
+.search-icon .fa:hover {
+	color: #fff;
+}
+.menu-icon {
+	background: #84a6ca;
+	height: 38px;
+	width: 38px;
+	border-radius: 50%;
+}
+.menu-icon .fa {
+	font-size: 24px;
+	margin: 0px -5px;
+	color: #fff;
+}
+.menu-icon:hover {
+	background: #00b5f4;
+}
+.menu-icon .fa:hover {
+	color: #fff;
+}
+.search-icon .fa {
+	color: #fff;
+	font-size: 21px;
+}
+. .gridSearch .icon-search3 {
+ font-size: 21px;
+ margin: 4px 0 0 -3px;
+}
+.gridMenuOptions .form-control {
+	width: 145px;
+	display: inline-block;
+	padding: 2px;
+	border: 1px solid #fff;
+	height: 26px;
+}
+.addRemoveColumn.dropMenu {
+	border: 0 none;
+	box-shadow: 0 0 1px rgba(76, 86, 103, 0.25), 0 2px 18px rgba(31, 37, 50, 0.32);
+ *transition: scaleY(1);
+	top: -7px;
+	width: 300px;
+	z-index: 1;
+	right: -6px;
+}
+.addRemoveColumn {
+ *height: 300px;
+	overflow: auto;
+	padding: 0;
+	width: 100%;
+}
+.DropdownTopIcon {
+	padding: 12px;
+	text-align: right;
+}
+.addRemoveColumn.dropMenu > ul {
+	height: 250px;
+	overflow: auto;
+	padding: 0;
+}
+.dropMenu {
+	background-clip: padding-box;
+	background-color: #ffffff;
+	border: 1px solid #1e9de9;
+	border-radius: 0;
+	box-shadow: none;
+	display: none;
+	font-size: 18px !important;
+	right: 0px;
+	list-style: outside none none;
+	margin: 2px 0 0;
+	min-width: 160px;
+	padding: 0;
+	position: absolute;
+	text-align: left;
+	top: 100%;
+	z-index: 1000;
+}
+.DropdownTopIcon .fa {
+	font-size: 24px
+}
+.tableFooterNav.panel-footer {
+    padding: 0 10px;
+    background-color: #cfdce4;
+    border-bottom-right-radius: 3px;
+    border-bottom-left-radius: 3px;
+}
+.tableFooterNav .showRecords {
+    line-height: 35px;
+    font-size: 15px;
+}
+.tableFooterNav .pagination {
+    margin:0;
+}
+.gridDropSearch {
+    background-color: #84a6ca;
+    padding: 8px 10px;
+}
+.gridDropSearch .search_btn {
+    background: rgba(0, 0, 0, 0) none repeat scroll 0 0;
+    border: medium none;
+    color: #a6b8bf;
+    display: inline-block;
+    font-size: 18px;
+    height: 42px;
+    line-height: 46px;
+    margin: 0;
+    position: absolute;
+    right: 20px;
+    top: 55px;
+}
+.gridDropSearch input[type="text"] {
+    background: #fff none repeat scroll 0 0 !important;
+    border: medium none !important;
+    border-radius: 4px !important;
+    display: block !important;
+    font-family: proxima_sb, Arial, sans-serif !important;
+    font-size: 14px !important;
+    padding: 4px 42px 4px 12px !important;
+    width: 100% !important;
+}

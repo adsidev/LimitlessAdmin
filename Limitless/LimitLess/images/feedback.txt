@@ -1,0 +1,99 @@
+<fieldset>
+        <legend>CitizenFeedback</legend>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.FirstName)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.FirstName)
+            @Html.ValidationMessageFor(model => model.FirstName)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.LastName)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.LastName)
+            @Html.ValidationMessageFor(model => model.LastName)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Email)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Email)
+            @Html.ValidationMessageFor(model => model.Email)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.City)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.City)
+            @Html.ValidationMessageFor(model => model.City)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Zipcode)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Zipcode)
+            @Html.ValidationMessageFor(model => model.Zipcode)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Address)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Address)
+            @Html.ValidationMessageFor(model => model.Address)
+        </div>
+
+        @*<div class="editor-label">
+            @Html.LabelFor(model => model.FeedbackType)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.FeedbackType)
+            @Html.ValidationMessageFor(model => model.FeedbackType)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.FeedbackText)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.FeedbackText)
+            @Html.ValidationMessageFor(model => model.FeedbackText)
+        </div>*@
+        
+        <div class="clearfix"></div>
+                        <div class="form-group full_width">
+                            <label for="Feedback Type" class="col-md-3 control-label no-pad">Feedback Type *</label>
+                            <div class="col-md-3">
+                                @Html.RadioButtonFor(m => m.FeedbackType, "Comment", new { @checked = "true" })
+                                @*<input name="" type="radio" value="">*@
+                                <label>Comment</label>
+                            </div>
+                            <div class="col-md-3">
+                                @Html.RadioButtonFor(m => m.FeedbackType, "Idea")
+                                @* <input name="" type="radio" value="">*@
+                                <label>Idea</label>
+                            </div>
+                        </div>
+                        <div class="clearfix"></div>
+                        <div class="form-group full_width">
+                            <div class="col-md-6 col-md-offset-3" title="Enter your feedback">
+                                @Html.TextAreaFor(m => m.FeedbackText, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(m => m.FeedbackText)
+                            </div>
+                        </div>
+         <div class="clearfix"></div>
+                        <div class="form-group full_width">
+                            <div class="col-md-6 col-md-offset-3">
+                                <button type="submit" id="btnsave" class="btn full_width btn-primary">SUBMIT</button>
+                                <span style="color: red" id="status">@ViewBag.status</span>
+                            </div>
+                        </div>
+        @*<p>
+            <input type="submit" value="Create" />
+        </p>*@
+    </fieldset>

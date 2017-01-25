@@ -1,0 +1,13 @@
+E:\Project\ADSI\Limitless\Code\Limitless\LimitLessRepository\bin\Release\LimitLessRepository.dll
+E:\Project\ADSI\Limitless\Code\Limitless\LimitLessRepository\bin\Release\LimitLessRepository.pdb
+E:\Project\ADSI\Limitless\Code\Limitless\LimitLessRepository\bin\Release\LimitLessDataAccess.dll
+E:\Project\ADSI\Limitless\Code\Limitless\LimitLessRepository\bin\Release\LimitlessEntity.dll
+E:\Project\ADSI\Limitless\Code\Limitless\LimitLessRepository\bin\Release\LimitLessUtility.dll
+E:\Project\ADSI\Limitless\Code\Limitless\LimitLessRepository\bin\Release\Newtonsoft.Json.dll
+E:\Project\ADSI\Limitless\Code\Limitless\LimitLessRepository\bin\Release\LimitLessDataAccess.pdb
+E:\Project\ADSI\Limitless\Code\Limitless\LimitLessRepository\bin\Release\LimitlessEntity.pdb
+E:\Project\ADSI\Limitless\Code\Limitless\LimitLessRepository\bin\Release\LimitLessUtility.pdb
+E:\Project\ADSI\Limitless\Code\Limitless\LimitLessRepository\bin\Release\Newtonsoft.Json.xml
+E:\Project\ADSI\Limitless\Code\Limitless\LimitLessRepository\obj\Release\LimitLessRepository.csprojResolveAssemblyReference.cache
+E:\Project\ADSI\Limitless\Code\Limitless\LimitLessRepository\obj\Release\LimitLessRepository.dll
+E:\Project\ADSI\Limitless\Code\Limitless\LimitLessRepository\obj\Release\LimitLessRepository.pdb

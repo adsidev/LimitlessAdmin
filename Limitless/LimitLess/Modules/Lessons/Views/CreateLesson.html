@@ -1,0 +1,31 @@
+﻿<div class="row">
+    <div class="tabbable-panel col-md-12">
+        <h3 class="page_geader">Create Lesson</h3>
+    </div>
+</div>
+<div class="col-md-12 no-pad" ng-controller="LessonController">
+    <div class="col-lg-12 no-pad">
+        <div class="control-group col-lg-6">
+            <label class="control-label" for="txtLessonContent">Lesson Content</label>
+            <div class="controls">
+                <input type="text" ng-model="LessonContent" id="txtLessonContent" class="form-control"/>
+            </div>
+        </div>
+        <div class="control-group col-lg-6">
+            <label class="control-label" for="checkSlave">Is Active</label>
+            <div class="controls">
+                <input id="chkActive" type="checkbox" ng-checked="IsActive" class="small_checkbox" />
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-12">
+        <div class="control-group no-pad text-right">
+            <div class="controls">
+                <input id="submit" name="Save" value="Save" type="button" class="btn btn-primary" ng-click="SaveLesson()" />
+                <input id="button" name="Cancel" value="Cancel" type="button" class="btn btn-primary disabled" />
+            </div>
+        </div>
+    </div>
+</div>
+
+
