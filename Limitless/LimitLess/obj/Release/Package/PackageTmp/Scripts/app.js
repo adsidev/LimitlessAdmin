@@ -107,7 +107,7 @@ app.config(function ($routeProvider) {
 //config routing
 
 //global variable to store service base path
-app.constant('serviceBasePath', 'http://limitless.saasitsol.com');
+app.constant('serviceBasePath', 'http://limitlesstest.azurewebsites.net/');
 //global variable to store service base path
 
 //Login and Logout controller
