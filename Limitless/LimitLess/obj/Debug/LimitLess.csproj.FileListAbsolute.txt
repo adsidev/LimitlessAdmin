@@ -420,3 +420,14 @@ E:\prj\LimitlessAdmin\Limitless\LimitLess\bin\System.Web.Routing.dll
 E:\prj\LimitlessAdmin\Limitless\LimitLess\bin\System.Web.Services.dll
 E:\prj\LimitlessAdmin\Limitless\LimitLess\bin\System.Xml.dll
 E:\prj\LimitlessAdmin\Limitless\LimitLess\bin\System.Xml.Linq.dll
+E:\prj\LimitlessAdmin\Limitless\LimitLess\bin\Microsoft.AI.DependencyCollector.dll
+E:\prj\LimitlessAdmin\Limitless\LimitLess\bin\Microsoft.AI.PerfCounterCollector.dll
+E:\prj\LimitlessAdmin\Limitless\LimitLess\bin\Microsoft.AI.ServerTelemetryChannel.dll
+E:\prj\LimitlessAdmin\Limitless\LimitLess\bin\Microsoft.AI.Web.dll
+E:\prj\LimitlessAdmin\Limitless\LimitLess\bin\Microsoft.AI.WindowsServer.dll
+E:\prj\LimitlessAdmin\Limitless\LimitLess\bin\Microsoft.ApplicationInsights.dll
+E:\prj\LimitlessAdmin\Limitless\LimitLess\bin\Microsoft.AI.DependencyCollector.xml
+E:\prj\LimitlessAdmin\Limitless\LimitLess\bin\Microsoft.AI.ServerTelemetryChannel.xml
+E:\prj\LimitlessAdmin\Limitless\LimitLess\bin\Microsoft.AI.Web.xml
+E:\prj\LimitlessAdmin\Limitless\LimitLess\bin\Microsoft.AI.WindowsServer.xml
+E:\prj\LimitlessAdmin\Limitless\LimitLess\bin\Microsoft.ApplicationInsights.xml
