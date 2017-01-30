@@ -19,3 +19,10 @@ E:\Project\ADSI\Limitless\Code\Limitless\LimitlessEntity\bin\Debug\LimitLessUtil
 E:\Project\ADSI\Limitless\Code\Limitless\LimitlessEntity\obj\Debug\LimitlessEntity.csprojResolveAssemblyReference.cache
 E:\Project\ADSI\Limitless\Code\Limitless\LimitlessEntity\obj\Debug\LimitlessEntity.dll
 E:\Project\ADSI\Limitless\Code\Limitless\LimitlessEntity\obj\Debug\LimitlessEntity.pdb
+E:\prj\LimitlessAdmin\Limitless\LimitlessEntity\bin\Debug\LimitlessEntity.dll
+E:\prj\LimitlessAdmin\Limitless\LimitlessEntity\bin\Debug\LimitlessEntity.pdb
+E:\prj\LimitlessAdmin\Limitless\LimitlessEntity\bin\Debug\LimitLessUtility.dll
+E:\prj\LimitlessAdmin\Limitless\LimitlessEntity\bin\Debug\LimitLessUtility.pdb
+E:\prj\LimitlessAdmin\Limitless\LimitlessEntity\obj\Debug\LimitlessEntity.csprojResolveAssemblyReference.cache
+E:\prj\LimitlessAdmin\Limitless\LimitlessEntity\obj\Debug\LimitlessEntity.dll
+E:\prj\LimitlessAdmin\Limitless\LimitlessEntity\obj\Debug\LimitlessEntity.pdb

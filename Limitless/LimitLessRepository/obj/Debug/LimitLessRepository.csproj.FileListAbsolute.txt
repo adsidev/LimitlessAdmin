@@ -37,3 +37,16 @@ E:\Project\ADSI\Limitless\Code\Limitless\LimitLessRepository\bin\Debug\Newtonsof
 E:\Project\ADSI\Limitless\Code\Limitless\LimitLessRepository\obj\Debug\LimitLessRepository.csprojResolveAssemblyReference.cache
 E:\Project\ADSI\Limitless\Code\Limitless\LimitLessRepository\obj\Debug\LimitLessRepository.dll
 E:\Project\ADSI\Limitless\Code\Limitless\LimitLessRepository\obj\Debug\LimitLessRepository.pdb
+E:\prj\LimitlessAdmin\Limitless\LimitLessRepository\bin\Debug\LimitLessRepository.dll
+E:\prj\LimitlessAdmin\Limitless\LimitLessRepository\bin\Debug\LimitLessRepository.pdb
+E:\prj\LimitlessAdmin\Limitless\LimitLessRepository\bin\Debug\LimitLessDataAccess.dll
+E:\prj\LimitlessAdmin\Limitless\LimitLessRepository\bin\Debug\LimitlessEntity.dll
+E:\prj\LimitlessAdmin\Limitless\LimitLessRepository\bin\Debug\LimitLessUtility.dll
+E:\prj\LimitlessAdmin\Limitless\LimitLessRepository\bin\Debug\Newtonsoft.Json.dll
+E:\prj\LimitlessAdmin\Limitless\LimitLessRepository\bin\Debug\LimitLessDataAccess.pdb
+E:\prj\LimitlessAdmin\Limitless\LimitLessRepository\bin\Debug\LimitlessEntity.pdb
+E:\prj\LimitlessAdmin\Limitless\LimitLessRepository\bin\Debug\LimitLessUtility.pdb
+E:\prj\LimitlessAdmin\Limitless\LimitLessRepository\bin\Debug\Newtonsoft.Json.xml
+E:\prj\LimitlessAdmin\Limitless\LimitLessRepository\obj\Debug\LimitLessRepository.csprojResolveAssemblyReference.cache
+E:\prj\LimitlessAdmin\Limitless\LimitLessRepository\obj\Debug\LimitLessRepository.dll
+E:\prj\LimitlessAdmin\Limitless\LimitLessRepository\obj\Debug\LimitLessRepository.pdb
