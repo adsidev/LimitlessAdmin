@@ -10,6 +10,15 @@ namespace LimitlessEntity.Entities.Models
         public string Explanation { get; set; }
         public string IsActive { get; set; }
         public string CreatedDate { get; set; }
-
+    }
+    public class UserAnswerModel
+    {
+        public string AnswerID { get; set; }
+        public string QuestionID { get; set; }
+        public string UserID { get; set; }
+    }
+    public class AnswerStatus
+    {
+        public string AnswerResult { get; set; }
     }
 }

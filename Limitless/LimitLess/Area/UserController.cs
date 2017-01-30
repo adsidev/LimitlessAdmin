@@ -36,7 +36,7 @@ namespace LimitLess.Area
 
         [Authorize]
         [HttpPost]
-        public int SaveUser(UserModel SModel)
+        public UserData SaveUser(UserModel SModel)
         {
             return _coreModel.Save(SModel);
             //return new string[] { "value1", "value2" };
@@ -61,11 +61,15 @@ namespace LimitLess.Area
             return _coreModel.SaveUserLives(SModel);
             //return new string[] { "value1", "value2" };
         }
-        [Authorize]
         [HttpPost]
         public int DeleteUser(RequestData Obj)
         {
             return _coreModel.DeleteUser(Obj.ID);
+        }
+        [HttpPost]
+        public SelectedData GetUserScore(RequestData Obj)
+        {
+            return _coreModel.GetUserScore(Obj.ID);
         }
     }
 }

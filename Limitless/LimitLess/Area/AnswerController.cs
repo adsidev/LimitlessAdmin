@@ -58,11 +58,15 @@ namespace LimitLess.Area
             return _coreModel.GetSelectedQA(Obj.ID);
             //return new string[] { "value1", "value2" };
         }
-        [Authorize]
         [HttpPost]
         public int DeleteAnswer(RequestData Obj)
         {
             return _coreModel.DeleteAnswer(Obj.ID);
+        }
+        [HttpPost]
+        public AnswerStatus SaveUserAnswer(UserAnswerModel UserAnswer)
+        {
+            return _coreModel.SaveUserAnswer(UserAnswer);
         }
     }
 }

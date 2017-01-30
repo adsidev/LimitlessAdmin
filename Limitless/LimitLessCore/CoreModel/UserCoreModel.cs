@@ -1,3 +1,4 @@
+using System;
 using LimitLessDataAccess;
 using LimitlessEntity.Entities.Models;
 using LimitlessEntity.Request;
@@ -20,7 +21,7 @@ namespace LimitLessCore.CoreModel
             _repository = new UserRepository<object>();
         }
 
-        public int Save(UserModel model)
+        public UserData Save(UserModel model)
         {
             SqlObject.CommandText = StoredProcedures.Users.SaveUser;
             int staus = 0;
@@ -37,7 +38,9 @@ namespace LimitLessCore.CoreModel
                 staus,
                 model.UserType
             };
-            return _repository.Save();
+            UserData objUser = new UserData();
+            objUser = _repository.SaveTrans();
+            return objUser;
         }
         public GridResult GridList(GridRequest paginationRequest)
         {
@@ -58,6 +61,15 @@ namespace LimitLessCore.CoreModel
         public SelectedData GetUserLives(int id)
         {
             SqlObject.CommandText = StoredProcedures.Users.GetUserLivesById;
+            SqlObject.Parameters = new object[] { id };
+            var result = _repository.GetOrgDetails();
+
+            return result;
+        }
+
+        public SelectedData GetUserScore(int id)
+        {
+            SqlObject.CommandText = StoredProcedures.Users.GetUserScoreById;
             SqlObject.Parameters = new object[] { id };
             var result = _repository.GetOrgDetails();
 

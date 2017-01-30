@@ -187,6 +187,10 @@
             /// Login Validations
             /// </summary>
             public const string DeleteAnswer = "dbo.Usp_DeleteAnswer";
+            /// <summary>
+            /// Login Validations
+            /// </summary>
+            public const string SaveUserAnswer = "dbo.Usp_SaveUserAnswer";
             
 
         }
@@ -247,6 +251,11 @@
             /// Login Validations
             /// </summary>
             public const string DeleteUser = "dbo.Usp_DeleteUser";
+            /// <summary>
+            /// Login Validations
+            /// </summary>
+            public const string GetUserScoreById = "dbo.Usp_GetUserScoreById";
+            
         }
     }
 }

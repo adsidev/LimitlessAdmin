@@ -75,6 +75,17 @@ namespace LimitLessCore.CoreModel
             int result = _repository.Delete(id);
             return result;
         }
+        public AnswerStatus SaveUserAnswer(UserAnswerModel model)
+        {
+            SqlObject.CommandText = StoredProcedures.Answers.SaveUserAnswer;
+            SqlObject.Parameters = new object[]
+            {
+                model.QuestionID,
+                model.AnswerID,
+                model.UserID
+            };
+            return _repository.SaveUserAnswer();
+        }
         #endregion
     }
 }

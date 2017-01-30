@@ -24,6 +24,7 @@
     <script src="Modules/Subobjectives/Controller/SubOjectiveController.js"></script>
     <script src="Modules/Answers/Controller/AnswerController.js"></script>
     <script src="Modules/User/Controller/UserController.js"></script>
+    <script src="Scripts/sha1.js"></script>
     <script type="text/javascript">
         $(document).ready(function () {
             $('.list-group-item').click(function () {
@@ -39,12 +40,12 @@
         <div class="container access-page">
             <div class="row design"> </div>
             <div class="row">
-                <div class="col-md-7"> <a href="/dashboard.html"><img src="images/vipfa.png" title="VIPFA Logo" alt="VIPFA Logo" class="logo" /></a> </div>
+                <div class="col-md-7"> <a href="~/home/home"><img src="images/vipfa.png" title="VIPFA Logo" alt="VIPFA Logo" class="logo" /></a> </div>
                 <div class="col-md-2 no-pad hey">
                     <h5 class="date" style="text-transform: none; margin-left: 43px;}"> Tuesday, November29, 2016</h5>
                 </div>
                 <div class="col-md-3 design-2">
-                    <h5 class="heading-welcome">Welcome! {{Name}} | <span id="spanLogout" style="cursor:pointer;" ng-click="Logout()">Logout</span></h5>
+                    <h5 class="heading-welcome">Welcome!<span id="spanUsername" style="padding-left:10px;text-transform:uppercase;"></span>| <span id="spanLogout" style="cursor:pointer;" ng-click="Logout()">Logout</span></h5>
                 </div>
             </div>
             <div class="row border">
@@ -67,7 +68,7 @@
                     </div>
                 </div>
                 <div class="col-md-12 text-center panel-footer">
-                    <h6>&copy; 2017 Limitless</h6>
+                    <h6>&copy; 2016 Public Finance Authority</h6>
                 </div>
             </div>
         </div>

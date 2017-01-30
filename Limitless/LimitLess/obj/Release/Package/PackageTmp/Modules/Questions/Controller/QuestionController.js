@@ -1,6 +1,6 @@
 ﻿/// <reference path="F:\.NET WorkSpace\Jena's Project\AngularDemoProject\Scripts/Common/app.js" />
 
-app.controller("QuestionController", function ($scope, $http, $location) {
+app.controller("QuestionController", function ($scope, $http, $location, $cookieStore) {
     $scope.clear = function () {
         $scope.QuestionID = '';
         $scope.SubObjectiveID = '';
@@ -10,6 +10,24 @@ app.controller("QuestionController", function ($scope, $http, $location) {
         $scope.QuestionTypeId = '';
         $scope.IsActive = '';
         $('#chkActive').attr('checked', false);
+    };
+    $scope.DeleteQuestion = function (e) {
+        id = $(e.target).data('id');
+        var req_data = $.param({
+            ID: id
+        });
+        if (confirm('Are you sure you want to delete record?')) {
+            $http.post("api/Question/DeleteQuestion", req_data, {
+                headers: { 'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8' }
+            }).success(function (data) {
+                toastr["success"]("Deleted Successfully.", 'Delete Question');
+                $http.post("api/Question/GridList", reqdata, {
+                    headers: { 'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8' }
+                }).success(function (data) {
+                    $scope.Records = JSON.parse(data.List);
+                });
+            });
+        }
     };
     $scope.EditQuestion = function (e) {
         id = $(e.target).data('id');
@@ -40,7 +58,8 @@ app.controller("QuestionController", function ($scope, $http, $location) {
         PageIndex: 1,
         PageSize: 10,
         OrderBy: 'CreatedDate',
-        SortDirection: 'DESC'
+        SortDirection: 'DESC',
+        OrganizationID: $cookieStore.get('OrganizationID')
     });
     
     $http.post("api/Question/GridList", reqdata, {
@@ -48,8 +67,10 @@ app.controller("QuestionController", function ($scope, $http, $location) {
     }).success(function (data) {
         $scope.Records = JSON.parse(data.List);
     });
-
-    $http.get("api/SubObjective/GetList",{
+    var ListInput = $.param({
+        OrganizationID: $cookieStore.get('OrganizationID')
+    });
+    $http.post("api/SubObjective/GetList", ListInput, {
         headers: { 'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8' }
     }).success(function (data) {
         $scope.SubObjectives = JSON.parse(data.List);

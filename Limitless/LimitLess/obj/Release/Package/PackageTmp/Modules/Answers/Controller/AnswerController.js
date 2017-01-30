@@ -1,7 +1,10 @@
 /// <reference path="F:\PractiveLession\MVCApplications\AngularDemoProject\AngularDemoProject\Scripts/Common/app.js" />
 
-app.controller("AnswerController", function ($scope, $http, $rootScope) {
-    $http.get("api/Question/GetList", {
+app.controller("AnswerController", function ($scope, $http, $rootScope, $cookieStore) {
+    var ListInput = $.param({
+        OrganizationID: $cookieStore.get('OrganizationID')
+    });
+    $http.post("api/Question/GetList", ListInput, {
         headers: { 'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8' }
     }).success(function (data) {
         $scope.Questions = JSON.parse(data.List);
@@ -17,6 +20,24 @@ app.controller("AnswerController", function ($scope, $http, $rootScope) {
         $scope.IsCorrect = '';
         $('#chkActive').attr('checked', false);
         $('#chkCorrect').attr('checked', false);
+    };
+    $scope.DeleteAnswer = function (e) {
+        id = $(e.target).data('id');
+        var req_data = $.param({
+            ID: id
+        });
+        if (confirm('Are you sure you want to delete record?')) {
+            $http.post("api/Answer/DeleteAnswer", req_data, {
+                headers: { 'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8' }
+            }).success(function (data) {
+                toastr["success"]("Deleted Successfully.", 'Delete Answer');
+                $http.post("api/Answer/GridList", reqdata, {
+                    headers: { 'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8' }
+                }).success(function (data) {
+                    $scope.Records = JSON.parse(data.List);
+                });
+            });
+        }
     };
     $scope.EditAnswer = function (e) {
         id = $(e.target).data('id');
@@ -88,6 +109,7 @@ app.controller("AnswerController", function ($scope, $http, $rootScope) {
         PageSize: 10,
         OrderBy: 'AnswerCode',
         SortDirection: 'ASC',
+        OrganizationID: $cookieStore.get('OrganizationID')
     });
     $http.post("api/Answer/GridList", reqdata, {
         headers: { 'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8' }

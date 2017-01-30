@@ -30,7 +30,7 @@
                         <td align="center">{{sub.CreatedDate}} </td>
                         <td>
                             <span data-toggle="modal" data-target="#myModal" data-id="{{sub.TopicID}}" ng-click="EditTopic($event)" style="text-decoration:none; cursor:pointer; color: #337ab7 !important;">Edit</span><span style="color:#000 !important;padding-left:5px">|</span>
-                            <input type="submit" value="Delete" class="board-members" onclick="return confirm('Are you sure you want to delete record?')" />
+                            <input type="submit" value="Delete" class="board-members" data-id="{{sub.TopicID}}" ng-click="DeleteTopic($event)"/>
                         </td>
                     </tr>
                 </tbody>

@@ -23,4 +23,8 @@ namespace LimitlessEntity.Entities.Models
         public string IsDeleted { get; set; }
 
     }
+    public class UserData
+    {
+        public string UserID { get; set; }
+    }
 }

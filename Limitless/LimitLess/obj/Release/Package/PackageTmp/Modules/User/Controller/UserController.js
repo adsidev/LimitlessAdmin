@@ -1,16 +1,24 @@
 /// <reference path="F:\PractiveLession\MVCApplications\AngularDemoProject\AngularDemoProject\Scripts/Common/app.js" />
 
-app.controller("UserController", function ($scope, $http, $rootScope) {
-    $http.get("api/Organization/GetList", {
+app.controller("UserController", function ($scope, $http, $rootScope, $cookieStore) {
+    $scope.ChangeData = function () {
+        $scope.Password = calcSHA1($scope.pwd);
+    }
+    var ListInput = $.param({
+        OrganizationID: $cookieStore.get('OrganizationID')
+    });
+    $http.post("api/Organization/GetList", ListInput, {
         headers: { 'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8' }
     }).success(function (data) {
         $scope.Organizations = JSON.parse(data.List);
     });
+    
     var reqdata = $.param({
         PageIndex: 1,
         PageSize: 10,
         OrderBy: 'UserName',
         SortDirection: 'ASC',
+        OrganizationID: $cookieStore.get('OrganizationID')
     });
     $http.post("api/User/GridList", reqdata, {
         headers: { 'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8' }
@@ -23,9 +31,29 @@ app.controller("UserController", function ($scope, $http, $rootScope) {
         $scope.LName = '';
         $scope.OrganizationID = '';
         $scope.Password = '';
+        $scope.pwd = '';
         $scope.Email = '';
         $scope.UserID = '';
         $('#chkActive').attr('checked', false);
+        $scope.EditHide = false;
+    };
+    $scope.DeleteUser = function (e) {
+        id = $(e.target).data('id');
+        var req_data = $.param({
+            ID: id
+        });
+        if (confirm('Are you sure you want to delete record?')) {
+            $http.post("api/User/DeleteUser", req_data, {
+                headers: { 'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8' }
+            }).success(function (data) {
+                toastr["success"]("Deleted Successfully.", 'Delete User');
+                $http.post("api/User/GridList", reqdata, {
+                    headers: { 'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8' }
+                }).success(function (data) {
+                    $scope.Records = JSON.parse(data.List);
+                });
+            });
+        }
     };
     var IsEdit='';
     $scope.EditUser = function (e) {
@@ -35,6 +63,7 @@ app.controller("UserController", function ($scope, $http, $rootScope) {
         });
         IsEdit='Y';
         $scope.SubjectID = id;
+        $scope.EditHide = true;
         $http.post("api/User/GetUserDetails", req_data, {
             headers: { 'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8' }
         }).success(function (data) {
@@ -43,7 +72,7 @@ app.controller("UserController", function ($scope, $http, $rootScope) {
             $scope.FName = result[0].FName;
             $scope.LName = result[0].LName;
             $scope.OrganizationID = result[0].OrganizationID;
-            $scope.Password = result[0].OrganizationID;
+            $scope.pwd = result[0].Password;
             $scope.Email = result[0].Email;
             $scope.UserID = result[0].UserID;
             if (result[0].IsActive) {
@@ -59,22 +88,22 @@ app.controller("UserController", function ($scope, $http, $rootScope) {
     function () {
         var IsActive = $('#chkActive').prop('checked');
         if ($scope.UserName=='') {
-            toastr["Please Enter User Name"]('', 'Validation');
+            toastr["error"]('Please Enter User Name', 'Validation');
         }
         else if ($scope.FName=='') {
-            toastr["Please Enter First Name"]('', 'Validation');
+            toastr["error"]('Please Enter First Name', 'Validation');
         }
         else if ($scope.LName == '') {
-            toastr["Please Enter Last Name"]('', 'Validation');
+            toastr["error"]('Please Enter Last Name', 'Validation');
         }
         else if ($scope.OrganizationID == '') {
-            toastr["Please Select Orgasnization"]('', 'Validation');
+            toastr["error"]('Please Select Orgasnization', 'Validation');
         }
-        else if ($scope.Password == '' && IsEdit=='') {
-            toastr["Please Enter Password"]('', 'Validation');
+        else if ($scope.pwd == '' && IsEdit=='') {
+            toastr["error"]('Please Enter Password', 'Validation');
         }
         else if ($scope.Email == '') {
-            toastr["Please Enter Email ID"]('', 'Validation');
+            toastr["error"]('Please Enter Email ID', 'Validation');
         }
         else {
             var Postdata = $.param({
@@ -86,6 +115,7 @@ app.controller("UserController", function ($scope, $http, $rootScope) {
                 Email: $scope.Email,
                 UserID: $scope.UserID,
                 IsActive: IsActive,
+                UserType:'System'
             });
             $http.post("api/User/SaveUser", Postdata, {
                 headers: { 'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8' }

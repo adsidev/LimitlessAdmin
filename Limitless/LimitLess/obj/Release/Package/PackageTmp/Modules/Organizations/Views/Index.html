@@ -1,7 +1,7 @@
 ﻿<div class="row">
     <div class="tabbable-panel col-md-12">
         <h3 class="page_geader col-md-6">Organizations</h3>
-        <span class="pull-right addbtn plusbutton"><span style="text-decoration:none; cursor:pointer" data-toggle="modal" data-target="#myModal" ng-click="clear()">Add</span></span>
+        <span class="pull-right addbtn plusbutton" style="display:none;"><span style="text-decoration:none; cursor:pointer" data-toggle="modal" data-target="#myModal" ng-click="clear()">Add</span></span>
     </div>
 </div>
 <div class="col-md-12 no-pad" ng-controller="OrganizationController">
@@ -25,8 +25,8 @@
                         <td align="center">{{sub.CreatedDate}} </td>
                         <td>
                             <!--<a href="#EditOrganization" data-id="{{sub.OrganizationID}}" style="text-decoration:none;" ng-click="EditOrganization($event)">Edit</a><span style="color:#000 !important;padding-left:5px">|</span>-->
-                            <span data-toggle="modal" data-target="#myModal" data-id="{{sub.OrganizationID}}" ng-click="EditOrganization($event)" style="text-decoration:none; cursor:pointer; color: #337ab7 !important;">Edit</span><span style="color:#000 !important;padding-left:5px">|</span>
-                            <input type="submit" value="Delete" class="board-members" onclick="return confirm('Are you sure you want to delete record?')" />
+                            <span data-toggle="modal" data-target="#myModal" data-id="{{sub.OrganizationID}}" ng-click="EditOrganization($event)" style="text-decoration:none; cursor:pointer; color: #337ab7 !important;">Edit</span><span style="color:#000 !important;padding-left:5px;display:none;">|</span>
+                            <input type="submit" value="Delete" class="board-members" onclick="return confirm('Are you sure you want to delete record?')" style="display:none;" />
                         </td>
                     </tr>
                 </tbody>

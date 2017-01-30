@@ -4,6 +4,7 @@ using LimitlessEntity.Results;
 using Newtonsoft.Json;
 using LimitlessEntity.Entities.Models;
 using System;
+using System.Data.SqlClient;
 
 namespace LimitLessRepository
 {
@@ -20,7 +21,7 @@ namespace LimitLessRepository
         }
         public string Get()
         {
-            var ds = SqlHelper.ExecuteDataset(_connectionString,System.Data.CommandType.StoredProcedure, SqlObject.CommandText);
+            var ds = SqlHelper.ExecuteDataset(_connectionString, System.Data.CommandType.StoredProcedure, SqlObject.CommandText);
             return JsonConvert.SerializeObject(ds.Tables[0]);
         }
         public ListResult GetData()
@@ -41,7 +42,7 @@ namespace LimitLessRepository
         {
             var result = new GridResult();
             var ds = SqlHelper.ExecuteDataset(_connectionString, SqlObject.CommandText, SqlObject.Parameters);
-            if (ds.Tables.Count>0)
+            if (ds.Tables.Count > 0)
             {
                 result.List = JsonConvert.SerializeObject(ds.Tables[0]);
                 result.TotalRecords = ds.Tables[0].Rows.Count;
@@ -53,7 +54,16 @@ namespace LimitLessRepository
             return SqlHelper.ExecuteNonQuery(_connectionString, SqlObject.CommandText, SqlObject.Parameters);
         }
 
-
+        public UserData SaveTrans()
+        {
+            var result = new UserData();
+            var ds = SqlHelper.ExecuteDataset(_connectionString, SqlObject.CommandText, SqlObject.Parameters);
+            if (ds.Tables.Count > 0)
+            {
+                result.UserID = JsonConvert.SerializeObject(ds.Tables[0]);
+            }
+            return result;
+        }
         public SelectedData GetOrgDetails()
         {
             var result = new SelectedData();
@@ -65,6 +75,13 @@ namespace LimitLessRepository
         public int Delete(T t)
         {
             return SqlHelper.ExecuteNonQuery(_connectionString, SqlObject.CommandText, SqlObject.Parameters);
+        }
+        public AnswerStatus SaveUserAnswer()
+        {
+            var result = new AnswerStatus();
+            var ds = SqlHelper.ExecuteDataset(_connectionString, SqlObject.CommandText, SqlObject.Parameters);
+            result.AnswerResult = JsonConvert.SerializeObject(ds.Tables[0]);
+            return result;
         }
     }
 }

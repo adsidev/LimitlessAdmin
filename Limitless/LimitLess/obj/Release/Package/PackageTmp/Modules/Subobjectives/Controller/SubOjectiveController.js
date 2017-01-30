@@ -1,12 +1,30 @@
 /// <reference path="F:\PractiveLession\MVCApplications\AngularDemoProject\AngularDemoProject\Scripts/Common/app.js" />
 
-app.controller("SubObjectiveController", function ($scope, $http, $rootScope, $location) {
+app.controller("SubObjectiveController", function ($scope, $http, $rootScope, $location, $cookieStore) {
     $scope.clear = function () {
         $scope.ObjectiveID = '';
         $scope.SubObjectivesID = '';
         $scope.SubObjectiveName = '';
         $scope.SubObjectiveDescription = '';
         $('#chkActive').attr('checked', false);
+    };
+    $scope.DeleteSubObjective = function (e) {
+        id = $(e.target).data('id');
+        var req_data = $.param({
+            ID: id
+        });
+        if (confirm('Are you sure you want to delete record?')) {
+            $http.post("api/SubObjective/DeleteSubObjective", req_data, {
+                headers: { 'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8' }
+            }).success(function (data) {
+                toastr["success"]("Deleted Successfully.", 'Delete Sub Objective');
+                $http.post("api/SubObjective/GridList", reqdata, {
+                    headers: { 'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8' }
+                }).success(function (data) {
+                    $scope.Records = JSON.parse(data.List);
+                });
+            });
+        }
     };
     $scope.EditSubObjective = function (e) {
         id = $(e.target).data('id');
@@ -35,22 +53,28 @@ app.controller("SubObjectiveController", function ($scope, $http, $rootScope, $l
         PageSize: 10,
         OrderBy: 'SubObjectiveName',
         SortDirection: 'ASC',
+        OrganizationID: $cookieStore.get('OrganizationID')
     });
     $http.post("api/SubObjective/GridList", reqdata, {
         headers: { 'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8' }
     }).success(function (data) {
         $scope.Records = JSON.parse(data.List);
     });
-    $http.get("api/Objective/GetList", {
+
+    var ListInput = $.param({
+        OrganizationID: $cookieStore.get('OrganizationID')
+    });
+    $http.post("api/Objective/GetList", ListInput, {
         headers: { 'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8' }
     }).success(function (data) {
         $scope.Objectives = JSON.parse(data.List);
     });
+
     $scope.SaveSubObjectives =
     function () {
         var IsActive = $('#chkActive').prop('checked');
         var Postdata = $.param({
-            SubObjectivesID:$scope.SubObjectivesID,
+            SubObjectivesID: $scope.SubObjectivesID,
             ObjectivesID: $scope.ObjectiveID,
             SubObjectiveName: $scope.SubObjectiveName,
             SubObjectiveDescription: $scope.SubObjectiveDescription,

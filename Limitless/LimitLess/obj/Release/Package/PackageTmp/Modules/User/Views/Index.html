@@ -27,7 +27,7 @@
                         <td align="center" width="20%">{{sub.Email}} </td>
                         <td width="15%">
                             <span data-toggle="modal" data-target="#myModal" data-id="{{sub.UserID}}" ng-click="EditUser($event)" style="text-decoration:none; cursor:pointer; color: #337ab7 !important;">Edit</span><span style="color:#000 !important;padding-left:5px">|</span>
-                            <input type="submit" value="Delete" class="board-members" onclick="return confirm('Are you sure you want to delete record?')" />
+                            <input type="submit" value="Delete" class="board-members" data-id="{{sub.UserID}}" ng-click="DeleteUser($event)" />
                         </td>
                     </tr>
                 </tbody>
@@ -74,17 +74,18 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-12 no-pad">
+                    <div class="col-lg-12 no-pad" id="divPassword" ng-hide="EditHide">
                         <div class="control-group col-lg-6" style="margin-top:20px;">
                             <label class="control-label" for="txtPassword">Password</label>
                             <div class="controls">
-                                <input type="password" ng-model="Password" id="txtPassword" class="form-control" />
+                                <input type="password" ng-model="pwd" id="txtPassword" class="form-control" ng-change="ChangeData()" />
+                                <input type="hidden" id="hidPassword" ng-model="Password"/>
                             </div>
                         </div>
                         <div class="control-group col-lg-6" style="margin-top:20px;">
                             <label class="control-label" for="txtCPassword">Confirm Password</label>
                             <div class="controls">
-                                <input type="password" ng-model="Password" id="txtCPassword" class="form-control" />
+                                <input type="password" ng-model="pwd" id="txtCPassword" class="form-control" />
                             </div>
                         </div>
                     </div>

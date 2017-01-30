@@ -1,24 +1,16 @@
 /// <reference path="F:\PractiveLession\MVCApplications\AngularDemoProject\AngularDemoProject\Scripts/Common/app.js" />
 
-app.controller("OrganizationController", function ($scope, $http, $rootScope, $location, $timeout) {
+app.controller("OrganizationController", function ($scope, $http, $rootScope, $location, $timeout, $cookieStore) {
+    //alert($cookieStore.get('UserName'));
+    $('#spanUsername').html($cookieStore.get('UserName'));
     var reqdata = $.param({
         PageIndex: 1,
         PageSize: 10,
         OrderBy: 'OrganizationName',
         SortDirection: 'ASC',
+        OrganizationID: $cookieStore.get('OrganizationID')
     });
-    //$.ajax({
-    //    type: "POST",
-    //    url: "api/Organization/GridList",
-    //    data: reqdata,
-    //    success: function (data) {
-    //        $scope.$apply(function () {
-    //            $scope.Records = JSON.parse(data.List);
-    //        });
-    //    },
-    //    error: function (x, y, z) {
-    //    }
-    //});
+    
     $scope.clear = function () {
         $scope.OrganizationID = '';
         $scope.OrganizationAddress = '';

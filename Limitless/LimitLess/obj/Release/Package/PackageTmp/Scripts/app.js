@@ -107,7 +107,7 @@ app.config(function ($routeProvider) {
 //config routing
 
 //global variable to store service base path
-app.constant('serviceBasePath', 'http://limitlesstest.azurewebsites.net/');
+app.constant('serviceBasePath', 'http://localhost:60142');
 //global variable to store service base path
 
 //Login and Logout controller
@@ -197,23 +197,55 @@ app.factory('accountService', ['$http', '$q', 'serviceBasePath', 'userService', 
     }
     return fac;
 }])
-app.controller('loginController', ['$scope', '$location', 'accountService', '$timeout', '$cookieStore', function ($scope, $location, accountService, $timeout, $cookieStore) {
+app.controller('loginController', ['$scope', '$location', 'accountService', '$timeout', '$cookieStore', '$http', function ($scope, $location, accountService, $timeout, $cookieStore, $http) {
+    $scope.ChangeData = function () {
+        $scope.password = calcSHA1($scope.pwd);
+    }
     $scope.account = { username: $scope.username, password: $scope.password };
     $scope.message = '';
     $scope.login = function () {
-        accountService.login($scope.username, $scope.password).then(function (data) {
-            toastr["success"]("User loggedin successfully.", 'User Authentication');
-            $scope.Name = $scope.username;
-            $timeout(LoginTime, 1000);
-        }, function (error) {
-            toastr["error"](error.error_description, 'User Authentication');
-            $scope.message = error.error_description;
-        })
+        if ($scope.username == undefined) {
+            toastr["error"]('Please Enter User Id', 'User Authentication');
+        }
+        else if ($scope.pwd == undefined) {
+            toastr["error"]('Please Enter Password', 'User Authentication');
+        }
+        else {
+            var req_data = $.param({
+                Email: $scope.username,
+                Password: $scope.password
+            });
+            $http.post("api/Login/GetUserData", req_data, {
+                headers: { 'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8' }
+            }).success(function (data) {
+                $scope.User_Details = JSON.parse(data.UserInformations);
+                if ($scope.User_Details == null) {
+                    toastr["error"]('Please Enter Valid Credential', 'User Authentication');
+                }
+                else {
+                    $cookieStore.put('UserName', $scope.User_Details[0].UserName);
+                    $cookieStore.put('OrganizationID', $scope.User_Details[0].OrganizationID);
+                    $cookieStore.UserName = $scope.User_Details[0].UserName;
+                    $cookieStore.UserID = $scope.User_Details[0].UserID;
+                    $cookieStore.OrganizationID = $scope.User_Details[0].OrganizationID;
+                    $cookieStore.put('UserData', $scope.User_Details);
+                    accountService.login($scope.username, $scope.password).then(function (data) {
+                        toastr["success"]("User loggedin successfully.", 'User Authentication');
+                        $timeout(LoginTime, 1000);
+                    }, function (error) {
+                        toastr["error"](error.error_description, 'User Authentication');
+                        $scope.message = error.error_description;
+                    })
+                }
+            }).error(function (err) {
+            });
+        }
     }
     $scope.Logout = function () {
         toastr["warning"]("User loggedout successfully.", 'User Authentication');
         accountService.logout();
         $timeout(LogOutTime, 1000);
+        $cookieStore = null;
     }
 }])
 function LoginTime() {

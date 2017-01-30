@@ -1,6 +1,6 @@
 /// <reference path="F:\PractiveLession\MVCApplications\AngularDemoProject\AngularDemoProject\Scripts/Common/app.js" />
 
-app.controller("ObjectiveController", function ($scope, $http, $rootScope, $location) {
+app.controller("ObjectiveController", function ($scope, $http, $rootScope, $location, $cookieStore) {
     
     $scope.clear = function () {
         $scope.TopicID = '';
@@ -8,6 +8,24 @@ app.controller("ObjectiveController", function ($scope, $http, $rootScope, $loca
         $scope.ObjectiveName = '';
         $scope.ObjectiveDescription = '';
         $('#chkActive').attr('checked', false);
+    };
+    $scope.DeleteObjective = function (e) {
+        id = $(e.target).data('id');
+        var req_data = $.param({
+            ID: id
+        });
+        if (confirm('Are you sure you want to delete record?')) {
+            $http.post("api/Objective/DeleteObjective", req_data, {
+                headers: { 'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8' }
+            }).success(function (data) {
+                toastr["success"]("Deleted Successfully.", 'Delete Objective');
+                $http.post("api/Objective/GridList", reqdata, {
+                    headers: { 'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8' }
+                }).success(function (data) {
+                    $scope.Records = JSON.parse(data.List);
+                });
+            });
+        }
     };
     $scope.EditObjective = function (e) {
         id = $(e.target).data('id');
@@ -36,6 +54,7 @@ app.controller("ObjectiveController", function ($scope, $http, $rootScope, $loca
         PageSize: 10,
         OrderBy: 'ObjectiveName',
         SortDirection: 'ASC',
+        OrganizationID: $cookieStore.get('OrganizationID')
     });
     if ($location.path() == '/objectives') {
         $http.post("api/Objective/GridList", reqdata, {
@@ -44,7 +63,10 @@ app.controller("ObjectiveController", function ($scope, $http, $rootScope, $loca
             $scope.Records = JSON.parse(data.List);
         });
     }
-    $http.get("api/Topic/GetList", {
+    var ListInput = $.param({
+        OrganizationID: $cookieStore.get('OrganizationID')
+    });
+    $http.post("api/Topic/GetList", ListInput, {
         headers: { 'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8' }
     }).success(function (data) {
         $scope.Topics = JSON.parse(data.List);
