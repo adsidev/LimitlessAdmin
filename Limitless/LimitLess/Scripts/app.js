@@ -2,6 +2,7 @@
 /// <reference path="angular-cookies.js" />
 var app = angular.module("app", ['ngRoute', 'ngCookies']).run(run);
 
+
 //config routing
 app.config(function ($routeProvider) {
     $routeProvider
@@ -102,6 +103,10 @@ app.config(function ($routeProvider) {
     .when("/EditOrganization", {
         templateUrl: "/Modules/Organizations/Views/EditOrganization.html",
         controller: "OrganizationController"
+    })
+    .when("/spreadsheet", {
+        templateUrl: "/Modules/Spreadsheet/Views/Index.html",
+        controller: "SpreadsheetController"
     });
 });
 //config routing

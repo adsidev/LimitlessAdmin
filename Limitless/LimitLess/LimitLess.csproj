@@ -277,6 +277,7 @@
     <Compile Include="Area\TopicController.cs" />
     <Compile Include="Area\UserController.cs" />
     <Compile Include="AuthorizeAttribute.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -296,6 +297,7 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\custom.css" />
+    <Content Include="Content\file-upload.css" />
     <Content Include="Content\PagedList.css" />
     <Content Include="Content\toastr.css" />
     <Content Include="Content\toastr.min.css" />
@@ -403,6 +405,8 @@
     <Content Include="Modules\Questions\Views\Index.html" />
     <Content Include="Modules\Lessons\Views\CreateLesson.html" />
     <Content Include="Modules\Lessons\Views\EditLesson.html" />
+    <Content Include="Modules\Spreadsheet\Controller\SpreadsheetController.js" />
+    <Content Include="Modules\Spreadsheet\Views\Index.html" />
     <Content Include="Modules\Subjects\Controller\SubjectController.js" />
     <Content Include="Modules\Subjects\Views\CreateSubject.html" />
     <Content Include="Modules\Subjects\Views\EditSubject.html" />
@@ -439,6 +443,9 @@
     <Content Include="Content\Admincss\fonts\glyphicons-halflings-regular.woff" />
     <Content Include="Content\Admincss\fonts\glyphicons-halflings-regular.woff2" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\FileAPI.flash.swf" />
+    <Content Include="Scripts\FileAPI.js" />
+    <Content Include="Scripts\FileAPI.min.js" />
     <Content Include="Scripts\grid.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -452,6 +459,12 @@
     <Content Include="Scripts\main.js" />
     <Content Include="Scripts\md5.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
+    <Content Include="Scripts\ng-file-upload-all.js" />
+    <Content Include="Scripts\ng-file-upload-all.min.js" />
+    <Content Include="Scripts\ng-file-upload-shim.js" />
+    <Content Include="Scripts\ng-file-upload-shim.min.js" />
+    <Content Include="Scripts\ng-file-upload.js" />
+    <Content Include="Scripts\ng-file-upload.min.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\sha1.js" />
@@ -481,7 +494,7 @@
     <Folder Include="Content\fonts\" />
     <Folder Include="Content\plugins\" />
     <Folder Include="Content\themes\" />
-    <Folder Include="Controllers\" />
+    <Folder Include="Views\Home\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
