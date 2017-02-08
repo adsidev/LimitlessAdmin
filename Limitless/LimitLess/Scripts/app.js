@@ -107,7 +107,7 @@ app.config(function ($routeProvider) {
 //config routing
 
 //global variable to store service base path
-app.constant('serviceBasePath', 'https://limitlesstest.azurewebsites.net');
+app.constant('serviceBasePath', 'http://localhost:60142');
 //global variable to store service base path
 
 //Login and Logout controller

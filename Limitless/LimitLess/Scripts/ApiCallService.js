@@ -12,7 +12,7 @@
         }
         // This is used for calling get methods from web api
         this.Get = function (url) {
-            var serviceuri = "https://limitlesstest.azurewebsites.net";
+            var serviceuri = "http://localhost:60142";
             result = $http.get(serviceuri + url, config).success(function (data, status) {
                 result = (data);
             }).error(function () {
@@ -23,7 +23,7 @@
 
         // This is used for calling post methods from web api with passing some data to the web api controller
         this.PostApiCall = function (url, reqdata) {
-            var serviceuri = "https://limitlesstest.azurewebsites.net";
+            var serviceuri = "http://localhost:60142";
             result = $http.post(serviceuri + url, reqdata, config)
              .success(function (data, status) {
                  result = (data);
