@@ -1,62 +1,25 @@
 ﻿
-app.controller('SpreadsheetController', ['$scope', '$http', function ($scope, $http) {
-    $scope.SelectedFileForUpload = null;
-
-    $scope.UploadFile = function (files) {
-        $scope.$apply(function () { 
-            $scope.Message = "";
-            $scope.SelectedFileForUpload = files[0];
-        })
-    }
-
-    //Parse Excel Data 
-    $scope.ParseExcelDataAndSave = function () {
-        var file = $scope.SelectedFileForUpload;
-        console.log("parse");
+app.controller('SpreadsheetController', ['$scope', 'Upload', '$timeout', function ($scope, Upload, $timeout) {
+    $scope.uploadFiles = function (file, errFiles) {
+        console.log("a");
+        $scope.f = file;
+        $scope.errFile = errFiles && errFiles[0];
         if (file) {
-            var reader = new FileReader();
-            reader.onload = function (e) {
-                var data = e.target.result;
-                console.log("reader");
-                var workbook = XLSX.read(data, { type: 'binary' });
-                var sheetName = workbook.SheetNames[0];
-                var excelData = XLSX.utils.sheet_to_row_object_array(workbook.Sheets[sheetName]);
-                if (excelData.length > 0) {
-                    //Save data 
-                    console.log("save");
-                    $scope.SaveData(excelData);
-                }
-                else {
-                    $scope.Message = "No data found";
-                }
-            }
-            reader.onerror = function (ex) {
-                console.log(ex);
-            }
+            file.upload = Upload.upload({
+                url: 'https://angular-file-upload-cors-srv.appspot.com/upload',
+                data: { file: file }
+            });
 
-            reader.readAsBinaryString(file);
+            file.upload.then(function (response) {
+                $timeout(function () {
+                    file.result = response.data;
+                });
+            }, function (response) {
+                if (response.status > 0)
+                    $scope.errorMsg = response.status + ': ' + response.data;
+            }, function (evt) {
+                file.progress = Math.min(100, parseInt(100.0 * evt.loaded / evt.total));
+            });
         }
     }
-
-    $scope.SaveData = function (excelData) {
-        console.log("savedata", excelData);
-        $http({
-            method: "POST",
-            url: "/home/SaveData",
-            data: JSON.stringify(excelData),
-            headers: {
-                'Content-Type': 'application/json'
-            }
-        }).then(function (data) {
-            if (data.status) {
-                console.log(data);
-                $scope.Message = excelData.length + " record inserted";
-            }
-            else {
-                $scope.Message = "Failed";
-            }
-        }, function (error) {
-            $scope.Message = "Error";
-        })
-    }
-}])
+}]);

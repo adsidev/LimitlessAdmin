@@ -1,10 +1,17 @@
-﻿<div ng-controller="SpreadsheetController" class="container" style="margin-top:50px;">
-    <div class="form-inline">
-        <input type="file" name="file" class="form-control" onchange="angular.element(this).scope().UploadFile(this.files)"/>
-        <input type="button" value="Import" class="btn btn-success" ng-disabled="!SelectedFileForUpload"
-               ng-click="ParseExcelDataAndSave()"/>
-        <br/>
-        <span style="color:red">{{Message}}</span>
+﻿<div ng-controller="SpreadsheetController">
+    <h4>Upload on file select</h4>
+    <button type="file" ngf-select="uploadFiles($file, $invalidFiles)"
+            accept=".xls,.csv,.xlsx" ngf-max-height="1000" ngf-max-size="1MB">
+        Select File
+    </button>
+    <br><br>
+    File:
+    <div style="font:smaller">
+        {{f.name}} {{errFile.name}} {{errFile.$error}} {{errFile.$errorParam}}
+        <span class="progress" ng-show="f.progress >= 0">
+            <div style="width:{{f.progress}}%"
+                 ng-bind="f.progress + '%'"></div>
+        </span>
     </div>
-
+    {{errorMsg}}
 </div>

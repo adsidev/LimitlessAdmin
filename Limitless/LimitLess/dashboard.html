@@ -8,6 +8,7 @@
     <link href="Content/Admincss/bootstrap.css" rel="stylesheet" />
     <link href="Content/Admincss/style.css" rel="stylesheet" />
     <link href="Content/toastr.min.css" rel="stylesheet" />
+    <link href="Content/file-upload.css" rel="stylesheet"/>
     <script src="Scripts/jquery-1.10.2.js"></script>
     <script src="Scripts/bootstrap.min.js"></script>
     <script src="Scripts/angular.js"></script>
@@ -24,10 +25,10 @@
     <script src="Modules/Subobjectives/Controller/SubOjectiveController.js"></script>
     <script src="Modules/Answers/Controller/AnswerController.js"></script>
     <script src="Modules/User/Controller/UserController.js"></script>
-    <script src="Scripts/sha1.js"></script>
-    <script src="http://cdnjs.cloudflare.com/ajax/libs/xlsx/0.8.1/xlsx.full.min.js"></script>
-    <script src="http://oss.sheetjs.com/js-xlsx/jszip.js"></script>
     <script src="Modules/Spreadsheet/Controller/SpreadsheetController.js"></script>
+    <script src="/Scripts/sha1.js"></script>
+    <script src="/Scripts/ng-file-upload-shim.js"></script> <!-- for no html5 browsers support -->
+    <script src="/Scripts/ng-file-upload.js"></script>
     <script type="text/javascript">
         $(document).ready(function () {
             $('.list-group-item').click(function () {

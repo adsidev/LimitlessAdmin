@@ -6,7 +6,7 @@ using System.Web.Mvc;
 
 namespace LimitLess.Controllers
 {
-    public class HomeController : Controller
+    public class SpreadsheetController : Controller
     {
         
         // GET: Home
@@ -15,9 +15,9 @@ namespace LimitLess.Controllers
             return View();
         }
         [HttpPost]
-        public ActionResult SaveData(String excelData)
+        public ActionResult SaveData(IDictionary<string, object> excelData)
         {
-
+            Console.WriteLine(excelData);
             return new JsonResult { Data = new { name = "a"} };
         }
     }

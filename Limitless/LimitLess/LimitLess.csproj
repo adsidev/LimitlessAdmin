@@ -277,7 +277,7 @@
     <Compile Include="Area\TopicController.cs" />
     <Compile Include="Area\UserController.cs" />
     <Compile Include="AuthorizeAttribute.cs" />
-    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Area\SpreadsheetController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -494,6 +494,7 @@
     <Folder Include="Content\fonts\" />
     <Folder Include="Content\plugins\" />
     <Folder Include="Content\themes\" />
+    <Folder Include="Controllers\" />
     <Folder Include="Views\Home\" />
   </ItemGroup>
   <ItemGroup>

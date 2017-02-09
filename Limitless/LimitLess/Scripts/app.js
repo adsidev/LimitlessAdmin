@@ -1,7 +1,6 @@
 ﻿/// <reference path="angular.js" />
 /// <reference path="angular-cookies.js" />
-var app = angular.module("app", ['ngRoute', 'ngCookies']).run(run);
-
+var app = angular.module("app", ['ngRoute', 'ngCookies', 'ngFileUpload']).run(run);
 
 //config routing
 app.config(function ($routeProvider) {
@@ -107,8 +106,9 @@ app.config(function ($routeProvider) {
     .when("/spreadsheet", {
         templateUrl: "/Modules/Spreadsheet/Views/Index.html",
         controller: "SpreadsheetController"
-    });
+    })
 });
+
 //config routing
 
 //global variable to store service base path
