@@ -5,9 +5,12 @@ app.controller('SpreadsheetController', ['$scope', 'Upload', '$timeout', functio
         $scope.f = file;
         $scope.errFile = errFiles && errFiles[0];
         if (file) {
+            console.log(file);
             file.upload = Upload.upload({
-                url: 'https://angular-file-upload-cors-srv.appspot.com/upload',
-                data: { file: file }
+                method: 'POST',
+                url: 'http://localhost:60142/api/Spreadsheet/SaveSpreadsheet',
+                data: { file: file },
+                //headers: { 'Content-Type': 'application/vnd.ms-excel' }
             });
 
             file.upload.then(function (response) {
@@ -22,4 +25,5 @@ app.controller('SpreadsheetController', ['$scope', 'Upload', '$timeout', functio
             });
         }
     }
+
 }]);
