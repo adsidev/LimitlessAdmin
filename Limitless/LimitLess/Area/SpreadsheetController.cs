@@ -10,6 +10,10 @@ using System.Web;
 using System.Web.Http;
 using Excel = Microsoft.Office.Interop.Excel;
 using System.IO;
+using System;
+using System.Linq;
+using System.Collections;
+using System.Collections.Generic;
 
 
 namespace LimitLess.Area
@@ -40,7 +44,7 @@ namespace LimitLess.Area
             foreach (string file in httpRequest.Files)
             {
                 var postedFile = httpRequest.Files[file];
-                var filePath = HttpContext.Current.Server.MapPath("~/App_Data" + postedFile.FileName);
+                var filePath = HttpContext.Current.Server.MapPath("~/App_Data/" + postedFile.FileName);
                 postedFile.SaveAs(filePath);
                 Trace.WriteLine(filePath);
                 // NOTE: To store in memory use postedFile.InputStream
@@ -49,10 +53,33 @@ namespace LimitLess.Area
                 Excel.Workbook workbook = application.Workbooks.Open(filePath);
                 Excel.Worksheet worksheet = workbook.ActiveSheet;
                 Excel.Range range = worksheet.UsedRange;
+                List<SpreadsheetModel> spreadsheetList = new List<SpreadsheetModel>();
                 for (int row = 2; row <= range.Rows.Count; row++)
                 {
-                    
+                    SpreadsheetModel model = new SpreadsheetModel();
+
+                    model.SubObjectiveID = ((Excel.Range)range.Cells[row, 5]).Text;
+                    model.QuestionContent = ((Excel.Range)range.Cells[row, 6]).Text;
+                    model.QuestionDifficulty = ((Excel.Range)range.Cells[row, 8]).Text;
+                    model.QuestionTypeID = ((Excel.Range)range.Cells[row, 7]).Text;
+
+                    model.CorrectAnswer_Content = ((Excel.Range)range.Cells[row, 9]).Text;
+                    model.CorrectAnswer_Explanation = ((Excel.Range)range.Cells[row, 10]).Text;
+
+                    model.WrongAnswer1_Content = ((Excel.Range)range.Cells[row, 11]).Text;
+                    model.WrongAnswer1_Explanation = ((Excel.Range)range.Cells[row, 12]).Text;
+
+                    model.WrongAnswer2_Content = ((Excel.Range)range.Cells[row, 13]).Text;
+                    model.WrongAnswer2_Explanation = ((Excel.Range)range.Cells[row, 14]).Text;
+
+                    model.WrongAnswer3_Content = ((Excel.Range)range.Cells[row, 15]).Text;
+                    model.WrongAnswer3_Explanation = ((Excel.Range)range.Cells[row, 16]).Text;
+
+                    spreadsheetList.Add(model);
+                    _coreModel.Save(model);
                 }
+               // _coreModel.Save(spreadsheetList);
+                
             }
 
             return Request.CreateResponse(HttpStatusCode.Created);

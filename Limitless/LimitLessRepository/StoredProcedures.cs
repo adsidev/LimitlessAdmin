@@ -257,5 +257,11 @@
             public const string GetUserScoreById = "dbo.Usp_GetUserScoreById";
             
         }
+        public class Spreadsheet
+        {
+            /// <summary>
+            ///save spreadsheet
+            public const string SaveSpreadsheet = "dbo.Usp_SaveSpreadsheetDetails";
+        }
     }
 }
