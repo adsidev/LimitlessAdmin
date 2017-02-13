@@ -160,7 +160,12 @@
             /// Login Validations
             /// </summary>
             public const string DeleteQuestion = "dbo.Usp_DeleteQuestion";
-            
+            /// <summary>
+            /// Login Validations
+            /// </summary>
+            public const string GetLastQuestionId = "dbo.Usp_GetLastQuestionId";
+
+
         }
 
         public class Answers

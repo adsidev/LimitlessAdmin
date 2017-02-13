@@ -18,3 +18,8 @@ C:\Users\ADSIXPS15\Documents\LimitlessAdmin-update\Limitless\LimitLessDataAccess
 C:\Users\ADSIXPS15\Documents\LimitlessAdmin-update\Limitless\LimitLessDataAccess\obj\Debug\LimitLessDataAccess.csprojResolveAssemblyReference.cache
 C:\Users\ADSIXPS15\Documents\LimitlessAdmin-update\Limitless\LimitLessDataAccess\obj\Debug\LimitLessDataAccess.dll
 C:\Users\ADSIXPS15\Documents\LimitlessAdmin-update\Limitless\LimitLessDataAccess\obj\Debug\LimitLessDataAccess.pdb
+\\Mac\Home\Documents\LimitlessAdmin-update\Limitless\LimitLessDataAccess\bin\Debug\LimitLessDataAccess.dll
+\\Mac\Home\Documents\LimitlessAdmin-update\Limitless\LimitLessDataAccess\bin\Debug\LimitLessDataAccess.pdb
+\\Mac\Home\Documents\LimitlessAdmin-update\Limitless\LimitLessDataAccess\obj\Debug\LimitLessDataAccess.csprojResolveAssemblyReference.cache
+\\Mac\Home\Documents\LimitlessAdmin-update\Limitless\LimitLessDataAccess\obj\Debug\LimitLessDataAccess.dll
+\\Mac\Home\Documents\LimitlessAdmin-update\Limitless\LimitLessDataAccess\obj\Debug\LimitLessDataAccess.pdb

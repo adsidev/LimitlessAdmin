@@ -61,6 +61,14 @@ namespace LimitLessCore.CoreModel
             var result = _repository.GetOrgDetails();
             return result;
         }
+
+        public ListResult GetLastQuestionId()
+        {
+            SqlObject.CommandText = StoredProcedures.Questions.GetLastQuestionId;
+            //SqlObject.Parameters = new object[] { };
+            return _repository.GetData();
+        }
+
         public int DeleteQuestion(int id)
         {
             SqlObject.CommandText = StoredProcedures.Questions.DeleteQuestion;

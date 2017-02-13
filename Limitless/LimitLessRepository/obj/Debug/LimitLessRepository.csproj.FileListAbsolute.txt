@@ -63,3 +63,16 @@ C:\Users\ADSIXPS15\Documents\LimitlessAdmin-update\Limitless\LimitLessRepository
 C:\Users\ADSIXPS15\Documents\LimitlessAdmin-update\Limitless\LimitLessRepository\obj\Debug\LimitLessRepository.csprojResolveAssemblyReference.cache
 C:\Users\ADSIXPS15\Documents\LimitlessAdmin-update\Limitless\LimitLessRepository\obj\Debug\LimitLessRepository.dll
 C:\Users\ADSIXPS15\Documents\LimitlessAdmin-update\Limitless\LimitLessRepository\obj\Debug\LimitLessRepository.pdb
+\\Mac\Home\Documents\LimitlessAdmin-update\Limitless\LimitLessRepository\bin\Debug\LimitLessRepository.dll
+\\Mac\Home\Documents\LimitlessAdmin-update\Limitless\LimitLessRepository\bin\Debug\LimitLessRepository.pdb
+\\Mac\Home\Documents\LimitlessAdmin-update\Limitless\LimitLessRepository\bin\Debug\LimitLessDataAccess.dll
+\\Mac\Home\Documents\LimitlessAdmin-update\Limitless\LimitLessRepository\bin\Debug\LimitlessEntity.dll
+\\Mac\Home\Documents\LimitlessAdmin-update\Limitless\LimitLessRepository\bin\Debug\LimitLessUtility.dll
+\\Mac\Home\Documents\LimitlessAdmin-update\Limitless\LimitLessRepository\bin\Debug\Newtonsoft.Json.dll
+\\Mac\Home\Documents\LimitlessAdmin-update\Limitless\LimitLessRepository\bin\Debug\LimitLessDataAccess.pdb
+\\Mac\Home\Documents\LimitlessAdmin-update\Limitless\LimitLessRepository\bin\Debug\LimitlessEntity.pdb
+\\Mac\Home\Documents\LimitlessAdmin-update\Limitless\LimitLessRepository\bin\Debug\LimitLessUtility.pdb
+\\Mac\Home\Documents\LimitlessAdmin-update\Limitless\LimitLessRepository\bin\Debug\Newtonsoft.Json.xml
+\\Mac\Home\Documents\LimitlessAdmin-update\Limitless\LimitLessRepository\obj\Debug\LimitLessRepository.csprojResolveAssemblyReference.cache
+\\Mac\Home\Documents\LimitlessAdmin-update\Limitless\LimitLessRepository\obj\Debug\LimitLessRepository.dll
+\\Mac\Home\Documents\LimitlessAdmin-update\Limitless\LimitLessRepository\obj\Debug\LimitLessRepository.pdb
