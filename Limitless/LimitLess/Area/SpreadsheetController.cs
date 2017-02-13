@@ -74,51 +74,55 @@ namespace LimitLess.Area
             List<SpreadsheetModel> spreadsheetList = new List<SpreadsheetModel>();
             for (int row = 2; row <= range.Rows.Count; row++)
             {
-                var queModel = new QuestionModel();
-                var c_ansModel = new AnswerModel();
-                AnswerModel w1_ansModel = new AnswerModel();
-                AnswerModel w2_ansModel = new AnswerModel();
-                AnswerModel w3_ansModel = new AnswerModel();
-                SpreadsheetModel spreadsheetmodel = new SpreadsheetModel
+                if (((Excel.Range) range.Cells[row, 6]).Text != "")
                 {
-                    questionModel = queModel,
-                    correctAnswerModel = c_ansModel,
-                    wrong1AnswerModel = w1_ansModel,
-                    wrong2AnswerModel = w2_ansModel,
-                    wrong3AnswerModel = w3_ansModel
-                };
-                spreadsheetmodel.questionModel.SubObjectiveID = Int32.Parse(((Excel.Range)range.Cells[row, 5]).Text, CultureInfo.InvariantCulture);
-                spreadsheetmodel.questionModel.QuestionContent = ((Excel.Range)range.Cells[row, 6]).Text;
-                spreadsheetmodel.questionModel.QuestionTypeId = ((Excel.Range)range.Cells[row, 7]).Text;
-                spreadsheetmodel.questionModel.Difficulty = Int32.Parse(((Excel.Range)range.Cells[row, 8]).Text, CultureInfo.InvariantCulture);
-                spreadsheetmodel.questionModel.QuestionCode = "";
-                spreadsheetmodel.questionModel.IsActive = "true";
+                    var queModel = new QuestionModel();
+                    var c_ansModel = new AnswerModel();
+                    AnswerModel w1_ansModel = new AnswerModel();
+                    AnswerModel w2_ansModel = new AnswerModel();
+                    AnswerModel w3_ansModel = new AnswerModel();
+                    SpreadsheetModel spreadsheetmodel = new SpreadsheetModel
+                    {
+                        questionModel = queModel,
+                        correctAnswerModel = c_ansModel,
+                        wrong1AnswerModel = w1_ansModel,
+                        wrong2AnswerModel = w2_ansModel,
+                        wrong3AnswerModel = w3_ansModel
+                    };
+                    spreadsheetmodel.questionModel.SubObjectiveID = Int32.Parse(((Excel.Range)range.Cells[row, 5]).Text, CultureInfo.InvariantCulture);
+                    spreadsheetmodel.questionModel.QuestionContent = ((Excel.Range)range.Cells[row, 6]).Text;
+                    spreadsheetmodel.questionModel.QuestionTypeId = ((Excel.Range)range.Cells[row, 7]).Text;
+                    spreadsheetmodel.questionModel.Difficulty = Int32.Parse(((Excel.Range)range.Cells[row, 8]).Text, CultureInfo.InvariantCulture);
+                    spreadsheetmodel.questionModel.QuestionCode = "";
+                    spreadsheetmodel.questionModel.IsActive = "true";
 
-                spreadsheetmodel.correctAnswerModel.AnswerContent = ((Excel.Range)range.Cells[row, 9]).Text;
-                spreadsheetmodel.correctAnswerModel.Explanation = ((Excel.Range)range.Cells[row, 10]).Text;
-                spreadsheetmodel.correctAnswerModel.AnswerCode = "";
-                spreadsheetmodel.correctAnswerModel.IsCorrect = "true";
-                spreadsheetmodel.correctAnswerModel.IsActive = "true";
+                    spreadsheetmodel.correctAnswerModel.AnswerContent = ((Excel.Range)range.Cells[row, 9]).Text;
+                    spreadsheetmodel.correctAnswerModel.Explanation = ((Excel.Range)range.Cells[row, 10]).Text;
+                    spreadsheetmodel.correctAnswerModel.AnswerCode = "";
+                    spreadsheetmodel.correctAnswerModel.IsCorrect = "true";
+                    spreadsheetmodel.correctAnswerModel.IsActive = "true";
 
-                spreadsheetmodel.wrong1AnswerModel.AnswerContent = ((Excel.Range)range.Cells[row, 11]).Text;
-                spreadsheetmodel.wrong1AnswerModel.Explanation = ((Excel.Range)range.Cells[row, 12]).Text;
-                spreadsheetmodel.wrong1AnswerModel.AnswerCode = "";
-                spreadsheetmodel.wrong1AnswerModel.IsCorrect = "false";
-                spreadsheetmodel.wrong1AnswerModel.IsActive = "true";
+                    spreadsheetmodel.wrong1AnswerModel.AnswerContent = ((Excel.Range)range.Cells[row, 11]).Text;
+                    spreadsheetmodel.wrong1AnswerModel.Explanation = ((Excel.Range)range.Cells[row, 12]).Text;
+                    spreadsheetmodel.wrong1AnswerModel.AnswerCode = "";
+                    spreadsheetmodel.wrong1AnswerModel.IsCorrect = "false";
+                    spreadsheetmodel.wrong1AnswerModel.IsActive = "true";
 
-                spreadsheetmodel.wrong2AnswerModel.AnswerContent = ((Excel.Range)range.Cells[row, 13]).Text;
-                spreadsheetmodel.wrong2AnswerModel.Explanation = ((Excel.Range)range.Cells[row, 14]).Text;
-                spreadsheetmodel.wrong2AnswerModel.AnswerCode = "";
-                spreadsheetmodel.wrong2AnswerModel.IsCorrect = "false";
-                spreadsheetmodel.wrong2AnswerModel.IsActive = "true";
+                    spreadsheetmodel.wrong2AnswerModel.AnswerContent = ((Excel.Range)range.Cells[row, 13]).Text;
+                    spreadsheetmodel.wrong2AnswerModel.Explanation = ((Excel.Range)range.Cells[row, 14]).Text;
+                    spreadsheetmodel.wrong2AnswerModel.AnswerCode = "";
+                    spreadsheetmodel.wrong2AnswerModel.IsCorrect = "false";
+                    spreadsheetmodel.wrong2AnswerModel.IsActive = "true";
 
-                spreadsheetmodel.wrong3AnswerModel.AnswerContent = ((Excel.Range)range.Cells[row, 15]).Text;
-                spreadsheetmodel.wrong3AnswerModel.Explanation = ((Excel.Range)range.Cells[row, 16]).Text;
-                spreadsheetmodel.wrong3AnswerModel.AnswerCode = "";
-                spreadsheetmodel.wrong3AnswerModel.IsCorrect = "false";
-                spreadsheetmodel.wrong3AnswerModel.IsActive = "true";
+                    spreadsheetmodel.wrong3AnswerModel.AnswerContent = ((Excel.Range)range.Cells[row, 15]).Text;
+                    spreadsheetmodel.wrong3AnswerModel.Explanation = ((Excel.Range)range.Cells[row, 16]).Text;
+                    spreadsheetmodel.wrong3AnswerModel.AnswerCode = "";
+                    spreadsheetmodel.wrong3AnswerModel.IsCorrect = "false";
+                    spreadsheetmodel.wrong3AnswerModel.IsActive = "true";
 
-                spreadsheetList.Add(spreadsheetmodel);
+                    spreadsheetList.Add(spreadsheetmodel);
+                }
+                
             }
             return spreadsheetList;
         }
