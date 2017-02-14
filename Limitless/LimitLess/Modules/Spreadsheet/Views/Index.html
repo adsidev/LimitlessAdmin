@@ -1,19 +1,36 @@
 ﻿<div ng-controller="SpreadsheetController">
-    <h4>Download file</h4>
-    <a target="_self" href="http://localhost:60142/Files/excel_format.xlsx" download="excel_format.xlsx">Excel Download</a>
-    <h4>Upload on file select</h4>
-    <button type="file" ngf-select="uploadFiles($file, $invalidFiles)"
-            accept=".xls,.csv,.xlsx" ngf-max-height="1000" ngf-max-size="1MB">
-        Select File
-    </button>
-    <br><br>
-    File:
-    <div style="font: smaller">
-        {{f.name}} {{errFile.name}} {{errFile.$error}} {{errFile.$errorParam}}
-        <span class="progress" ng-show="f.progress >= 0">
-            <div style="width:{{f.progress}}%"
-                 ng-bind="f.progress + '%'"></div>
-        </span>
+    <div class="bs-callout bs-callout-warning">
+        <h4>Spreadsheet File Format Explanation</h4>
+        <ol>
+            <li>
+                Download the below linked spreadsheet
+                <a class="btn btn-info btn-xs"
+                   target="_self" href="http://localhost:60142/Files/excel_format.xlsx"
+                   download="excel_format.xlsx">Download Spreadsheet</a>
+            </li>
+            <li> Fill the spreadsheet </li>
+            <li>
+                Upload it 
+                <button class="btn btn-success btn-xs" type="file" ngf-select="uploadFiles($file, $invalidFiles)"
+                        accept=".xls,.csv,.xlsx" ngf-max-height="1000" ngf-max-size="1MB">
+                    Upload Spreadsheet
+                </button>
+            </li>
+        </ol>
     </div>
-    {{errorMsg}}
+    
+    <div class="list-group">
+        
+        <h4 class="list-group-item-heading">
+            File
+        </h4>
+        <p class="list-group-item-text">{{f.name}} {{errFile.name}} {{errFile.$error}} {{errFile.$errorParam}} </p>
+
+        <div class="progress" ng-show="f.progress >= 0">
+            <div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="{{f.progress}}" aria-valuemin="0" aria-valuemax="100" style="width: 100%"  >
+                <span ng-bind="f.progress + '%'></span>
+            </div>
+        </div>
+        {{errorMsg}}
+    </div>
 </div>
