@@ -26,7 +26,8 @@ namespace LimitLessCore.CoreModel
         public int Save(AnswerModel model)
         {
             SqlObject.CommandText = StoredProcedures.Answers.SaveAnswer;
-            int IsActive = model.IsActive.Equals("true") ? 1 : 0;
+            var str = model.IsActive.ToLower();
+            int IsActive = str.Equals("true") ? 1 : 0;
             int IsCorrect = model.IsCorrect.Equals("true") ? 1 : 0;
             SqlObject.Parameters = new object[]
             {

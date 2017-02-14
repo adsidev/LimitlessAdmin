@@ -33,22 +33,23 @@ namespace LimitLessCore.CoreModel
         public int Save(List<SpreadsheetModel> spreadsheetList)
         {
             int ret = 1;
-            foreach(SpreadsheetModel item in  spreadsheetList)
+            foreach(var spreadsheet in  spreadsheetList)
             {
-                _questionCoreModel.Save(item.questionModel);
-                //get the question id using regular expression
+                //save question
+                _questionCoreModel.Save(spreadsheet.questionModel);
+
+                //get the question id of the saved question
                 var jString = _questionCoreModel.GetLastQuestionId().List;
                 var regex = new Regex(@":([1-9]+)");
                 var results = regex.Matches(jString);
                 var que_id = results[0].Groups[1].Value;
-                item.correctAnswerModel.QuestionID = que_id;
-                _answerCoreModel.Save(item.correctAnswerModel);
-                item.wrong1AnswerModel.QuestionID = que_id;
-                _answerCoreModel.Save(item.wrong1AnswerModel);
-                item.wrong2AnswerModel.QuestionID = que_id;
-                _answerCoreModel.Save(item.wrong2AnswerModel);
-                item.wrong3AnswerModel.QuestionID = que_id;
-                _answerCoreModel.Save(item.wrong3AnswerModel);
+
+                //save answers of the question
+                foreach (var ans in spreadsheet.answerList)
+                {
+                    ans.QuestionID = que_id;
+                    _answerCoreModel.Save(ans);
+                }
             }
 
             return ret;

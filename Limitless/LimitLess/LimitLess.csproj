@@ -291,7 +291,6 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Files\download.jpg" />
     <Content Include="Content\Admincss\bootstrap-theme.css" />
     <Content Include="Content\Admincss\bootstrap-theme.min.css" />
     <Content Include="Content\Admincss\bootstrap.css" />
