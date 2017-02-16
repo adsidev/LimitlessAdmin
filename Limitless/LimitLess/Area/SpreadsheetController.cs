@@ -107,14 +107,14 @@ namespace LimitLess.Area
                     while (((Excel.Range)range.Cells[row, ans_index]).Text != "")
                     {
                         var ans = new AnswerModel();
-                        ans.AnswerContent = ((Excel.Range)range.Cells[row, 11]).Text;
-                        ans.Explanation = ((Excel.Range)range.Cells[row, 12]).Text;
-                        ans.AnswerCode = ((Excel.Range)range.Cells[row, 13]).Text;
-                        ans.IsActive = ((Excel.Range)range.Cells[row, 14]).Text;
-                        ans.IsCorrect = ((Excel.Range)range.Cells[row, 15]).Text; 
+                        ans.AnswerContent = ((Excel.Range)range.Cells[row, ans_index]).Text;
+                        ans.Explanation = ((Excel.Range)range.Cells[row, ans_index+1]).Text;
+                        ans.AnswerCode = ((Excel.Range)range.Cells[row, ans_index+2]).Text;
+                        ans.IsActive = ((Excel.Range)range.Cells[row, ans_index+3]).Text;
+                        ans.IsCorrect = ((Excel.Range)range.Cells[row, ans_index+4]).Text; 
 
                         spr.answerList.Add(ans);
-                        ans_index += 4;
+                        ans_index += 5;
                     }
                     
                     spreadsheetList.Add(spr);
