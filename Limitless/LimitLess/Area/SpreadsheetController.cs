@@ -98,12 +98,12 @@ namespace LimitLess.Area
                     spr.questionModel.SubObjectiveID = Int32.Parse(extractID(((Excel.Range)range.Cells[row, 5]).Text), CultureInfo.InvariantCulture);
                     spr.questionModel.QuestionContent = ((Excel.Range)range.Cells[row, 6]).Text;
                     spr.questionModel.QuestionTypeId = extractID(((Excel.Range)range.Cells[row, 5]).Text);
-
                     spr.questionModel.Difficulty = Int32.Parse(extractID(((Excel.Range)range.Cells[row, 8]).Text), CultureInfo.InvariantCulture);
                     spr.questionModel.QuestionCode = ((Excel.Range)range.Cells[row, 9]).Text;
                     spr.questionModel.IsActive = ((Excel.Range)range.Cells[row, 10]).Text;
+                    
                     //if there is answer content, add the answer
-                    int ans_index = 11;
+                    int ans_index = 12;
                     while (((Excel.Range)range.Cells[row, ans_index]).Text != "")
                     {
                         var ans = new AnswerModel();
@@ -112,7 +112,6 @@ namespace LimitLess.Area
                         ans.AnswerCode = ((Excel.Range)range.Cells[row, ans_index+2]).Text;
                         ans.IsActive = ((Excel.Range)range.Cells[row, ans_index+3]).Text;
                         ans.IsCorrect = ((Excel.Range)range.Cells[row, ans_index+4]).Text; 
-
                         spr.answerList.Add(ans);
                         ans_index += 5;
                     }
