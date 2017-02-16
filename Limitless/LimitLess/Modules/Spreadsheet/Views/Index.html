@@ -16,10 +16,19 @@
                     Upload Spreadsheet
                 </button>
             </li>
+            <li>
+                If you have attached image for certain question, please upload the images in here.
+                Remember to keep the image name exactly same as the question code of corresponding question.
+                <button class="btn btn-success btn-xs" ngf-select="uploadImages($images, $invalidImages)" multiple
+                        accept="image/*" ngf-max-height="1000" ngf-max-size="1MB">
+                    Upload Images
+                </button>
+                
+            </li>
         </ol>
     </div>
     
-    <div class="list-group">
+    <div name ="spreadsheet" class="list-group">
         
         <h4 class="list-group-item-heading">
             File
@@ -33,4 +42,4 @@
         </div>
         {{errorMsg}}
     </div>
-</div>
+   

@@ -494,6 +494,7 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="App_Data\attached_Files\" />
     <Folder Include="App_Data\excel_format\" />
     <Folder Include="Content\css\" />
     <Folder Include="Content\fonts\" />

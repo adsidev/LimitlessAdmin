@@ -1,6 +1,6 @@
 ﻿/// <reference path="angular.js" />
 /// <reference path="angular-cookies.js" />
-var app = angular.module("app", ['ngRoute', 'ngCookies', 'ngFileUpload']).run(run);
+var app = angular.module("app", ['ngRoute', 'ngCookies', 'ngFileUpload', ]).run(run);
 
 //config routing
 app.config(function ($routeProvider) {
