@@ -28,15 +28,18 @@ app.controller('SpreadsheetController', ['$scope', 'Upload', '$timeout', functio
         }
     }
     $scope.uploadImages = function (files, errFiles) {
-        console.log("image");
+        console.log("1:"+files);
         $scope.files = files;
         $scope.errFiles = errFiles;
+        console.log("2:" + files);
         angular.forEach(files, function (file) {
+            console.log("3:" + file);
             file.upload = Upload.upload({
+                method: 'POST',
                 url: 'http://localhost:60142/api/Spreadsheet/SaveImages',
                 data: { file: file }
             });
-
+            console.log("image");
             file.upload.then(function (response) {
                 $timeout(function () {
                     file.result = response.data;

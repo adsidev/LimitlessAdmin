@@ -122,6 +122,7 @@ namespace LimitLess.Area
 
         public HttpResponseMessage SaveImages()
         {
+
             var httpRequest = HttpContext.Current.Request;
             if (httpRequest.Files.Count < 1)
             {
@@ -132,7 +133,7 @@ namespace LimitLess.Area
             {
                 /*extract image and then save the image to App_Data/attached_Files folder*/
                 var postedFile = httpRequest.Files[file];
-                string filePath = HttpContext.Current.Server.MapPath("~/App_Data/attached_Files" + DateTime.Now.ToString("HHmmss") + postedFile.FileName);
+                string filePath = HttpContext.Current.Server.MapPath("~/App_Data/attached_Files/" + DateTime.Now.ToString("HHmmss") + postedFile.FileName);
                 postedFile.SaveAs(filePath);
             }
             return Request.CreateResponse(HttpStatusCode.Created);
