@@ -446,7 +446,7 @@
     <Content Include="Content\Admincss\fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="Content\Admincss\fonts\glyphicons-halflings-regular.woff" />
     <Content Include="Content\Admincss\fonts\glyphicons-halflings-regular.woff2" />
-    <Content Include="Files\excel_format.xlsx" />
+    <Content Include="Files\standard_files\excel_format.xlsx" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\FileAPI.flash.swf" />
     <Content Include="Scripts\FileAPI.js" />
@@ -494,8 +494,8 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="App_Data\attached_Files\" />
-    <Folder Include="App_Data\excel_format\" />
+    <Folder Include="App_Data\attached_images\" />
+    <Folder Include="App_Data\uploaded_spreadsheet\" />
     <Folder Include="Content\css\" />
     <Folder Include="Content\fonts\" />
     <Folder Include="Content\plugins\" />
