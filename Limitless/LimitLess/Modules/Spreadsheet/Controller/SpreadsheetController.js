@@ -15,14 +15,19 @@ app.controller('SpreadsheetController', ['$scope', 'Upload', '$timeout', functio
 
             file.upload.then(
                 function (response) {
-                    console.log(response)
-                    toastr["success"]("Saved Successfully.", 'Upload spreadsheet');
+                    console.log(response["data"])
+                    if (response["data"]) {
+
+                        toastr["success"]("Saved Successfully.", 'Upload spreadsheet');
+                    } else {
+                        toastr["error"]('Failed to upload spreadsheet', 'Upload spreadsheet');
+                    }
                     $timeout(function () {
                         file.result = response.data;
                     });
 
                 }, function (err) {
-                    toastr["error"]('Failed to upload spreadsheet', 'Upload spreadsheet');
+                    
                     if (response.status > 0)
                         $scope.errorMsg = response.status + ': ' + response.data;
                 }, function (evt) {
@@ -39,7 +44,7 @@ app.controller('SpreadsheetController', ['$scope', 'Upload', '$timeout', functio
                 url: 'http://localhost:60142/api/Spreadsheet/SaveImages',
                 data: { file: file }
             });
-            console.log("image");
+
             file.upload.then(function (response) {
                 $timeout(function () {
                     file.result = response.data;

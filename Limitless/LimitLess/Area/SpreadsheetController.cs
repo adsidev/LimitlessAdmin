@@ -63,8 +63,9 @@ namespace LimitLess.Area
                 /*save the data to spreadsheet model*/
                 List<SpreadsheetModel> spreadsheetList = SaveDataToList(upload_range);
                 _coreModel.Save(spreadsheetList);
+                
             }
-            return false;
+            return true;
         }
 
         public HttpResponseMessage SaveImages()
