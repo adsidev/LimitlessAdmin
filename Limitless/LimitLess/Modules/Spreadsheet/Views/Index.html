@@ -23,10 +23,7 @@
                     accept=".xls,.csv,.xlsx" ngf-max-height="1000" ngf-max-size="1MB">
                 Upload Spreadsheet
             </button>
-            <button class="btn btn-success btn-xs" ngf-select="uploadImages($files, $invalidFiles)" multiple
-                    accept="image/*" ngf-max-height="1000" ngf-max-size="1MB">
-                Upload Images
-            </button>
+            
         </ol>
     </div>
     
@@ -41,17 +38,4 @@
         </div>
         {{errorMsg}}
     </div>
-    <div name ="images" class="list-group">
-        <h4 class="list-group-item-heading">
-            Images:
-        </h4>
-        <ul>
-            <li ng-repeat="file in files" style="font:smaller">
-                {{file.name}} {{file.$errorParam}}
-                <div class="progress" ng-show="file.progress >= 0">
-                    <div class="progress-bar progress-bar-success progress-bar-striped" aria-valuenow="{{file.progress}}%" aria-valuemin="0" aria-valuemax="100" style="width:100%"
-                         ng-bind="file.progress + '%'"></div>
-                </div>
-            </li>
-        </ul>
-    </div>
+    

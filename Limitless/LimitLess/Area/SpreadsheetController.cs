@@ -68,23 +68,6 @@ namespace LimitLess.Area
             return true;
         }
 
-        public HttpResponseMessage SaveImages()
-        {
-            var httpRequest = HttpContext.Current.Request;
-            if (httpRequest.Files.Count < 1)
-            {
-                return Request.CreateResponse(HttpStatusCode.BadRequest);
-            }
-
-            foreach (string file in httpRequest.Files)
-            {
-                /*extract image and then save the image to App_Data/attached_Files folder*/
-                var postedFile = httpRequest.Files[file];
-                string filePath = HttpContext.Current.Server.MapPath("~/App_Data/attached_Files/" + DateTime.Now.ToString("HHmmss") + postedFile.FileName);
-                postedFile.SaveAs(filePath);
-            }
-            return Request.CreateResponse(HttpStatusCode.Created);
-        }
         public Excel.Range openExcelFile(string filePath) {
             Excel.Application application = new Excel.Application();
             Excel.Workbook workbook = application.Workbooks.Open(filePath);
