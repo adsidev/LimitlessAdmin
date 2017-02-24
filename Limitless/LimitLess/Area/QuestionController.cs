@@ -45,9 +45,9 @@ namespace LimitLess.Area
         }
         [Authorize]
         [HttpPost]
-        public ListResult GetList(ListInput Inpurt)
+        public ListResult GetList(ListInput Input)
         {
-            return _coreModel.GetList(Inpurt.OrganizationID);
+            return _coreModel.GetList(Input.OrganizationID);
         }
         [Authorize]
         [HttpGet]

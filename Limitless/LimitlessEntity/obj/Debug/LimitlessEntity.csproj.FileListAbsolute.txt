@@ -26,3 +26,17 @@ E:\prj\LimitlessAdmin\Limitless\LimitlessEntity\bin\Debug\LimitLessUtility.pdb
 E:\prj\LimitlessAdmin\Limitless\LimitlessEntity\obj\Debug\LimitlessEntity.csprojResolveAssemblyReference.cache
 E:\prj\LimitlessAdmin\Limitless\LimitlessEntity\obj\Debug\LimitlessEntity.dll
 E:\prj\LimitlessAdmin\Limitless\LimitlessEntity\obj\Debug\LimitlessEntity.pdb
+C:\Users\ADSIXPS15\Documents\LimitlessAdmin-update\Limitless\LimitlessEntity\bin\Debug\LimitlessEntity.dll
+C:\Users\ADSIXPS15\Documents\LimitlessAdmin-update\Limitless\LimitlessEntity\bin\Debug\LimitlessEntity.pdb
+C:\Users\ADSIXPS15\Documents\LimitlessAdmin-update\Limitless\LimitlessEntity\bin\Debug\LimitLessUtility.dll
+C:\Users\ADSIXPS15\Documents\LimitlessAdmin-update\Limitless\LimitlessEntity\bin\Debug\LimitLessUtility.pdb
+C:\Users\ADSIXPS15\Documents\LimitlessAdmin-update\Limitless\LimitlessEntity\obj\Debug\LimitlessEntity.csprojResolveAssemblyReference.cache
+C:\Users\ADSIXPS15\Documents\LimitlessAdmin-update\Limitless\LimitlessEntity\obj\Debug\LimitlessEntity.dll
+C:\Users\ADSIXPS15\Documents\LimitlessAdmin-update\Limitless\LimitlessEntity\obj\Debug\LimitlessEntity.pdb
+\\Mac\Home\Documents\LimitlessAdmin-update\Limitless\LimitlessEntity\bin\Debug\LimitlessEntity.dll
+\\Mac\Home\Documents\LimitlessAdmin-update\Limitless\LimitlessEntity\bin\Debug\LimitlessEntity.pdb
+\\Mac\Home\Documents\LimitlessAdmin-update\Limitless\LimitlessEntity\bin\Debug\LimitLessUtility.dll
+\\Mac\Home\Documents\LimitlessAdmin-update\Limitless\LimitlessEntity\bin\Debug\LimitLessUtility.pdb
+\\Mac\Home\Documents\LimitlessAdmin-update\Limitless\LimitlessEntity\obj\Debug\LimitlessEntity.csprojResolveAssemblyReference.cache
+\\Mac\Home\Documents\LimitlessAdmin-update\Limitless\LimitlessEntity\obj\Debug\LimitlessEntity.dll
+\\Mac\Home\Documents\LimitlessAdmin-update\Limitless\LimitlessEntity\obj\Debug\LimitlessEntity.pdb

@@ -160,7 +160,12 @@
             /// Login Validations
             /// </summary>
             public const string DeleteQuestion = "dbo.Usp_DeleteQuestion";
-            
+            /// <summary>
+            /// Login Validations
+            /// </summary>
+            public const string GetLastQuestionId = "dbo.Usp_GetLastQuestionId";
+
+
         }
 
         public class Answers
@@ -256,6 +261,12 @@
             /// </summary>
             public const string GetUserScoreById = "dbo.Usp_GetUserScoreById";
             
+        }
+        public class Spreadsheet
+        {
+            /// <summary>
+            ///save spreadsheet
+            public const string SaveSpreadsheet = "dbo.Usp_SaveSpreadsheetDetails";
         }
     }
 }

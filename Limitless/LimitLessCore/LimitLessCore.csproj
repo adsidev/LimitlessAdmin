@@ -51,6 +51,7 @@
     <Compile Include="CoreModel\ObjectiveCoreModel.cs" />
     <Compile Include="CoreModel\OrganizationCoreModel.cs" />
     <Compile Include="CoreModel\QuestionCoreModel.cs" />
+    <Compile Include="CoreModel\SpreadsheetCoreModel.cs" />
     <Compile Include="CoreModel\SubObjectiveCoreModel.cs" />
     <Compile Include="CoreModel\TopicCoreModel.cs" />
     <Compile Include="CoreModel\UserCoreModel.cs" />

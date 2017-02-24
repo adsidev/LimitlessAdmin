@@ -55,6 +55,7 @@
     <Compile Include="Repositories\Datastore\ObjectiveRepository.cs" />
     <Compile Include="Repositories\Datastore\OrganizationRepository.cs" />
     <Compile Include="Repositories\Datastore\QuestionRepository.cs" />
+    <Compile Include="Repositories\Datastore\SpreadsheetRepository.cs" />
     <Compile Include="Repositories\Datastore\SubjectRepository.cs" />
     <Compile Include="Repositories\Datastore\SubObjectiveRepository.cs" />
     <Compile Include="Repositories\Datastore\TopicRepository.cs" />
@@ -65,6 +66,7 @@
     <Compile Include="Repositories\Interfaces\IObjectiveRepository.cs" />
     <Compile Include="Repositories\Interfaces\IOrganizationRepository.cs" />
     <Compile Include="Repositories\Interfaces\IQuestionRepository.cs" />
+    <Compile Include="Repositories\Interfaces\ISpreadsheetRepository.cs" />
     <Compile Include="Repositories\Interfaces\ISubjectRepository.cs" />
     <Compile Include="Repositories\Interfaces\ISubObjectiveRepository.cs" />
     <Compile Include="Repositories\Interfaces\ITopicRepository.cs" />
