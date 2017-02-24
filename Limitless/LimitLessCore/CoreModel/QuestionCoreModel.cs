@@ -23,7 +23,7 @@ namespace LimitLessCore.CoreModel
         public int Save(QuestionModel model)
         {
             SqlObject.CommandText = StoredProcedures.Questions.SaveQuestion;
-            int IsActive = model.IsActive.Equals("true") ? 1 : 0;
+            int IsActive = model.IsActive.ToLower().Equals("true") ? 1 : 0;
             SqlObject.Parameters = new object[]
             {
                 model.QuestionID,
@@ -61,6 +61,14 @@ namespace LimitLessCore.CoreModel
             var result = _repository.GetOrgDetails();
             return result;
         }
+
+        public ListResult GetLastQuestionId()
+        {
+            SqlObject.CommandText = StoredProcedures.Questions.GetLastQuestionId;
+            //SqlObject.Parameters = new object[] { };
+            return _repository.GetData();
+        }
+
         public int DeleteQuestion(int id)
         {
             SqlObject.CommandText = StoredProcedures.Questions.DeleteQuestion;

@@ -47,6 +47,7 @@
     <Compile Include="Model\ObjectiveModel.cs" />
     <Compile Include="Model\OrganizationModel.cs" />
     <Compile Include="Model\QuestionModel.cs" />
+    <Compile Include="Model\SpreadsheetModel.cs" />
     <Compile Include="Model\SubjectModel.cs" />
     <Compile Include="Model\SubObjectiveModel.cs" />
     <Compile Include="Model\TopicModel.cs" />
