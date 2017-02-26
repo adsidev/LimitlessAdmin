@@ -28,3 +28,8 @@ E:\Project\ADSI\Limitless\Code\LimitlessAdmin-1-master\Limitless\LimitLessDataAc
 E:\Project\ADSI\Limitless\Code\LimitlessAdmin-1-master\Limitless\LimitLessDataAccess\obj\Debug\LimitLessDataAccess.csprojResolveAssemblyReference.cache
 E:\Project\ADSI\Limitless\Code\LimitlessAdmin-1-master\Limitless\LimitLessDataAccess\obj\Debug\LimitLessDataAccess.dll
 E:\Project\ADSI\Limitless\Code\LimitlessAdmin-1-master\Limitless\LimitLessDataAccess\obj\Debug\LimitLessDataAccess.pdb
+E:\Project\ADSI\Limitless\Code\LimitlessAdmin\Limitless\LimitLessDataAccess\bin\Debug\LimitLessDataAccess.dll
+E:\Project\ADSI\Limitless\Code\LimitlessAdmin\Limitless\LimitLessDataAccess\bin\Debug\LimitLessDataAccess.pdb
+E:\Project\ADSI\Limitless\Code\LimitlessAdmin\Limitless\LimitLessDataAccess\obj\Debug\LimitLessDataAccess.csprojResolveAssemblyReference.cache
+E:\Project\ADSI\Limitless\Code\LimitlessAdmin\Limitless\LimitLessDataAccess\obj\Debug\LimitLessDataAccess.dll
+E:\Project\ADSI\Limitless\Code\LimitlessAdmin\Limitless\LimitLessDataAccess\obj\Debug\LimitLessDataAccess.pdb
