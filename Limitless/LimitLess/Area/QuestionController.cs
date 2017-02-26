@@ -31,6 +31,14 @@ namespace LimitLess.Area
         {
             return _coreModel.GridList(paginationRequest);
         }
+
+         [Authorize]
+        [HttpPost]
+        public GridResult GetQuestionAnswerList([FromBody]GridQARequest paginationRequest)
+        {
+            return _coreModel.GetQuestionAnswerList(paginationRequest);
+        }
+
         [Authorize]
         [HttpPost]
         public bool SaveQuestion(QuestionModel question)
@@ -45,9 +53,9 @@ namespace LimitLess.Area
         }
         [Authorize]
         [HttpPost]
-        public ListResult GetList(ListInput Inpurt)
+        public ListResult GetList(ListInput Input)
         {
-            return _coreModel.GetList(Inpurt.OrganizationID);
+            return _coreModel.GetList(Input.OrganizationID);
         }
         [Authorize]
         [HttpGet]

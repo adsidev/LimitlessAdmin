@@ -102,7 +102,7 @@ $("body").delegate("#homeBtn", "click", function () {
     $(location).attr("href", "/");
 });
 var PostApi = function (url, data, cb) {
-    var serviceuri = "http://localhost:60244";
+    var serviceuri = "http://limitless.saasitsol.com";
     $.ajax({
         url: serviceuri + url,
         global: true,
@@ -124,7 +124,7 @@ var Api_Get = function (url, cb, async) {
     if (typeof async === "undefined" || async === null) {
         async = true;
     }
-    var serviceuri = "http://localhost:60244";
+    var serviceuri = "http://limitless.saasitsol.com";
     $.ajax({
         url: serviceuri + url,
         async: async,
@@ -145,7 +145,7 @@ var ApiGet = function (url, async) {
     if (typeof async === "undefined" || async === null) {
         async = true;
     }
-    var serviceuri = "http://localhost:60244";
+    var serviceuri = "http://limitless.saasitsol.com";
     var response = $.ajax({
         url: serviceuri + url,
         async: async,

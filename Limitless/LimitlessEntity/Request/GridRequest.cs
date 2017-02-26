@@ -8,6 +8,17 @@
         public string SortDirection { get; set; }
         public string OrganizationID { get; set; }
     }
+
+    public class GridQARequest
+    {
+        public int PageIndex { get; set; }
+        public int PageSize { get; set; }
+        public string OrderBy { get; set; }
+        public string SortDirection { get; set; }
+        public string OrganizationID { get; set; }
+        public string SubjectID { get; set; }
+    }
+
     public class RequestData
     {
         public int ID { get; set; }

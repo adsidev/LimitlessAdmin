@@ -3,3 +3,8 @@ E:\Project\ADSI\Limitless\Code\Limitless\LimitLessUtility\bin\Release\LimitLessU
 E:\Project\ADSI\Limitless\Code\Limitless\LimitLessUtility\obj\Release\LimitLessUtility.dll
 E:\Project\ADSI\Limitless\Code\Limitless\LimitLessUtility\obj\Release\LimitLessUtility.pdb
 E:\Project\ADSI\Limitless\Code\Limitless\LimitLessUtility\obj\Release\LimitLessUtility.csprojResolveAssemblyReference.cache
+E:\Project\ADSI\Limitless\Code\LimitlessAdmin-1-master\Limitless\LimitLessUtility\bin\Release\LimitLessUtility.dll
+E:\Project\ADSI\Limitless\Code\LimitlessAdmin-1-master\Limitless\LimitLessUtility\bin\Release\LimitLessUtility.pdb
+E:\Project\ADSI\Limitless\Code\LimitlessAdmin-1-master\Limitless\LimitLessUtility\obj\Release\LimitLessUtility.csprojResolveAssemblyReference.cache
+E:\Project\ADSI\Limitless\Code\LimitlessAdmin-1-master\Limitless\LimitLessUtility\obj\Release\LimitLessUtility.dll
+E:\Project\ADSI\Limitless\Code\LimitlessAdmin-1-master\Limitless\LimitLessUtility\obj\Release\LimitLessUtility.pdb

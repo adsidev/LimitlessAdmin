@@ -12,6 +12,15 @@ namespace LimitlessEntity.Results
         public string List { get; set; }
         public int TotalRecords { get; set; }
     }
+
+    public class GridQAResult
+    {
+        //public  List<dynamic>  List{ get; set; }
+        public string List { get; set; }
+        public string List1 { get; set; }
+        public int TotalRecords { get; set; }
+    }
+
     public class ListResult
     {
         //public  List<dynamic>  List{ get; set; }

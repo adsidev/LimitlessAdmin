@@ -1,6 +1,6 @@
 ﻿/// <reference path="angular.js" />
 /// <reference path="angular-cookies.js" />
-var app = angular.module("app", ['ngRoute', 'ngCookies']).run(run);
+var app = angular.module("app", ['ngRoute', 'ngCookies', 'ngFileUpload', ]).run(run);
 
 //config routing
 app.config(function ($routeProvider) {
@@ -102,12 +102,17 @@ app.config(function ($routeProvider) {
     .when("/EditOrganization", {
         templateUrl: "/Modules/Organizations/Views/EditOrganization.html",
         controller: "OrganizationController"
-    });
+    })
+    .when("/spreadsheet", {
+        templateUrl: "/Modules/Spreadsheet/Views/Index.html",
+        controller: "SpreadsheetController"
+    })
 });
+
 //config routing
 
 //global variable to store service base path
-app.constant('serviceBasePath', 'http://localhost:60142');
+app.constant('serviceBasePath', 'http://limitless.saasitsol.com');
 //global variable to store service base path
 
 //Login and Logout controller

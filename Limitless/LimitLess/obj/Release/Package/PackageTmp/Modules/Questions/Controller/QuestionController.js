@@ -70,10 +70,16 @@ app.controller("QuestionController", function ($scope, $http, $location, $cookie
     var ListInput = $.param({
         OrganizationID: $cookieStore.get('OrganizationID')
     });
-    $http.post("api/SubObjective/GetList", ListInput, {
+    $http.post("api/Question/GetList", ListInput, {
         headers: { 'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8' }
     }).success(function (data) {
         $scope.SubObjectives = JSON.parse(data.List);
+    });
+
+    $http.post("api/Question/GetQuestionAnswerList", reqdata, {
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8' }
+    }).success(function (data) {
+        $scope.Records = JSON.parse(data.List);
     });
     $http.get("api/Question/GetQuestionType", {
         headers: { 'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8' }

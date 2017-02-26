@@ -19,6 +19,7 @@ namespace LimitLessRepository
         {
             _connectionString = Constants.LimitLessConnectionString;
         }
+
         public string Get()
         {
             var ds = SqlHelper.ExecuteDataset(_connectionString, System.Data.CommandType.StoredProcedure, SqlObject.CommandText);
@@ -44,13 +45,14 @@ namespace LimitLessRepository
             var ds = SqlHelper.ExecuteDataset(_connectionString, SqlObject.CommandText, SqlObject.Parameters);
             if (ds.Tables.Count > 0)
             {
-                result.List = JsonConvert.SerializeObject(ds.Tables[0]);
+                result.List = JsonConvert.SerializeObject(ds);
                 result.TotalRecords = ds.Tables[0].Rows.Count;
             }
             return result;
         }
         public int Save()
         {
+
             return SqlHelper.ExecuteNonQuery(_connectionString, SqlObject.CommandText, SqlObject.Parameters);
         }
 

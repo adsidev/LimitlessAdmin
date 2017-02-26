@@ -23,7 +23,7 @@ namespace LimitLessCore.CoreModel
         public int Save(QuestionModel model)
         {
             SqlObject.CommandText = StoredProcedures.Questions.SaveQuestion;
-            int IsActive = model.IsActive.Equals("true") ? 1 : 0;
+            int IsActive = model.IsActive.ToLower().Equals("true") ? 1 : 0;
             SqlObject.Parameters = new object[]
             {
                 model.QuestionID,
@@ -40,6 +40,14 @@ namespace LimitLessCore.CoreModel
         {
             SqlObject.CommandText = StoredProcedures.Questions.GetQuestionList;
             SqlObject.Parameters = new object[] { paginationRequest.PageIndex, paginationRequest.PageSize, paginationRequest.OrderBy, paginationRequest.SortDirection, paginationRequest .OrganizationID};
+            var result = _repository.GridList();
+            return result;
+        }
+
+        public GridResult GetQuestionAnswerList(GridQARequest paginationRequest)
+        {
+            SqlObject.CommandText = StoredProcedures.Questions.GetQuestionAnswerList;
+            SqlObject.Parameters = new object[] { paginationRequest.PageIndex, paginationRequest.PageSize, paginationRequest.OrderBy, paginationRequest.SortDirection, paginationRequest.OrganizationID, paginationRequest.SubjectID };
             var result = _repository.GridList();
             return result;
         }
@@ -61,6 +69,14 @@ namespace LimitLessCore.CoreModel
             var result = _repository.GetOrgDetails();
             return result;
         }
+
+        public ListResult GetLastQuestionId()
+        {
+            SqlObject.CommandText = StoredProcedures.Questions.GetLastQuestionId;
+            //SqlObject.Parameters = new object[] { };
+            return _repository.GetData();
+        }
+
         public int DeleteQuestion(int id)
         {
             SqlObject.CommandText = StoredProcedures.Questions.DeleteQuestion;
