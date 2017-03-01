@@ -47,7 +47,7 @@ namespace LimitLess.Area
             {
                 /*extract excel file and then save the file to App_Data folder*/
                 var postedFile = httpRequest.Files[file];
-                string uploadFilePath = HttpContext.Current.Server.MapPath("~/App_Data/uploaded_spreadsheet" + DateTime.Now.ToString("HHmmss") + postedFile.FileName);
+                string uploadFilePath = HttpContext.Current.Server.MapPath("~/App_Data/uploaded_spreadsheet/" + DateTime.Now.ToString("HHmmss") + postedFile.FileName);
                 postedFile.SaveAs(uploadFilePath);
                 string standardFilePath = HttpContext.Current.Server.MapPath("~/Files/standard_files/excel_format.xlsx");
                 /* open the standard excel file and user's excel file */
@@ -104,10 +104,11 @@ namespace LimitLess.Area
                     //add question
                     spr.questionModel.SubObjectiveID = Int32.Parse(extractID(((Excel.Range)range.Cells[row, 5]).Text), CultureInfo.InvariantCulture);
                     spr.questionModel.QuestionContent = ((Excel.Range)range.Cells[row, 6]).Text;
-                    spr.questionModel.QuestionTypeId = extractID(((Excel.Range)range.Cells[row, 5]).Text);
+                    spr.questionModel.QuestionTypeId = extractID(((Excel.Range)range.Cells[row, 7]).Text);
                     spr.questionModel.Difficulty = Int32.Parse(extractID(((Excel.Range)range.Cells[row, 8]).Text), CultureInfo.InvariantCulture);
                     spr.questionModel.QuestionCode = ((Excel.Range)range.Cells[row, 9]).Text;
                     spr.questionModel.IsActive = ((Excel.Range)range.Cells[row, 10]).Text;
+                    spr.questionModel.QuestionImage = ((Excel.Range)range.Cells[row, 9]).Text;    //image name is expected to be same as the question code
 
                     //if there is answer content, add the answer
                     int ans_index = 12;
@@ -131,8 +132,9 @@ namespace LimitLess.Area
         }
         public string extractID(string str)
         {
-            var regex = new Regex(@"([1-9]+)");
+            var regex = new Regex(@"([0-9]+)");
             var results = regex.Matches(str);
+            /*check errors*/
             var id = results[0].Groups[1].Value;
             return id;
         }
