@@ -142,7 +142,11 @@ namespace LimitLess.Area
                     spr.questionModel.Difficulty = queDiff[((Excel.Range)range.Cells[row, excelQue.Difficulty]).Text];
                     spr.questionModel.QuestionCode = ((Excel.Range)range.Cells[row, excelQue.QuestionCode]).Text;
                     spr.questionModel.IsActive = ((Excel.Range)range.Cells[row, excelQue.IsActive]).Text;
-                    spr.questionModel.QuestionImage = ((Excel.Range)range.Cells[row, excelQue.QuestionImage]).Text;    
+                    /*if question type id is 3 or 4, add the questionimage field the question code, otherwise, the field should be null */
+                    if (spr.questionModel.QuestionTypeId == "3" || spr.questionModel.QuestionTypeId == "4")
+                        spr.questionModel.QuestionImage = ((Excel.Range)range.Cells[row, excelQue.QuestionImage]).Text;
+                    else
+                        spr.questionModel.QuestionImage = null; 
 
                     //if there is answer content, add the answer
                     int ans_index = 12;
