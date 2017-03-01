@@ -64,6 +64,13 @@ namespace LimitLessCore.CoreModel
             int result = _repository.Delete(id);
             return result;
         }
+
+        public SelectedData GetSubObjectiveIdByName(string name)
+        {
+            SqlObject.CommandText = StoredProcedures.SubObjectives.GetSubObjectiveIdByName;
+            SqlObject.Parameters = new object[] { name };
+            return _repository.GetOrgDetails();
+        }
         #endregion
     }
 }

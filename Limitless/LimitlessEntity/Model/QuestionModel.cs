@@ -3,6 +3,7 @@
     public class QuestionModel
     {
         public string QuestionID { get; set; }
+        public string SubObjectiveName { get; set; }
         public int SubObjectiveID { get; set; }
         public string QuestionCode { get; set; }
         public string QuestionContent { get; set; }

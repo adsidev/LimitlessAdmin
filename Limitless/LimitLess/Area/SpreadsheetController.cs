@@ -29,7 +29,7 @@ namespace LimitLess.Area
         SubjectName = 2,
         TopicName = 3,
         ObjectiveName = 4,
-        SubObjectiveID = 5,
+        SubObjectiveName = 5,
         QuestionContent = 6,
         QuestionTypeId = 7,
         Difficulty = 8,
@@ -113,7 +113,7 @@ namespace LimitLess.Area
         {
             Hashtable queTypeId = new Hashtable();
             queTypeId.Add("Fill in the Blank", "1") ;
-            queTypeId.Add("Long String", "2");
+            queTypeId.Add("Long Strings", "2");
             queTypeId.Add("String with Image", "3");
             queTypeId.Add("Image Only", "4");
 
@@ -136,12 +136,15 @@ namespace LimitLess.Area
                         answerList = ansList
                     };
                     //add question
-                    spr.questionModel.SubObjectiveID = Int32.Parse(extractID(((Excel.Range)range.Cells[row, excelQue.SubObjectiveID]).Text), CultureInfo.InvariantCulture);
+
+                    /*get subobjective id by subobjective name*/
+                    spr.questionModel.SubObjectiveName = ((Excel.Range)range.Cells[row, excelQue.SubObjectiveName]).Text;
                     spr.questionModel.QuestionContent = ((Excel.Range)range.Cells[row, excelQue.QuestionContent]).Text;
                     spr.questionModel.QuestionTypeId = queTypeId[((Excel.Range)range.Cells[row, excelQue.QuestionTypeId]).Text];
                     spr.questionModel.Difficulty = queDiff[((Excel.Range)range.Cells[row, excelQue.Difficulty]).Text];
                     spr.questionModel.QuestionCode = ((Excel.Range)range.Cells[row, excelQue.QuestionCode]).Text;
                     spr.questionModel.IsActive = ((Excel.Range)range.Cells[row, excelQue.IsActive]).Text;
+
                     /*if question type id is 3 or 4, add the questionimage field the question code, otherwise, the field should be null */
                     if (spr.questionModel.QuestionTypeId == "3" || spr.questionModel.QuestionTypeId == "4")
                         spr.questionModel.QuestionImage = ((Excel.Range)range.Cells[row, excelQue.QuestionImage]).Text;
@@ -168,13 +171,6 @@ namespace LimitLess.Area
             }
             return spreadsheetList;
         }
-        public string extractID(string str)
-        {
-            var regex = new Regex(@"([0-9]+)");
-            var results = regex.Matches(str);
-            /*check errors*/
-            var id = results[0].Groups[1].Value;
-            return id;
-        }
+        
     }
 }

@@ -222,6 +222,10 @@
             /// </summary>
             public const string GetSubObjectiveById = "dbo.Usp_GetSubObjectiveById";
             /// <summary>
+            /// Get sub objective name by sub objective code
+            /// </summary>
+            public const string GetSubObjectiveIdByName = "dbo.Usp_GetSubObjectiveIdByName";
+            /// <summary>
             /// Login Validations
             /// </summary>
             public const string DeleteSubObjective = "dbo.Usp_DeleteSubObjective";

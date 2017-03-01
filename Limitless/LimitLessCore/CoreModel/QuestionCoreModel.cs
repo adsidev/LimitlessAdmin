@@ -22,6 +22,7 @@ namespace LimitLessCore.CoreModel
 
         public int Save(QuestionModel model)
         {
+
             SqlObject.CommandText = StoredProcedures.Questions.SaveQuestion;
             int IsActive = model.IsActive.ToLower().Equals("true") ? 1 : 0;
             SqlObject.Parameters = new object[]

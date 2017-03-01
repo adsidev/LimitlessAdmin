@@ -27,32 +27,37 @@ namespace LimitLessCore.CoreModel
             _repository = new SpreadsheetRepository<object>();
         }
 
-        readonly QuestionCoreModel _questionCoreModel = new QuestionCoreModel();
-        readonly AnswerCoreModel _answerCoreModel = new AnswerCoreModel();
+        readonly QuestionCoreModel     _questionCoreModel = new QuestionCoreModel();
+        readonly AnswerCoreModel       _answerCoreModel   = new AnswerCoreModel();
+        readonly SubObjectiveCoreModel _subobjCoreModel   = new SubObjectiveCoreModel();
         
         public int Save(List<SpreadsheetModel> spreadsheetList)
         {
             int ret = 1;
             foreach(var spreadsheet in  spreadsheetList)
             {
-                //save question
+                /*get subobjective id by name, then save question*/
+                var subObjId = _subobjCoreModel.GetSubObjectiveIdByName(spreadsheet.questionModel.SubObjectiveName).SelectedDetails;
+                spreadsheet.questionModel.SubObjectiveID = Int32.Parse(extractID(subObjId));
                 _questionCoreModel.Save(spreadsheet.questionModel);
 
-                //get the question id of the saved question
-                var jString = _questionCoreModel.GetLastQuestionId().List;
-                var regex = new Regex(@":([1-9]+)");
-                var results = regex.Matches(jString);
-                var que_id = results[0].Groups[1].Value;
-
-                //save answers of the question
+                /*get question id, then save answers*/
+                var que_id = extractID(_questionCoreModel.GetLastQuestionId().List);
                 foreach (var ans in spreadsheet.answerList)
                 {
                     ans.QuestionID = que_id;
                     _answerCoreModel.Save(ans);
                 }
             }
-
             return ret;
+        }
+        public string extractID(string str)
+        {
+            var regex = new Regex(@":([0-9]+)");
+            var results = regex.Matches(str);
+            /*check errors*/
+            var id = results[0].Groups[1].Value;
+            return id;
         }
     }
     #endregion
