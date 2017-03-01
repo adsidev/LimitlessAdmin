@@ -152,7 +152,7 @@ namespace LimitLess.Area
                         spr.questionModel.QuestionImage = null; 
 
                     //if there is answer content, add the answer
-                    int ans_index = 12;
+                    int ans_index = (int)excelQue.IsActive + 1;
                     while (((Excel.Range)range.Cells[row, ans_index]).Text != "")
                     {
                         var ans = new AnswerModel();
