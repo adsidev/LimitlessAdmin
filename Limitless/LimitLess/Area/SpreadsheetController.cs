@@ -111,21 +111,27 @@ namespace LimitLess.Area
         }
         public List<SpreadsheetModel> SaveDataToList(Excel.Range range)
         {
+            /*question type and difficulty id & name hashtable*/
             Hashtable queTypeId = new Hashtable();
-            queTypeId.Add("Fill in the Blank", "1") ;
+            queTypeId.Add("Fill in the Blank", "1");
             queTypeId.Add("Long Strings", "2");
             queTypeId.Add("String with Image", "3");
             queTypeId.Add("Image Only", "4");
+            queTypeId.Add("", "0");
 
             Hashtable queDiff = new Hashtable();
             queDiff.Add("High", 1);
             queDiff.Add("Medium", 2);
             queDiff.Add("Low", 3);
+            queDiff.Add("", 0);
 
-            var spreadsheetList = new List<SpreadsheetModel>();
+            /*statics for excel data. True means save success to the db, False means save failure */
+            var stats = new List<bool>();
+            
+            var list = new List<SpreadsheetModel>();
             for (int row = 2; row <= range.Rows.Count; row++)
             {
-                //if question content is not none, add this row of data
+                /* if question content is not null, add the question */
                 if (((Excel.Range)range.Cells[row, 6]).Text != "")
                 {
                     var queModel = new QuestionModel();
@@ -135,15 +141,17 @@ namespace LimitLess.Area
                         questionModel = queModel,
                         answerList = ansList
                     };
-                    //add question
 
-                    /*get subobjective id by subobjective name*/
                     spr.questionModel.SubObjectiveName = ((Excel.Range)range.Cells[row, excelQue.SubObjectiveName]).Text;
                     spr.questionModel.QuestionContent = ((Excel.Range)range.Cells[row, excelQue.QuestionContent]).Text;
-                    spr.questionModel.QuestionTypeId = queTypeId[((Excel.Range)range.Cells[row, excelQue.QuestionTypeId]).Text];
-                    spr.questionModel.Difficulty = queDiff[((Excel.Range)range.Cells[row, excelQue.Difficulty]).Text];
                     spr.questionModel.QuestionCode = ((Excel.Range)range.Cells[row, excelQue.QuestionCode]).Text;
                     spr.questionModel.IsActive = ((Excel.Range)range.Cells[row, excelQue.IsActive]).Text;
+
+                    var typeText = ((Excel.Range)range.Cells[row, excelQue.QuestionTypeId]).Text;
+                    spr.questionModel.QuestionTypeId = queTypeId[typeText]!=null ? queTypeId[typeText] : "0";
+
+                    var diffText = ((Excel.Range)range.Cells[row, excelQue.Difficulty]).Text;
+                    spr.questionModel.Difficulty = queDiff[diffText]!=null?queDiff[diffText]:0;
 
                     /*if question type id is 3 or 4, add the questionimage field the question code, otherwise, the field should be null */
                     if (spr.questionModel.QuestionTypeId == "3" || spr.questionModel.QuestionTypeId == "4")
@@ -151,7 +159,7 @@ namespace LimitLess.Area
                     else
                         spr.questionModel.QuestionImage = null; 
 
-                    //if there is answer content, add the answer
+                    /*if answer content is not null, add the answer. */
                     int ans_index = (int)excelQue.IsActive + 1;
                     while (((Excel.Range)range.Cells[row, ans_index]).Text != "")
                     {
@@ -164,13 +172,15 @@ namespace LimitLess.Area
                         spr.answerList.Add(ans);
                         ans_index += 5;
                     }
-
-                    spreadsheetList.Add(spr);
+                    list.Add(spr);
                 }
 
             }
-            return spreadsheetList;
+            return list;
         }
-        
+
+        public void checkIsNull(object to, object from) {
+            
+        }
     }
 }

@@ -10,10 +10,12 @@ using System.Text.RegularExpressions;
 using System.Web.UI;
 using System.Web;
 using Newtonsoft.Json.Linq;
+using System.Collections;
 
 
 namespace LimitLessCore.CoreModel
 {
+
     public class SpreadsheetCoreModel
     {
         private readonly SpreadsheetRepository<object> _repository;
@@ -28,18 +30,15 @@ namespace LimitLessCore.CoreModel
         }
 
         readonly QuestionCoreModel     _questionCoreModel = new QuestionCoreModel();
-        readonly AnswerCoreModel       _answerCoreModel   = new AnswerCoreModel();
-        readonly SubObjectiveCoreModel _subobjCoreModel   = new SubObjectiveCoreModel();
+        readonly AnswerCoreModel         _answerCoreModel = new AnswerCoreModel();
+        readonly SubObjectiveCoreModel   _subobjCoreModel = new SubObjectiveCoreModel();
         
         public int Save(List<SpreadsheetModel> spreadsheetList)
         {
+
             int ret = 1;
             foreach(var spreadsheet in  spreadsheetList)
             {
-                /*get subobjective id by name, then save question*/
-                var subObjId = _subobjCoreModel.GetSubObjectiveIdByName(spreadsheet.questionModel.SubObjectiveName).SelectedDetails;
-                spreadsheet.questionModel.SubObjectiveID = Int32.Parse(extractID(subObjId));
-                _questionCoreModel.Save(spreadsheet.questionModel);
 
                 /*get question id, then save answers*/
                 var que_id = extractID(_questionCoreModel.GetLastQuestionId().List);
@@ -58,6 +57,19 @@ namespace LimitLessCore.CoreModel
             /*check errors*/
             var id = results[0].Groups[1].Value;
             return id;
+        }
+
+        public int checkQue(QuestionModel queModel)
+        {
+
+            /*get subobjective id by name, then save question*/
+           
+            var subObjId = _subobjCoreModel.GetSubObjectiveIdByName(queModel.SubObjectiveName).SelectedDetails;
+            queModel.SubObjectiveID = Int32.Parse(extractID(subObjId));
+
+            _questionCoreModel.Save(queModel);
+
+            return 1;
         }
     }
     #endregion
