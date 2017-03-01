@@ -16,7 +16,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Text.RegularExpressions;
-
+using System.ComponentModel;
 
 namespace LimitLess.Area
 {
@@ -35,7 +35,7 @@ namespace LimitLess.Area
         Difficulty = 8,
         QuestionCode = 9,
         IsActive = 10,
-        QuestionImage = 9
+        QuestionImage = 9    //image name is expected to be same as the question code       
     };
 
     public enum excelAns
@@ -46,10 +46,10 @@ namespace LimitLess.Area
         IsActive = 3,
         IsCorrect = 4
     };
+
     public class SpreadsheetController : ApiController
     {
         private readonly SpreadsheetCoreModel _coreModel;
-
         ///// <summary>
         ///// 
         ///// </summary>
@@ -111,6 +111,17 @@ namespace LimitLess.Area
         }
         public List<SpreadsheetModel> SaveDataToList(Excel.Range range)
         {
+            Hashtable queTypeId = new Hashtable();
+            queTypeId.Add("Fill in the Blank", "1") ;
+            queTypeId.Add("Long String", "2");
+            queTypeId.Add("String with Image", "3");
+            queTypeId.Add("Image Only", "4");
+
+            Hashtable queDiff = new Hashtable();
+            queDiff.Add("High", 1);
+            queDiff.Add("Medium", 2);
+            queDiff.Add("Low", 3);
+
             var spreadsheetList = new List<SpreadsheetModel>();
             for (int row = 2; row <= range.Rows.Count; row++)
             {
@@ -127,11 +138,11 @@ namespace LimitLess.Area
                     //add question
                     spr.questionModel.SubObjectiveID = Int32.Parse(extractID(((Excel.Range)range.Cells[row, excelQue.SubObjectiveID]).Text), CultureInfo.InvariantCulture);
                     spr.questionModel.QuestionContent = ((Excel.Range)range.Cells[row, excelQue.QuestionContent]).Text;
-                    spr.questionModel.QuestionTypeId = extractID(((Excel.Range)range.Cells[row, excelQue.QuestionTypeId]).Text);
-                    spr.questionModel.Difficulty = Int32.Parse(extractID(((Excel.Range)range.Cells[row, excelQue.Difficulty]).Text), CultureInfo.InvariantCulture);
+                    spr.questionModel.QuestionTypeId = queTypeId[((Excel.Range)range.Cells[row, excelQue.QuestionTypeId]).Text];
+                    spr.questionModel.Difficulty = queDiff[((Excel.Range)range.Cells[row, excelQue.Difficulty]).Text];
                     spr.questionModel.QuestionCode = ((Excel.Range)range.Cells[row, excelQue.QuestionCode]).Text;
                     spr.questionModel.IsActive = ((Excel.Range)range.Cells[row, excelQue.IsActive]).Text;
-                    spr.questionModel.QuestionImage = ((Excel.Range)range.Cells[row, excelQue.QuestionImage]).Text;    //image name is expected to be same as the question code
+                    spr.questionModel.QuestionImage = ((Excel.Range)range.Cells[row, excelQue.QuestionImage]).Text;    
 
                     //if there is answer content, add the answer
                     int ans_index = 12;
