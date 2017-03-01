@@ -23,6 +23,29 @@ namespace LimitLess.Area
     /// <summary>
     /// 
     /// </summary>
+    public enum excelQue
+    {
+        OrganizationName = 1,
+        SubjectName = 2,
+        TopicName = 3,
+        ObjectiveName = 4,
+        SubObjectiveID = 5,
+        QuestionContent = 6,
+        QuestionTypeId = 7,
+        Difficulty = 8,
+        QuestionCode = 9,
+        IsActive = 10,
+        QuestionImage = 9
+    };
+
+    public enum excelAns
+    {
+        AnswerContent = 0,
+        Explanation = 1,
+        AnswerCode = 2,
+        IsActive = 3,
+        IsCorrect = 4
+    };
     public class SpreadsheetController : ApiController
     {
         private readonly SpreadsheetCoreModel _coreModel;
@@ -102,24 +125,24 @@ namespace LimitLess.Area
                         answerList = ansList
                     };
                     //add question
-                    spr.questionModel.SubObjectiveID = Int32.Parse(extractID(((Excel.Range)range.Cells[row, 5]).Text), CultureInfo.InvariantCulture);
-                    spr.questionModel.QuestionContent = ((Excel.Range)range.Cells[row, 6]).Text;
-                    spr.questionModel.QuestionTypeId = extractID(((Excel.Range)range.Cells[row, 7]).Text);
-                    spr.questionModel.Difficulty = Int32.Parse(extractID(((Excel.Range)range.Cells[row, 8]).Text), CultureInfo.InvariantCulture);
-                    spr.questionModel.QuestionCode = ((Excel.Range)range.Cells[row, 9]).Text;
-                    spr.questionModel.IsActive = ((Excel.Range)range.Cells[row, 10]).Text;
-                    spr.questionModel.QuestionImage = ((Excel.Range)range.Cells[row, 9]).Text;    //image name is expected to be same as the question code
+                    spr.questionModel.SubObjectiveID = Int32.Parse(extractID(((Excel.Range)range.Cells[row, excelQue.SubObjectiveID]).Text), CultureInfo.InvariantCulture);
+                    spr.questionModel.QuestionContent = ((Excel.Range)range.Cells[row, excelQue.QuestionContent]).Text;
+                    spr.questionModel.QuestionTypeId = extractID(((Excel.Range)range.Cells[row, excelQue.QuestionTypeId]).Text);
+                    spr.questionModel.Difficulty = Int32.Parse(extractID(((Excel.Range)range.Cells[row, excelQue.Difficulty]).Text), CultureInfo.InvariantCulture);
+                    spr.questionModel.QuestionCode = ((Excel.Range)range.Cells[row, excelQue.QuestionCode]).Text;
+                    spr.questionModel.IsActive = ((Excel.Range)range.Cells[row, excelQue.IsActive]).Text;
+                    spr.questionModel.QuestionImage = ((Excel.Range)range.Cells[row, excelQue.QuestionImage]).Text;    //image name is expected to be same as the question code
 
                     //if there is answer content, add the answer
                     int ans_index = 12;
                     while (((Excel.Range)range.Cells[row, ans_index]).Text != "")
                     {
                         var ans = new AnswerModel();
-                        ans.AnswerContent = ((Excel.Range)range.Cells[row, ans_index]).Text;
-                        ans.Explanation = ((Excel.Range)range.Cells[row, ans_index + 1]).Text;
-                        ans.AnswerCode = ((Excel.Range)range.Cells[row, ans_index + 2]).Text;
-                        ans.IsActive = ((Excel.Range)range.Cells[row, ans_index + 3]).Text;
-                        ans.IsCorrect = ((Excel.Range)range.Cells[row, ans_index + 4]).Text;
+                        ans.AnswerContent = ((Excel.Range)range.Cells[row, ans_index + excelAns.AnswerContent]).Text;
+                        ans.Explanation = ((Excel.Range)range.Cells[row, ans_index + excelAns.Explanation]).Text;
+                        ans.AnswerCode = ((Excel.Range)range.Cells[row, ans_index + excelAns.AnswerCode]).Text;
+                        ans.IsActive = ((Excel.Range)range.Cells[row, ans_index + excelAns.IsActive]).Text;
+                        ans.IsCorrect = ((Excel.Range)range.Cells[row, ans_index + excelAns.IsCorrect]).Text;
                         spr.answerList.Add(ans);
                         ans_index += 5;
                     }
