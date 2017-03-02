@@ -15,19 +15,19 @@ app.controller('SpreadsheetController', ['$scope', 'Upload', '$timeout', functio
 
             file.upload.then(
                 function (response) {
-                    console.log(response["data"])
-                    if (response["data"]) {
-
-                        toastr["success"]("Saved Successfully.", 'Upload spreadsheet');
+                    console.log(response);
+                    if (response["data"] != "excel format is not correct") {
+                        console.log("correct"+response["data"])
+                        toastr["success"](response["data"], "Saved Successfully.");
                     } else {
-                        toastr["error"]('Failed to upload spreadsheet', 'Upload spreadsheet');
+                        console.log("error"+ response["data"])
+                        toastr["error"](response["data"], "Saved Failure.");
                     }
                     $timeout(function () {
                         file.result = response.data;
                     });
 
                 }, function (err) {
-                    
                     if (response.status > 0)
                         $scope.errorMsg = response.status + ': ' + response.data;
                 }, function (evt) {

@@ -58,13 +58,14 @@ namespace LimitLess.Area
             _coreModel = new SpreadsheetCoreModel();
         }
 
-        public bool SaveSpreadsheet()
+        public string SaveSpreadsheet()
         { 
             var httpRequest = HttpContext.Current.Request;
             if (httpRequest.Files.Count < 1)
             {
-                return false;
+                return "false";
             }
+            List<int> stats = new List<int>();
 
             foreach (string file in httpRequest.Files)
             {
@@ -78,17 +79,13 @@ namespace LimitLess.Area
                 var standard_range = openExcelFile(standardFilePath);
 
                 /* check if the uploaded file is in the correct format, save the spreadsheet. Otherwise, refuse to save the data. */
-                if (!checkExcelFormat(standard_range, upload_range))
-                {
-                    return false;
-                }
+                if (!checkExcelFormat(standard_range, upload_range)){    return "excel format is not correct"; }
 
                 /*save the data to spreadsheet model*/
                 List<SpreadsheetModel> spreadsheetList = SaveDataToList(upload_range);
-                _coreModel.Save(spreadsheetList);
-                
+                stats = _coreModel.Save(spreadsheetList);    
             }
-            return true;
+            return getStat(stats);
         }
 
         public Excel.Range openExcelFile(string filePath) {
@@ -179,8 +176,15 @@ namespace LimitLess.Area
             return list;
         }
 
-        public void checkIsNull(object to, object from) {
-            
+        public string getStat(List<int> stats)
+        {
+            var total = stats.Count();
+            var wrong = 0;
+            foreach (int i in stats)
+            {
+                wrong += i == 0 ? 1 : 0;
+            }
+            return "total inserted: " + total + " successful inserted: " + (total - wrong);
         }
     }
 }

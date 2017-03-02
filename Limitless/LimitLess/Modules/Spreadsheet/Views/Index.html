@@ -33,6 +33,7 @@
             File:
         </h4>
         <p class="list-group-item-text">{{f.name}} {{errFile.name}} {{errFile.$error}} {{errFile.$errorParam}} </p>
+        <p></p>
         <div class="progress" ng-show="f.progress >= 0">
             <div class="progress-bar progress-bar-striped" aria-valuenow="{{f.progress}}%" aria-valuemin="0" aria-valuemax="100" style="width:100%"
                  ng-bind="f.progress + '%'"></div>
