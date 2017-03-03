@@ -16,12 +16,13 @@ app.controller('SpreadsheetController', ['$scope', 'Upload', '$timeout', functio
             file.upload.then(
                 function (response) {
                     console.log(response);
-                    if (response["data"] != "excel format is not correct") {
-                        console.log("correct"+response["data"])
-                        toastr["success"](response["data"], "Saved Successfully.");
+                    if (response["data"][0] != "0") {                                   //inserted 
+                        toastr["success"](response["data"][1], "Saved Successfully.");
+                        if (response["data"][0] == "2") {                               // part inserted
+                            //automatically download txt, the txt file include the response[data] except for response[data][0]
+                        }
                     } else {
-                        console.log("error"+ response["data"])
-                        toastr["error"](response["data"], "Saved Failure.");
+                        toastr["error"](response["data"][1], "Saved Failure.");
                     }
                     $timeout(function () {
                         file.result = response.data;

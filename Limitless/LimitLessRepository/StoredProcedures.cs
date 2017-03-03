@@ -37,8 +37,10 @@
             /// Login Validations
             /// </summary>
             public const string DeleteSubject = "dbo.Usp_DeleteSubject";
-            
-
+            /// <summary>
+            /// Login Validations
+            /// </summary>
+            public const string GetSubjectIdByName = "dbo.Usp_GetSubjectIdByName";
         }
         public class Lessons
         {
@@ -79,12 +81,14 @@
             /// Login Validations
             /// </summary>
             public const string GetObjectiveById = "dbo.Usp_GetObjectiveById";
-
             /// <summary>
             /// Login Validations
             /// </summary>
             public const string DeleteObjective = "dbo.Usp_DeleteObjective";
-            
+            /// <summary>
+            /// Login Validations
+            /// </summary>
+            public const string GetObjectiveIdByName = "dbo.Usp_GetObjectiveIdByName";
         }
         public class Topics
         {
@@ -112,6 +116,7 @@
             /// </summary>
             public const string DeleteTopic = "dbo.Usp_DeleteTopic";
 
+            public const string GetTopicIdByName = "dbo.Usp_GetTopicIdByName";
         }
         public class Organizations
         {
@@ -131,6 +136,11 @@
             /// Login Validations
             /// </summary>
             public const string GetOrganizationById = "dbo.Usp_GetOrganizationById";
+            /// <summary>
+            /// Login Validations
+            /// </summary>
+            public const string GetOrganizationIdByName = "dbo.Usp_GetOrganizationIdByName";
+
         }
         public class Questions
         {

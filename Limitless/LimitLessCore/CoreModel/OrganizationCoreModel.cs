@@ -60,6 +60,13 @@ namespace LimitLessCore.CoreModel
             SqlObject.Parameters = new object[] { OrganizationID };
             return _repository.GetList();
         }
+
+        public SelectedData GetOrganizationIdByName(string name)
+        {
+            SqlObject.CommandText = StoredProcedures.Organizations.GetOrganizationIdByName;
+            SqlObject.Parameters = new object[] { name };
+            return _repository.GetOrgDetails();
+        }
         #endregion
     }
 }

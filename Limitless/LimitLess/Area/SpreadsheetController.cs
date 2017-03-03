@@ -58,15 +58,18 @@ namespace LimitLess.Area
             _coreModel = new SpreadsheetCoreModel();
         }
 
-        public string SaveSpreadsheet()
+        public List<string> SaveSpreadsheet()
         { 
             var httpRequest = HttpContext.Current.Request;
+            var       stats = new List<int>();              //returned stat from backend
+            var statDetails = new List<string>();           //processed stat for user
+            var       state = 0;                            //0: fail, 1: all success, 2: part success
             if (httpRequest.Files.Count < 1)
             {
-                return "false";
+                statDetails.Add(state.ToString());
+                statDetails.Add("No file is selected");
+                return statDetails;
             }
-            List<int> stats = new List<int>();
-
             foreach (string file in httpRequest.Files)
             {
                 /*extract excel file and then save the file to App_Data folder*/
@@ -79,13 +82,20 @@ namespace LimitLess.Area
                 var standard_range = openExcelFile(standardFilePath);
 
                 /* check if the uploaded file is in the correct format, save the spreadsheet. Otherwise, refuse to save the data. */
-                if (!checkExcelFormat(standard_range, upload_range)){    return "excel format is not correct"; }
+                if (!checkExcelFormat(standard_range, upload_range)){
+                    statDetails.Add(state.ToString());
+                    statDetails.Add("The upload excel is not in correct format, please download the empty excel from this webpage.");
+                    return statDetails;
+                }
 
                 /*save the data to spreadsheet model*/
                 List<SpreadsheetModel> spreadsheetList = SaveDataToList(upload_range);
-                stats = _coreModel.Save(spreadsheetList);    
+                stats = _coreModel.Save(spreadsheetList); 
             }
-            return getStat(stats);
+            statDetails = getStatDetails(stats);
+            state = statDetails.Count == 1 ? 1 : 2;
+            statDetails.Insert(0, state.ToString());
+            return statDetails;
         }
 
         public Excel.Range openExcelFile(string filePath) {
@@ -123,7 +133,7 @@ namespace LimitLess.Area
             queDiff.Add("", 0);
 
             /*statics for excel data. True means save success to the db, False means save failure */
-            var stats = new List<bool>();
+            var stats = new List<int>();
             
             var list = new List<SpreadsheetModel>();
             for (int row = 2; row <= range.Rows.Count; row++)
@@ -138,11 +148,14 @@ namespace LimitLess.Area
                         questionModel = queModel,
                         answerList = ansList
                     };
-
+                    spr.OrganizationName               = ((Excel.Range)range.Cells[row, excelQue.OrganizationName]).Text;
+                    spr.SubjectName                    = ((Excel.Range)range.Cells[row, excelQue.SubjectName]).Text;
+                    spr.TopicName                      = ((Excel.Range)range.Cells[row, excelQue.TopicName]).Text;
+                    spr.ObjectiveName                  = ((Excel.Range)range.Cells[row, excelQue.ObjectiveName]).Text;
                     spr.questionModel.SubObjectiveName = ((Excel.Range)range.Cells[row, excelQue.SubObjectiveName]).Text;
-                    spr.questionModel.QuestionContent = ((Excel.Range)range.Cells[row, excelQue.QuestionContent]).Text;
-                    spr.questionModel.QuestionCode = ((Excel.Range)range.Cells[row, excelQue.QuestionCode]).Text;
-                    spr.questionModel.IsActive = ((Excel.Range)range.Cells[row, excelQue.IsActive]).Text;
+                    spr.questionModel.QuestionContent  = ((Excel.Range)range.Cells[row, excelQue.QuestionContent]).Text;
+                    spr.questionModel.QuestionCode     = ((Excel.Range)range.Cells[row, excelQue.QuestionCode]).Text;
+                    spr.questionModel.IsActive         = ((Excel.Range)range.Cells[row, excelQue.IsActive]).Text;
 
                     var typeText = ((Excel.Range)range.Cells[row, excelQue.QuestionTypeId]).Text;
                     spr.questionModel.QuestionTypeId = queTypeId[typeText]!=null ? queTypeId[typeText] : "0";
@@ -162,10 +175,10 @@ namespace LimitLess.Area
                     {
                         var ans = new AnswerModel();
                         ans.AnswerContent = ((Excel.Range)range.Cells[row, ans_index + excelAns.AnswerContent]).Text;
-                        ans.Explanation = ((Excel.Range)range.Cells[row, ans_index + excelAns.Explanation]).Text;
-                        ans.AnswerCode = ((Excel.Range)range.Cells[row, ans_index + excelAns.AnswerCode]).Text;
-                        ans.IsActive = ((Excel.Range)range.Cells[row, ans_index + excelAns.IsActive]).Text;
-                        ans.IsCorrect = ((Excel.Range)range.Cells[row, ans_index + excelAns.IsCorrect]).Text;
+                        ans.Explanation   = ((Excel.Range)range.Cells[row, ans_index + excelAns.Explanation]).Text;
+                        ans.AnswerCode    = ((Excel.Range)range.Cells[row, ans_index + excelAns.AnswerCode]).Text;
+                        ans.IsActive      = ((Excel.Range)range.Cells[row, ans_index + excelAns.IsActive]).Text;
+                        ans.IsCorrect     = ((Excel.Range)range.Cells[row, ans_index + excelAns.IsCorrect]).Text;
                         spr.answerList.Add(ans);
                         ans_index += 5;
                     }
@@ -185,6 +198,22 @@ namespace LimitLess.Area
                 wrong += i == 0 ? 1 : 0;
             }
             return "total inserted: " + total + " successful inserted: " + (total - wrong);
+        }
+        public List<string> getStatDetails(List<int> stats)
+        {
+            var statDetails= new List<string>();
+            var wrong_cnt = 0;
+            for (int i = 0; i < stats.Count; i++)
+            {
+                if (stats[i] == 0)
+                {
+                    wrong_cnt += 1;
+                    statDetails.Add("Row " + (i+2).ToString() + " inserted fail\n");
+                }
+            }
+            var summary = "Total inserted: " + stats.Count.ToString() + " Success inserted: " + (stats.Count - wrong_cnt).ToString();
+            statDetails.Insert(0, summary);
+            return statDetails;
         }
     }
 }

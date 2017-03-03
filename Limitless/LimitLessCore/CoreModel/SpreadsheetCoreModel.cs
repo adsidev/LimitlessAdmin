@@ -29,16 +29,22 @@ namespace LimitLessCore.CoreModel
             _repository = new SpreadsheetRepository<object>();
         }
 
+        readonly OrganizationCoreModel    _orgCoreModel = new OrganizationCoreModel();
+        readonly SubjectCoreModel     _subjectCoreModel = new SubjectCoreModel();
+        readonly TopicCoreModel _topicCoreModel = new TopicCoreModel();
+        readonly ObjectiveCoreModel _objectiveCoreModel = new ObjectiveCoreModel();
+        readonly SubObjectiveCoreModel _subobjCoreModel = new SubObjectiveCoreModel();
+
         readonly QuestionCoreModel _questionCoreModel = new QuestionCoreModel();
         readonly AnswerCoreModel _answerCoreModel = new AnswerCoreModel();
-        readonly SubObjectiveCoreModel _subobjCoreModel = new SubObjectiveCoreModel();
 
         public List<int> Save(List<SpreadsheetModel> spreadsheetList)
         {
             List<int> stats = new List<int>();
             foreach (var spr in spreadsheetList)
             {
-                var ret = checkQueAndAns(spr);
+                var ret = checkPreRequire(spr) + checkQueAndAns(spr) == 2 ? 1:0 ;
+                //var ret = checkQueAndAns(spr);
                 stats.Add(ret);
                 if (ret != 0)
                 {
@@ -62,9 +68,20 @@ namespace LimitLessCore.CoreModel
             return 1;
         }
 
+        public int checkPreRequire(SpreadsheetModel spr)
+        {
+            var orgId = _orgCoreModel.GetOrganizationIdByName(spr.OrganizationName).SelectedDetails;
+            var subId = _subjectCoreModel.GetSubjectIdByName(spr.SubjectName).SelectedDetails;
+            var topId = _topicCoreModel.GetTopicIdByName(spr.TopicName).SelectedDetails;
+            var objectiveId = _objectiveCoreModel.GetObjectiveIdByName(spr.ObjectiveName).SelectedDetails;
+            if (orgId == "[]" || subId == "[]" || topId == "[]" || objectiveId == "[]")
+                return 0;
+            return 1;
+        }
         public int checkQue(QuestionModel que)
         {
             var subObjId = _subobjCoreModel.GetSubObjectiveIdByName(que.SubObjectiveName).SelectedDetails;
+
             if (subObjId == "[]" || que.Difficulty == 0 || que.QuestionTypeId == "0" || que.QuestionCode == "")
                 return 0;
 
