@@ -34,7 +34,22 @@ namespace LimitLessRepository.Repositories.Datastore
         public UserDetails GetUserInformation(LoginRequest model)
         {
             var response = new UserDetails();
-            var ds = SqlHelper.ExecuteDataset(_connectionString, StoredProcedures.Login.LoginValidation, model.Email, model.Password);
+            var ds = SqlHelper.ExecuteDataset(_connectionString, StoredProcedures.Login.LoginValidation, model.Email, model.Password,model.UserType);
+            if (ds.Tables.Count > 0)
+            {
+                if (ds.Tables[0].Rows.Count > 0)
+                {
+                    response.UserInformations = JsonConvert.SerializeObject(ds.Tables[0]);
+                }
+            }
+
+            return response;
+        }
+
+        public UserDetails GetUserLoginInformation(LoginRequest model)
+        {
+            var response = new UserDetails();
+            var ds = SqlHelper.ExecuteDataset(_connectionString, StoredProcedures.Login.Login_Validation, model.Email, model.Password);
             if (ds.Tables.Count > 0)
             {
                 if (ds.Tables[0].Rows.Count > 0)

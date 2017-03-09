@@ -218,7 +218,8 @@ app.controller('loginController', ['$scope', '$location', 'accountService', '$ti
         else {
             var req_data = $.param({
                 Email: $scope.username,
-                Password: $scope.password
+                Password: $scope.password,
+                UserType:"2"
             });
             $http.post("api/Login/GetUserData", req_data, {
                 headers: { 'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8' }
@@ -243,7 +244,7 @@ app.controller('loginController', ['$scope', '$location', 'accountService', '$ti
                     })
                 }
             }).error(function (err) {
-            });
+            });           
         }
     }
     $scope.Logout = function () {

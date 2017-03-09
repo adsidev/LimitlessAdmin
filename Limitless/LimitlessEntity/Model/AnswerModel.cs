@@ -17,6 +17,12 @@ namespace LimitlessEntity.Entities.Models
         public string QuestionID { get; set; }
         public string UserID { get; set; }
     }
+
+    public class QuestionAnswers
+    {
+        public System.Data.DataSet QuestionDataSet { get; set; } 
+    }
+
     public class AnswerStatus
     {
         public string AnswerResult { get; set; }

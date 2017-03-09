@@ -28,7 +28,14 @@ namespace LimitLess.Area
         [HttpPost]
         public UserDetails GetUserData(LoginRequest request)
         {
+            if (string.IsNullOrEmpty(request.UserType))
+                request.UserType = "1";
             return _model.GetUserData(request);
+        }
+
+        public UserDetails GetUserLoginData(LoginRequest request)
+        {
+            return _model.GetUserLoginData(request);
         }
     }
 }

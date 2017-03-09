@@ -11,6 +11,9 @@
             /// Login Validations
             /// </summary>
             public const string LoginValidation = "dbo.Login_Validation";
+
+            public const string Login_Validation = "dbo.LoginValidation";
+
         }
         /// <summary>
         /// Login Procedures
@@ -200,6 +203,14 @@
             /// Login Validations
             /// </summary>
             public const string SaveUserAnswer = "dbo.Usp_SaveUserAnswer";
+            /// <summary>
+            /// SaveQuestionAnswer
+            /// </summary>
+            public const string SaveQuestionAnswer = "dbo.Usp_SaveQuestionAnswer";
+            /// <summary>
+            /// SaveQuestionAnswer
+            /// </summary>
+            public const string SaveQuestionAnswerSubjective = "dbo.Usp_SaveQuestionAnswerSubjective";
             
 
         }

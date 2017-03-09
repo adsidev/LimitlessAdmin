@@ -63,10 +63,17 @@ namespace LimitLess.Area
         {
             return _coreModel.DeleteAnswer(Obj.ID);
         }
+
         [HttpPost]
         public AnswerStatus SaveUserAnswer(UserAnswerModel UserAnswer)
         {
             return _coreModel.SaveUserAnswer(UserAnswer);
+        }
+        [Authorize]
+        [HttpPost]
+        public void SaveQuestionAnswer(QuestionAnswers UserAnswer)
+        {
+            _coreModel.SaveQuestionAnswer(UserAnswer);
         }
     }
 }

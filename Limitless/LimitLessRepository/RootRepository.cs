@@ -45,11 +45,25 @@ namespace LimitLessRepository
             var ds = SqlHelper.ExecuteDataset(_connectionString, SqlObject.CommandText, SqlObject.Parameters);
             if (ds.Tables.Count > 0)
             {
+                result.List = JsonConvert.SerializeObject(ds.Tables[0]);
+                result.TotalRecords = ds.Tables[0].Rows.Count;
+            }
+            return result;
+        }
+
+
+        public GridResult GridQAList()
+        {
+            var result = new GridResult();
+            var ds = SqlHelper.ExecuteDataset(_connectionString, SqlObject.CommandText, SqlObject.Parameters);
+            if (ds.Tables.Count > 0)
+            {
                 result.List = JsonConvert.SerializeObject(ds);
                 result.TotalRecords = ds.Tables[0].Rows.Count;
             }
             return result;
         }
+
         public int Save()
         {
 
@@ -84,6 +98,16 @@ namespace LimitLessRepository
             var ds = SqlHelper.ExecuteDataset(_connectionString, SqlObject.CommandText, SqlObject.Parameters);
             result.AnswerResult = JsonConvert.SerializeObject(ds.Tables[0]);
             return result;
+        }
+
+        public void SaveQuestionAnswer()
+        {
+            SqlHelper.ExecuteNonQuery(_connectionString, SqlObject.CommandText, SqlObject.Parameters);
+        }
+
+        public void SaveQuestionAnswerSubjective()
+        {
+            SqlHelper.ExecuteNonQuery(_connectionString, SqlObject.CommandText, SqlObject.Parameters);
         }
     }
 }

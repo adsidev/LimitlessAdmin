@@ -11,5 +11,6 @@
         public string CreatedDate { get; set; }
         public string QuestionType { get; set; }
         public string QuestionTypeId { get; set; }
+        public string QuestionImage { get; set; }
     }
 }

@@ -32,7 +32,8 @@ namespace LimitLessCore.CoreModel
                 model.QuestionContent,
                 model.Difficulty,
                 IsActive,
-                model.QuestionTypeId
+                model.QuestionTypeId,
+                model.QuestionImage
             };
             return _repository.Save();
         }
@@ -48,7 +49,7 @@ namespace LimitLessCore.CoreModel
         {
             SqlObject.CommandText = StoredProcedures.Questions.GetQuestionAnswerList;
             SqlObject.Parameters = new object[] { paginationRequest.PageIndex, paginationRequest.PageSize, paginationRequest.OrderBy, paginationRequest.SortDirection, paginationRequest.OrganizationID, paginationRequest.SubjectID };
-            var result = _repository.GridList();
+            var result = _repository.GridQAList();
             return result;
         }
         public ListResult GetList(int OrganizationID)

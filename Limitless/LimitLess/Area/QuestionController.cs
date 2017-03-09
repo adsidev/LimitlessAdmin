@@ -3,6 +3,9 @@ using LimitlessEntity.Request;
 using LimitlessEntity.Results;
 using System.Web.Http;
 using LimitlessEntity.Entities.Models;
+using System.Web;
+using System;
+using Newtonsoft.Json;
 
 namespace LimitLess.Area
 {
@@ -51,6 +54,33 @@ namespace LimitLess.Area
             }
             return result;
         }
+
+        [Authorize]
+        [HttpPost]
+        public bool SaveQuestionWithImage()
+        {
+            var httpRequest = HttpContext.Current.Request;
+            if (httpRequest.Files.Count < 1)
+            {
+                return false;
+            }
+            foreach (string file in httpRequest.Files)
+            {
+                /*extract excel file and then save the file to App_Data folder*/
+                var postedFile = httpRequest.Files[file];
+                var fileName = DateTime.Now.ToString("HHmmss") + postedFile.FileName;
+                string uploadFilePath = HttpContext.Current.Server.MapPath("~/App_Data/question_Image/" + fileName);
+                postedFile.SaveAs(uploadFilePath);
+                var jsonString = httpRequest.Params["parameters"];
+                var questionData = JsonConvert.DeserializeObject<QuestionModel>(jsonString);
+                questionData.QuestionImage = fileName;
+                var result = SaveQuestion(questionData);
+
+            }
+
+            return true;
+        }
+
         [Authorize]
         [HttpPost]
         public ListResult GetList(ListInput Input)

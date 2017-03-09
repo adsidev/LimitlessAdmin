@@ -31,6 +31,12 @@ namespace LimitLessCore
         {
             return _repository.GetUserInformation(request);
         }
+
+        public UserDetails GetUserLoginData(LoginRequest request)
+        {
+            return _repository.GetUserLoginInformation(request);
+        }
+
         private static void SetPrincipal(IPrincipal principal)
         {
             Thread.CurrentPrincipal = principal;

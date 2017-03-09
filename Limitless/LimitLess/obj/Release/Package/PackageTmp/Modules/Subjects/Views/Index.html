@@ -25,11 +25,22 @@
                         <td align="center">{{sub.CreatedDate}} </td>
                         <td>
                             <span data-toggle="modal" data-target="#myModal" data-id="{{sub.SubjectID}}" ng-click="EditSubject($event)" style="text-decoration:none; cursor:pointer; color: #337ab7 !important;">Edit</span><span style="color:#000 !important;padding-left:5px">|</span>
-                            <input type="submit" value="Delete" class="board-members" data-id="{{sub.SubjectID}}" ng-click="DeleteSubject($event)"/>
+                            <input type="submit" value="Delete" class="board-members" data-id="{{sub.SubjectID}}" ng-click="DeleteSubject($event)" />
                         </td>
                     </tr>
                 </tbody>
             </table>
+            <ul class="pagination pagination-sm">
+                <li ng-class="{active:0}">
+                    <a href="#" ng-click="firstPage()">First</a>
+                </li>
+                <li ng-repeat="n in range(ItemsByPage.length)">
+                    <a href="#" ng-click="setPage()" ng-bind="n+1">1</a>
+                </li>
+                <li>
+                    <a href="#" ng-click="lastPage()">Last</a>
+                </li>
+            </ul>
         </div>
     </div>
     <input type="hidden" id="hidSubjectID" ng-model="SubjectID" />

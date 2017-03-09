@@ -57,7 +57,7 @@ app.controller("QuestionController", function ($scope, $http, $location, $cookie
     var reqdata = $.param({
         PageIndex: 1,
         PageSize: 10,
-        OrderBy: 'CreatedDate',
+        OrderBy: 'Q.CreatedDate',
         SortDirection: 'DESC',
         OrganizationID: $cookieStore.get('OrganizationID')
     });
@@ -87,36 +87,78 @@ app.controller("QuestionController", function ($scope, $http, $location, $cookie
         $scope.QuestionTypes = JSON.parse(data.List);
     });
 
-    
-    $scope.SaveQuestion = function () {
+    var uploadFileToUrl = function (file) {
         var IsActive = $('#chkActive').prop('checked');
-        var params = $.param({
-            QuestionID:$scope.QuestionID,
+        var fd = new FormData();
+        var imageName = $scope.QuestionImage ? $scope.QuestionImage.name : "";
+        fd.append('file', file);
+        var params = {
+            QuestionID: $scope.QuestionID,
             SubObjectiveID: $scope.SubObjectiveID,
             QuestionCode: $scope.QuestionCode,
             QuestionContent: $scope.QuestionContent,
             Difficulty: $scope.Difficulty,
             IsActive: IsActive,
-            QuestionTypeId: $scope.QuestionTypeId
-        });
-        $http({
-            method: 'POST',
-            url: 'api/Question/SaveQuestion',
-            data: params,
-            headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
-        }).then(
-            function (res) {
-                //alert('Saved Successfully');
-                toastr["success"]("Saved Successfully.", 'Create question');
-                $http.post("api/Question/GridList", reqdata, {
-                    headers: { 'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8' }
-                }).success(function (data) {
-                    $scope.Records = JSON.parse(data.List);
-                });
-            },
-            function (err) {
-                console.log('error...', err);
-                toastr["error"]('Failed to add question', 'Create question');
+            QuestionTypeId: $scope.QuestionTypeId,
+            QuestionImage: imageName
+        };
+        fd.append('parameters', JSON.stringify(params))
+        $http.post('api/Question/SaveQuestionWithImage', fd, {
+            transformRequest: angular.identity,
+            headers: { 'Content-Type': undefined, 'Process-Data': undefined }
+        })
+        .success(function (res) {
+            //alert('Saved Successfully');
+            toastr["success"]("Saved Successfully.", 'Create question');
+            $http.post("api/Question/GridList", reqdata, {
+                headers: { 'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8' }
+            }).success(function (data) {
+                $scope.Records = JSON.parse(data.List);
             });
+        })
+        .error(function (err) {
+            console.log('error...', err);
+            toastr["error"]('Failed to add question', 'Create question');
+        });
+    }
+    $scope.SaveQuestion = function () {
+        if ($scope.QuestionImage.name) {
+            uploadFileToUrl($scope.QuestionImage);
+        }
+        else {
+            var IsActive = $('#chkActive').prop('checked');
+            var params = $.param({
+                QuestionID: $scope.QuestionID,
+                SubObjectiveID: $scope.SubObjectiveID,
+                QuestionCode: $scope.QuestionCode,
+                QuestionContent: $scope.QuestionContent,
+                Difficulty: $scope.Difficulty,
+                IsActive: IsActive,
+                QuestionTypeId: $scope.QuestionTypeId,
+                QuestionImage: ""
+            });
+            $http({
+                method: 'POST',
+                url: 'api/Question/SaveQuestion',
+                data: params,
+                headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
+            }).then(
+                function (res) {
+                    //alert('Saved Successfully');
+                    toastr["success"]("Saved Successfully.", 'Create question');
+                    $http.post("api/Question/GridList", reqdata, {
+                        headers: { 'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8' }
+                    }).success(function (data) {
+                        $scope.Records = JSON.parse(data.List);
+                    });
+                },
+                function (err) {
+                    console.log('error...', err);
+                    toastr["error"]('Failed to add question', 'Create question');
+                });
+        }
     };
+    $scope.getImagePath = function (imageName) {
+        return $sce.trustAsResourceUrl("/App_Data/question_Image/" + imageName);
+    }
 });

@@ -404,6 +404,7 @@
     <Content Include="Modules\Organizations\Views\AddOrganization.html" />
     <Content Include="Modules\Organizations\Views\Index.html" />
     <Content Include="Modules\Questions\Controller\QuestionController.js" />
+    <Content Include="Modules\Questions\Directive\uploadFileDirective.js" />
     <Content Include="Modules\Questions\Views\EditQuestion.html" />
     <Content Include="Modules\Questions\Views\CreateQuestion.html" />
     <Content Include="Modules\Questions\Views\Index.html" />
@@ -495,6 +496,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\attached_images\" />
+    <Folder Include="App_Data\question_image\" />
     <Folder Include="App_Data\uploaded_spreadsheet\" />
     <Folder Include="Content\css\" />
     <Folder Include="Content\fonts\" />

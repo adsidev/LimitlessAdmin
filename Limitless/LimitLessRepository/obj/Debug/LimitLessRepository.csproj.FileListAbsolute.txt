@@ -89,16 +89,3 @@ E:\Project\ADSI\Limitless\Code\LimitlessAdmin-1-master\Limitless\LimitLessReposi
 E:\Project\ADSI\Limitless\Code\LimitlessAdmin-1-master\Limitless\LimitLessRepository\obj\Debug\LimitLessRepository.csprojResolveAssemblyReference.cache
 E:\Project\ADSI\Limitless\Code\LimitlessAdmin-1-master\Limitless\LimitLessRepository\obj\Debug\LimitLessRepository.dll
 E:\Project\ADSI\Limitless\Code\LimitlessAdmin-1-master\Limitless\LimitLessRepository\obj\Debug\LimitLessRepository.pdb
-E:\Project\ADSI\Limitless\Code\LimitlessAdmin\Limitless\LimitLessRepository\bin\Debug\LimitLessRepository.dll
-E:\Project\ADSI\Limitless\Code\LimitlessAdmin\Limitless\LimitLessRepository\bin\Debug\LimitLessRepository.pdb
-E:\Project\ADSI\Limitless\Code\LimitlessAdmin\Limitless\LimitLessRepository\bin\Debug\LimitLessDataAccess.dll
-E:\Project\ADSI\Limitless\Code\LimitlessAdmin\Limitless\LimitLessRepository\bin\Debug\LimitlessEntity.dll
-E:\Project\ADSI\Limitless\Code\LimitlessAdmin\Limitless\LimitLessRepository\bin\Debug\LimitLessUtility.dll
-E:\Project\ADSI\Limitless\Code\LimitlessAdmin\Limitless\LimitLessRepository\bin\Debug\Newtonsoft.Json.dll
-E:\Project\ADSI\Limitless\Code\LimitlessAdmin\Limitless\LimitLessRepository\bin\Debug\LimitLessDataAccess.pdb
-E:\Project\ADSI\Limitless\Code\LimitlessAdmin\Limitless\LimitLessRepository\bin\Debug\LimitlessEntity.pdb
-E:\Project\ADSI\Limitless\Code\LimitlessAdmin\Limitless\LimitLessRepository\bin\Debug\LimitLessUtility.pdb
-E:\Project\ADSI\Limitless\Code\LimitlessAdmin\Limitless\LimitLessRepository\bin\Debug\Newtonsoft.Json.xml
-E:\Project\ADSI\Limitless\Code\LimitlessAdmin\Limitless\LimitLessRepository\obj\Debug\LimitLessRepository.csprojResolveAssemblyReference.cache
-E:\Project\ADSI\Limitless\Code\LimitlessAdmin\Limitless\LimitLessRepository\obj\Debug\LimitLessRepository.dll
-E:\Project\ADSI\Limitless\Code\LimitlessAdmin\Limitless\LimitLessRepository\obj\Debug\LimitLessRepository.pdb
