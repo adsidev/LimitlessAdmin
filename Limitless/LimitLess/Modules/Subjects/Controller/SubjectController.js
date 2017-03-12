@@ -29,6 +29,7 @@ app.controller("SubjectController", function ($scope, $http, $rootScope, $locati
         $scope.SubjectDescription = '';
         $scope.SubjectICON = '';
         $scope.OrganizationID = '';
+        $scopr.SubjectCode = '';
         $('#chkActive').attr('checked', false);
     };
     $scope.DeleteSubject = function (e) {
@@ -65,6 +66,7 @@ app.controller("SubjectController", function ($scope, $http, $rootScope, $locati
             $scope.SubjectDescription = result[0].SubjectDescription;
             $scope.SubjectICON = result[0].SubjectICON;
             $scope.OrganizationID = result[0].OrganizationID;
+            $scope.SubjectCode = result[0].SubjectCode;
             if (result[0].IsActive) {
                 $('#chkActive').prop('checked', true);
             }
@@ -82,6 +84,7 @@ app.controller("SubjectController", function ($scope, $http, $rootScope, $locati
             SubjectICON: $scope.SubjectICON,
             OrganizationID: $scope.OrganizationID,
             IsActive: IsActive,
+            SubjectCode: $scope.SubjectCode
         });
         $http.post("api/Subject/SaveSubject", Postdata, {
             headers: { 'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8' }
