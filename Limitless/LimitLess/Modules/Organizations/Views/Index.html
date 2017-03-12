@@ -12,15 +12,17 @@
                     <tr>
                         <td width="20%" align="left">Organization ID</td>
                         <td width="20%" align="left">Organization Name</td>
-                        <td width="20%" align="center">Status</td>
+                        <td width="20%" align="left">Organization Code</td>
+                        <td width="10%" align="center">Status</td>
                         <td width="20%" align="center">Created Date</td>
-                        <td width="20%" align="center"></td>
+                        <td width="10%" align="center"></td>
                     </tr>
                 </thead>
                 <tbody>
                     <tr ng-repeat="sub in Records track by sub.OrganizationID">
                         <td align="left">{{sub.OrganizationID}}</td>
                         <td align="left">{{sub.OrganizationName}}</td>
+                        <td align="left">{{sub.OrganizationCode}}</td>
                         <td align="center">{{sub.IsActive}}</td>
                         <td align="center">{{sub.CreatedDate}} </td>
                         <td>
@@ -83,6 +85,14 @@
                             <label class="control-label" for="txtDescription">Description</label>
                             <div class="controls">
                                 <input type="text" ng-model="OrganizationDescription" id="txtDescription" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-12 no-pad">
+                        <div class="control-group col-lg-6">
+                            <label class="control-label" for="txtUrl">Organization Code</label>
+                            <div class="controls">
+                                <input type="text" ng-model="OrganizationCode" id="txtOrganizationCode" />
                             </div>
                         </div>
                     </div>
