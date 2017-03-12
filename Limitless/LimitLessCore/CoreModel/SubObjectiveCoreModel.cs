@@ -30,7 +30,8 @@ namespace LimitLessCore.CoreModel
                 model.ObjectivesID,
                 model.SubObjectiveName,
                 model.SubObjectiveDescription,
-                IsActive
+                IsActive,
+                model.SubObjectiveCode
             };
             return _repository.Save();
         }

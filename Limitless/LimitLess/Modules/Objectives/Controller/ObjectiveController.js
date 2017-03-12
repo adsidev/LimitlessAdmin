@@ -7,6 +7,7 @@ app.controller("ObjectiveController", function ($scope, $http, $rootScope, $loca
         $scope.ObjectiveID = '';
         $scope.ObjectiveName = '';
         $scope.ObjectiveDescription = '';
+        $scope.ObjectiveCode = '';
         $('#chkActive').attr('checked', false);
     };
     $scope.DeleteObjective = function (e) {
@@ -40,7 +41,8 @@ app.controller("ObjectiveController", function ($scope, $http, $rootScope, $loca
             $scope.TopicID = result[0].TopicID;
             $scope.ObjectiveName = result[0].ObjectiveName;
             $scope.ObjectiveDescription = result[0].ObjectiveDescription;
-            $scope.ObjectiveID = result[0].ObjectiveID;
+            $scope.ObjectiveID = result[0].ObjectiveID; 
+            $scope.ObjectiveCode = result[0].ObjectiveCode;
             if (result[0].IsActive) {
                 $('#chkActive').prop('checked', true);
             }
@@ -81,6 +83,7 @@ app.controller("ObjectiveController", function ($scope, $http, $rootScope, $loca
             ObjectiveName: $scope.ObjectiveName,
             ObjectiveDescription: $scope.ObjectiveDescription,
             IsActive: IsActive,
+            ObjectiveCode: $scope.ObjectiveCode,
         });
         $http({
             method: 'POST',

@@ -8,6 +8,7 @@ namespace LimitlessEntity.Entities.Models
         public string ObjectiveDescription { get; set; }
         public string IsActive { get; set; }
         public string CreatedDate { get; set; }
+        public string ObjectiveCode{get;set;}
 
     }
 }
