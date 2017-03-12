@@ -71,9 +71,16 @@ namespace LimitLess.Area
         }
         [Authorize]
         [HttpPost]
-        public void SaveQuestionAnswer(QuestionAnswers UserAnswer)
+        public void SaveQuestionAnswer(MainQuestionAnswers UserAnswer)
         {
             _coreModel.SaveQuestionAnswer(UserAnswer);
+        }
+
+        [Authorize]
+        [HttpPost]
+        public GridResult GetQuestionAnswerList([FromBody]GridQARequest paginationRequest)
+        {
+            return _coreModel.GetQuestionAnswerList(paginationRequest);
         }
     }
 }

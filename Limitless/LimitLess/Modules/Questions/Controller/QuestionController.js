@@ -1,6 +1,6 @@
 ﻿/// <reference path="F:\.NET WorkSpace\Jena's Project\AngularDemoProject\Scripts/Common/app.js" />
 
-app.controller("QuestionController", function ($scope, $http, $location, $cookieStore) {
+app.controller("QuestionController", function ($scope, $http, $location, $cookieStore, $sce) {
     $scope.clear = function () {
         $scope.QuestionID = '';
         $scope.SubObjectiveID = '';
@@ -9,6 +9,7 @@ app.controller("QuestionController", function ($scope, $http, $location, $cookie
         $scope.Difficulty = '';
         $scope.QuestionTypeId = '';
         $scope.IsActive = '';
+        $scope.QuestionImage = '';
         $('#chkActive').attr('checked', false);
     };
     $scope.DeleteQuestion = function (e) {
@@ -70,17 +71,13 @@ app.controller("QuestionController", function ($scope, $http, $location, $cookie
     var ListInput = $.param({
         OrganizationID: $cookieStore.get('OrganizationID')
     });
-    $http.post("api/Question/GetList", ListInput, {
+    $http.post("api/SubObjective/GetList", ListInput, {
         headers: { 'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8' }
     }).success(function (data) {
         $scope.SubObjectives = JSON.parse(data.List);
     });
 
-    $http.post("api/Question/GetQuestionAnswerList", reqdata, {
-        headers: { 'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8' }
-    }).success(function (data) {
-        $scope.Records = JSON.parse(data.List);
-    });
+    
     $http.get("api/Question/GetQuestionType", {
         headers: { 'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8' }
     }).success(function (data) {
@@ -122,6 +119,7 @@ app.controller("QuestionController", function ($scope, $http, $location, $cookie
         });
     }
     $scope.SaveQuestion = function () {
+        alert($scope.QuestionImage)
         if ($scope.QuestionImage.name) {
             uploadFileToUrl($scope.QuestionImage);
         }
@@ -159,6 +157,6 @@ app.controller("QuestionController", function ($scope, $http, $location, $cookie
         }
     };
     $scope.getImagePath = function (imageName) {
-        return $sce.trustAsResourceUrl("/App_Data/question_Image/" + imageName);
+        return $sce.trustAsResourceUrl("/images/question_Image/" + imageName);
     }
 });

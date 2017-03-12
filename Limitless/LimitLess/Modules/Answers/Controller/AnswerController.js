@@ -9,6 +9,11 @@ app.controller("AnswerController", function ($scope, $http, $rootScope, $cookieS
     }).success(function (data) {
         $scope.Questions = JSON.parse(data.List);
     });
+    $http.post("api/Question/GetQuestionAnswerList", reqdata, {
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8' }
+    }).success(function (data) {
+        $scope.Records = JSON.parse(data.List);
+    });
     $scope.clear = function () {
         $scope.QuestionID = '';
         $scope.AnswerID = '';

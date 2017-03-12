@@ -81,7 +81,7 @@ app.controller("SubObjectiveController", function ($scope, $http, $rootScope, $l
             SubObjectiveName: $scope.SubObjectiveName,
             SubObjectiveDescription: $scope.SubObjectiveDescription,
             IsActive: IsActive,
-            SubObjectiveCode: $scope.SubObjectiveCode;
+            SubObjectiveCode: $scope.SubObjectiveCode
         });
         $http({
             method: 'POST',

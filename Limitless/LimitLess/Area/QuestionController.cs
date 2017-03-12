@@ -35,12 +35,7 @@ namespace LimitLess.Area
             return _coreModel.GridList(paginationRequest);
         }
 
-         [Authorize]
-        [HttpPost]
-        public GridResult GetQuestionAnswerList([FromBody]GridQARequest paginationRequest)
-        {
-            return _coreModel.GetQuestionAnswerList(paginationRequest);
-        }
+        
 
         [Authorize]
         [HttpPost]
@@ -69,7 +64,7 @@ namespace LimitLess.Area
                 /*extract excel file and then save the file to App_Data folder*/
                 var postedFile = httpRequest.Files[file];
                 var fileName = DateTime.Now.ToString("HHmmss") + postedFile.FileName;
-                string uploadFilePath = HttpContext.Current.Server.MapPath("~/App_Data/question_Image/" + fileName);
+                string uploadFilePath = HttpContext.Current.Server.MapPath("~/images/question_Image/" + fileName);
                 postedFile.SaveAs(uploadFilePath);
                 var jsonString = httpRequest.Params["parameters"];
                 var questionData = JsonConvert.DeserializeObject<QuestionModel>(jsonString);
