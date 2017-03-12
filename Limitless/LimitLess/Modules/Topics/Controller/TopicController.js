@@ -32,6 +32,7 @@ app.controller("TopicController", function ($scope, $http, $rootScope, $location
         $scope.TopicDescription = '';
         $scope.TopicName = '';
         $scope.SubjectID = '';
+        $scope.TopicCode = '';
         $('#chkActive').attr('checked', false);
     };
     $scope.DeleteTopic = function (e) {
@@ -66,6 +67,7 @@ app.controller("TopicController", function ($scope, $http, $rootScope, $location
             $scope.TopicDescription = result[0].TopicDescription;
             $scope.TopicName = result[0].TopicName;
             $scope.SubjectID = result[0].SubjectID;
+            $scope.TopicCode = result[0].TopicCode;
             if (result[0].IsActive) {
                 $('#chkActive').prop('checked', true);
             }
@@ -84,7 +86,8 @@ app.controller("TopicController", function ($scope, $http, $rootScope, $location
             TopicDescription: $scope.TopicDescription,
             TopicName: $scope.TopicName,
             SubjectID: $scope.SubjectID,
-            IsActive: IsActive
+            IsActive: IsActive,
+            TopicCode: $scope.TopicCode
         });
         $http({
             method: 'POST',
@@ -93,7 +96,7 @@ app.controller("TopicController", function ($scope, $http, $rootScope, $location
             headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
         }).then(
             function (res) {
-                toastr["success"]("Saved Successfully.", 'Create Subject');
+                toastr["success"]("Saved Successfully.", 'Create Topic');
                 $http.post("api/Topic/GridList", reqdata, {
                     headers: { 'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8' }
                 }).success(function (data) {
@@ -102,7 +105,7 @@ app.controller("TopicController", function ($scope, $http, $rootScope, $location
             },
             function (err) {
                 console.log('error...', err);
-                toastr["error"](err.error_message, 'Create Subject');
+                toastr["error"](err.error_message, 'Create Topic');
             }
         );
     };
