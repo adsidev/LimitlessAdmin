@@ -4,17 +4,17 @@
         <ol>
             <li>
                 Download the below linked spreadsheet
-            
+
             </li>
             <li> Fill the spreadsheet </li>
             <li>
-                Upload it 
-              
+                Upload it
+
             </li>
             <li>
                 If you have attached image for certain question, please upload the images in here.
                 Remember to keep the image name exactly same as the question code of corresponding question.
-                
+
             </li>
             <li>
                 <a class="btn btn-default btn-xs"
@@ -24,19 +24,19 @@
                         accept=".xls,.csv,.xlsx" ngf-max-height="1000" ngf-max-size="1MB">
                     Upload Spreadsheet
                 </button>
-            </li> 
+            </li>
         </ol>
     </div>
-    
-    <div name ="spreadsheet" class="list-group">
+
+    <div name="spreadsheet" class="list-group">
         <h4 class="list-group-item-heading">
             File:
         </h4>
-        <p class="list-group-item-text">{{f.name}} {{errFile.name}} {{errFile.$error}} {{errFile.$errorParam}} </p>
+        <p class="list-group-item-text">{{f.name}} </p>
+        <a class="btn" id="downloadtxt" href="result_log.txt"></a>
         <div class="progress" ng-show="f.progress >= 0">
             <div class="progress-bar progress-bar-striped" aria-valuenow="{{f.progress}}%" aria-valuemin="0" aria-valuemax="100" style="width:100%"
                  ng-bind="f.progress + '%'"></div>
         </div>
         {{errorMsg}}
     </div>
-    

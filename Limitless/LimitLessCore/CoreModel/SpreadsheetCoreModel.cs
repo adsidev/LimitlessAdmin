@@ -10,10 +10,12 @@ using System.Text.RegularExpressions;
 using System.Web.UI;
 using System.Web;
 using Newtonsoft.Json.Linq;
+using System.Collections;
 
 
 namespace LimitLessCore.CoreModel
 {
+
     public class SpreadsheetCoreModel
     {
         private readonly SpreadsheetRepository<object> _repository;
@@ -27,33 +29,83 @@ namespace LimitLessCore.CoreModel
             _repository = new SpreadsheetRepository<object>();
         }
 
+        readonly SubObjectiveCoreModel _subobjCoreModel = new SubObjectiveCoreModel();
         readonly QuestionCoreModel _questionCoreModel = new QuestionCoreModel();
         readonly AnswerCoreModel _answerCoreModel = new AnswerCoreModel();
-        
-        public int Save(List<SpreadsheetModel> spreadsheetList)
+
+        public List<int> Save(List<SpreadsheetModel> spreadsheetList)
         {
-            int ret = 1;
-            foreach(var spreadsheet in  spreadsheetList)
+            List<int> stats = new List<int>();
+            foreach (var spr in spreadsheetList)
             {
-                //save question
-                _questionCoreModel.Save(spreadsheet.questionModel);
-
-                //get the question id of the saved question
-                var jString = _questionCoreModel.GetLastQuestionId().List;
-                var regex = new Regex(@":([1-9]+)");
-                var results = regex.Matches(jString);
-                var que_id = results[0].Groups[1].Value;
-
-                //save answers of the question
-                foreach (var ans in spreadsheet.answerList)
+                var ret = checkQueAndAns(spr);
+                stats.Add(ret);
+                if (ret != 0)
                 {
-                    ans.QuestionID = que_id;
-                    _answerCoreModel.Save(ans);
+                    saveQueAndAns(spr);
                 }
             }
-
-            return ret;
+            return stats;
         }
+
+        public int checkQueAndAns(SpreadsheetModel spr)
+        {
+            /*check question*/
+            var que_ret = checkQue(spr.questionModel);
+            if (que_ret == 0) { return 0; }
+
+            /*check answers*/
+            foreach (var ans in spr.answerList)
+            {
+                if (checkAns(ans) == 0) { return 0; }
+            }
+            return 1;
+        }
+
+
+        public int checkQue(QuestionModel que)
+        {
+            var subObjId = _subobjCoreModel.GetSubObjectiveIdByCode(que.SubObjectiveCode).SelectedDetails;
+
+            if (subObjId == "[]" || que.Difficulty == 0 || que.QuestionTypeId == "0" || que.QuestionCode == "")
+                return 0;
+
+            return 1;
+        }
+
+        public int checkAns(AnswerModel ans)
+        {
+            if (ans.AnswerCode == "")
+                return 0;
+            return 1;
+        }
+
+        public int saveQueAndAns(SpreadsheetModel spr)
+        {
+            /*save question*/
+            var que = spr.questionModel;
+            var subObjId = _subobjCoreModel.GetSubObjectiveIdByCode(que.SubObjectiveCode).SelectedDetails;
+            que.SubObjectiveID = Int32.Parse(extractID(subObjId));
+            _questionCoreModel.Save(que);
+
+            /*save answers*/
+            var que_id = extractID(_questionCoreModel.GetLastQuestionId().List);
+            foreach (var ans in spr.answerList)
+            {
+                ans.QuestionID = que_id;
+                _answerCoreModel.Save(ans);
+            }
+            return 1;
+        }
+
+        public string extractID(string str)
+        {
+            var regex = new Regex(@":([0-9]+)");
+            var results = regex.Matches(str);
+            /*check errors*/
+            var id = results[0].Groups[1].Value;
+            return id;
+        }
+        #endregion
     }
-    #endregion
 }
