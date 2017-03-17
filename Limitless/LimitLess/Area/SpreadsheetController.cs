@@ -194,7 +194,7 @@ namespace LimitLess.Area
             {
                 wrong += i == 0 ? 1 : 0;
             }
-            return "total inserted: " + total + " successful inserted: " + (total - wrong);
+            return "Total inserted: " + total + "| Successful inserted: " + (total - wrong);
         }
         public List<string> getStatDetails(List<int> stats)
         {
@@ -205,10 +205,10 @@ namespace LimitLess.Area
                 if (stats[i] == 0)
                 {
                     wrong_cnt += 1;
-                    statDetails.Add("Row " + (i + 2).ToString() + " inserted fail\n");
+                    statDetails.Add("| Row " + (i + 2).ToString() + " inserted fail.");
                 }
             }
-            var summary = "Total inserted: " + stats.Count.ToString() + " Success inserted: " + (stats.Count - wrong_cnt).ToString();
+            var summary = "Total inserted: " + stats.Count.ToString() + "| Success inserted: " + (stats.Count - wrong_cnt).ToString();
             statDetails.Insert(0, summary);
             return statDetails;
         }
