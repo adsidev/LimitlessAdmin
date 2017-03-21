@@ -64,7 +64,7 @@
                     </div>
                     <div class="col-lg-12 no-pad">
                         <div class="control-group col-lg-6">
-                            <label class="control-label" for="txtQuestionContent">Content</label>
+                            <label class="control-label" for="txtQuestionContent">Question Content</label>
                             <div class="controls">
                                 <input type="text" ng-model="QuestionContent" id="txtQuestionContent" class="form-control" />
                             </div>
@@ -98,6 +98,24 @@
                                 </select>
                             </div>
                         </div>
+                    </div>
+
+                    <div class="col-lg-12 no-pad">
+                        <div class="control-group col-lg-6">
+                            <label class="control-label" for="chkIsDraggable">Is Draggable</label>
+                            <div class="controls">
+                                <input id="chkIsDraggable" type="checkbox" ng-checked="IsDraggable" class="small_checkbox" />
+                            </div>
+                        </div>
+                        <div class="control-group col-lg-6">
+                            <label class="control-label" for="txtFinalQuestionContent">Last Content</label>
+                            <div class="controls">
+                                <input type="text" ng-model="FinalQuestionContent" id="txtFinalQuestionContent" class="form-control" />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-12 no-pad">
                         <div class="control-group col-lg-6">
                             <label class="control-label" for="fUQuestionImage">Upload Image</label>
                             <div class="controls">

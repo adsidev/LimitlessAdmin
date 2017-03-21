@@ -10,6 +10,8 @@ app.controller("QuestionController", function ($scope, $http, $location, $cookie
         $scope.QuestionTypeId = '';
         $scope.IsActive = '';
         $scope.QuestionImage = '';
+        $scope.FinalQuestionContent = '';
+        $scope.IsDraggable = '';
         $('#chkActive').attr('checked', false);
     };
     $scope.DeleteQuestion = function (e) {
@@ -46,11 +48,18 @@ app.controller("QuestionController", function ($scope, $http, $location, $cookie
             $scope.QuestionContent = result[0].QuestionContent;
             $scope.Difficulty = result[0].Difficulty;
             $scope.QuestionTypeId = result[0].QuestionTypeId;
+            $scope.FinalQuestionContent = result[0].FinalQuestionContent;
             if (result[0].IsActive) {
                 $('#chkActive').prop('checked', true);
             }
             else {
                 $('#chkActive').prop('checked', false);
+            }
+            if (result[0].IsDraggable) {
+                $('#chkIsDraggable').prop('checked', true);
+            }
+            else {
+                $('#chkIsDraggable').prop('checked', false);
             }
         });
     };
@@ -86,6 +95,7 @@ app.controller("QuestionController", function ($scope, $http, $location, $cookie
 
     var uploadFileToUrl = function (file) {
         var IsActive = $('#chkActive').prop('checked');
+        var IsDraggable = $('#chkIsDraggable').prop('checked');
         var fd = new FormData();
         var imageName = $scope.QuestionImage ? $scope.QuestionImage.name : "";
         fd.append('file', file);
@@ -97,7 +107,9 @@ app.controller("QuestionController", function ($scope, $http, $location, $cookie
             Difficulty: $scope.Difficulty,
             IsActive: IsActive,
             QuestionTypeId: $scope.QuestionTypeId,
-            QuestionImage: imageName
+            QuestionImage: imageName,
+            FinalQuestionContent: FinalQuestionContent,
+            IsDraggable: IsDraggable
         };
         fd.append('parameters', JSON.stringify(params))
         $http.post('api/Question/SaveQuestionWithImage', fd, {
@@ -119,12 +131,12 @@ app.controller("QuestionController", function ($scope, $http, $location, $cookie
         });
     }
     $scope.SaveQuestion = function () {
-        alert($scope.QuestionImage)
         if ($scope.QuestionImage.name) {
             uploadFileToUrl($scope.QuestionImage);
         }
         else {
             var IsActive = $('#chkActive').prop('checked');
+            var IsDraggable = $('#chkIsDraggable').prop('checked');
             var params = $.param({
                 QuestionID: $scope.QuestionID,
                 SubObjectiveID: $scope.SubObjectiveID,
@@ -133,7 +145,9 @@ app.controller("QuestionController", function ($scope, $http, $location, $cookie
                 Difficulty: $scope.Difficulty,
                 IsActive: IsActive,
                 QuestionTypeId: $scope.QuestionTypeId,
-                QuestionImage: ""
+                QuestionImage: "",
+                FinalQuestionContent: $scope.FinalQuestionContent,
+                IsDraggable: IsDraggable
             });
             $http({
                 method: 'POST',

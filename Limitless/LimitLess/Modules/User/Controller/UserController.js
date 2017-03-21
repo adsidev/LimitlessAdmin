@@ -115,7 +115,7 @@ app.controller("UserController", function ($scope, $http, $rootScope, $cookieSto
                 Email: $scope.Email,
                 UserID: $scope.UserID,
                 IsActive: IsActive,
-                UserType:'System'
+                UserType:'1'
             });
             $http.post("api/User/SaveUser", Postdata, {
                 headers: { 'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8' }

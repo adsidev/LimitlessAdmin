@@ -33,7 +33,9 @@ namespace LimitLessCore.CoreModel
                 model.Difficulty,
                 IsActive,
                 model.QuestionTypeId,
-                model.QuestionImage
+                model.QuestionImage,
+                model.FinalQuestionContent,
+                model.IsDraggable
             };
             return _repository.Save();
         }
