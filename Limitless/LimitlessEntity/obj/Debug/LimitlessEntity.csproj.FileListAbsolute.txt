@@ -54,3 +54,10 @@ C:\Users\Erin\LimitlessAdmin\Limitless\LimitlessEntity\bin\Debug\LimitLessUtilit
 C:\Users\Erin\LimitlessAdmin\Limitless\LimitlessEntity\obj\Debug\LimitlessEntity.csprojResolveAssemblyReference.cache
 C:\Users\Erin\LimitlessAdmin\Limitless\LimitlessEntity\obj\Debug\LimitlessEntity.dll
 C:\Users\Erin\LimitlessAdmin\Limitless\LimitlessEntity\obj\Debug\LimitlessEntity.pdb
+C:\Users\ADSIXPS15\Documents\LimitlessAdmin-main-latest\Limitless\LimitlessEntity\bin\Debug\LimitlessEntity.dll
+C:\Users\ADSIXPS15\Documents\LimitlessAdmin-main-latest\Limitless\LimitlessEntity\bin\Debug\LimitlessEntity.pdb
+C:\Users\ADSIXPS15\Documents\LimitlessAdmin-main-latest\Limitless\LimitlessEntity\bin\Debug\LimitLessUtility.dll
+C:\Users\ADSIXPS15\Documents\LimitlessAdmin-main-latest\Limitless\LimitlessEntity\bin\Debug\LimitLessUtility.pdb
+C:\Users\ADSIXPS15\Documents\LimitlessAdmin-main-latest\Limitless\LimitlessEntity\obj\Debug\LimitlessEntity.csprojResolveAssemblyReference.cache
+C:\Users\ADSIXPS15\Documents\LimitlessAdmin-main-latest\Limitless\LimitlessEntity\obj\Debug\LimitlessEntity.dll
+C:\Users\ADSIXPS15\Documents\LimitlessAdmin-main-latest\Limitless\LimitlessEntity\obj\Debug\LimitlessEntity.pdb

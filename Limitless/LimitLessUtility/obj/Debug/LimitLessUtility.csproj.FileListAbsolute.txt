@@ -26,3 +26,7 @@ C:\Users\Erin\LimitlessAdmin\Limitless\LimitLessUtility\bin\Debug\LimitLessUtili
 C:\Users\Erin\LimitlessAdmin\Limitless\LimitLessUtility\obj\Debug\LimitLessUtility.csprojResolveAssemblyReference.cache
 C:\Users\Erin\LimitlessAdmin\Limitless\LimitLessUtility\obj\Debug\LimitLessUtility.dll
 C:\Users\Erin\LimitlessAdmin\Limitless\LimitLessUtility\obj\Debug\LimitLessUtility.pdb
+C:\Users\ADSIXPS15\Documents\LimitlessAdmin-main-latest\Limitless\LimitLessUtility\bin\Debug\LimitLessUtility.dll
+C:\Users\ADSIXPS15\Documents\LimitlessAdmin-main-latest\Limitless\LimitLessUtility\bin\Debug\LimitLessUtility.pdb
+C:\Users\ADSIXPS15\Documents\LimitlessAdmin-main-latest\Limitless\LimitLessUtility\obj\Debug\LimitLessUtility.dll
+C:\Users\ADSIXPS15\Documents\LimitlessAdmin-main-latest\Limitless\LimitLessUtility\obj\Debug\LimitLessUtility.pdb
