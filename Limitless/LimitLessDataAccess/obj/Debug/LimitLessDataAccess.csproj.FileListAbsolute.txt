@@ -33,8 +33,3 @@ C:\Users\Erin\LimitlessAdmin\Limitless\LimitLessDataAccess\bin\Debug\LimitLessDa
 C:\Users\Erin\LimitlessAdmin\Limitless\LimitLessDataAccess\obj\Debug\LimitLessDataAccess.csprojResolveAssemblyReference.cache
 C:\Users\Erin\LimitlessAdmin\Limitless\LimitLessDataAccess\obj\Debug\LimitLessDataAccess.dll
 C:\Users\Erin\LimitlessAdmin\Limitless\LimitLessDataAccess\obj\Debug\LimitLessDataAccess.pdb
-C:\Users\ADSIXPS15\Documents\LimitlessAdmin-main-latest\Limitless\LimitLessDataAccess\bin\Debug\LimitLessDataAccess.dll
-C:\Users\ADSIXPS15\Documents\LimitlessAdmin-main-latest\Limitless\LimitLessDataAccess\bin\Debug\LimitLessDataAccess.pdb
-C:\Users\ADSIXPS15\Documents\LimitlessAdmin-main-latest\Limitless\LimitLessDataAccess\obj\Debug\LimitLessDataAccess.csprojResolveAssemblyReference.cache
-C:\Users\ADSIXPS15\Documents\LimitlessAdmin-main-latest\Limitless\LimitLessDataAccess\obj\Debug\LimitLessDataAccess.dll
-C:\Users\ADSIXPS15\Documents\LimitlessAdmin-main-latest\Limitless\LimitLessDataAccess\obj\Debug\LimitLessDataAccess.pdb
