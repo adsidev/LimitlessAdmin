@@ -32,7 +32,8 @@ namespace LimitLessCore.CoreModel
                 model.SubjectDescription,
                 model.SubjectICON,
                 model.OrganizationID,
-                staus
+                staus,
+                model.SubjectCode
             };
             return _repository.Save();
         }

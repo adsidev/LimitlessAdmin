@@ -6,6 +6,7 @@ app.controller("SubObjectiveController", function ($scope, $http, $rootScope, $l
         $scope.SubObjectivesID = '';
         $scope.SubObjectiveName = '';
         $scope.SubObjectiveDescription = '';
+        $scope.SubObjectiveCode = '';
         $('#chkActive').attr('checked', false);
     };
     $scope.DeleteSubObjective = function (e) {
@@ -40,6 +41,7 @@ app.controller("SubObjectiveController", function ($scope, $http, $rootScope, $l
             $scope.ObjectiveID = result[0].ObjectivesID;
             $scope.SubObjectiveName = result[0].SubObjectiveName;
             $scope.SubObjectiveDescription = result[0].SubObjectiveDescription;
+            $scope.SubObjectiveCode = result[0].SubObjectiveCode;
             if (result[0].IsActive) {
                 $('#chkActive').prop('checked', true);
             }
@@ -78,7 +80,8 @@ app.controller("SubObjectiveController", function ($scope, $http, $rootScope, $l
             ObjectivesID: $scope.ObjectiveID,
             SubObjectiveName: $scope.SubObjectiveName,
             SubObjectiveDescription: $scope.SubObjectiveDescription,
-            IsActive: IsActive
+            IsActive: IsActive,
+            SubObjectiveCode: $scope.SubObjectiveCode
         });
         $http({
             method: 'POST',

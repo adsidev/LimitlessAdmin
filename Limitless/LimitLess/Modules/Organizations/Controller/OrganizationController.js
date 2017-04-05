@@ -18,6 +18,7 @@ app.controller("OrganizationController", function ($scope, $http, $rootScope, $l
         $scope.OrganizationPhone = '';
         $scope.OrganizationDescription = '';
         $scope.OrganizationURL = '';
+        $scope.OrganizationCode = '';
         $('#chkActive').attr('checked', false);
     };
     var id;
@@ -38,6 +39,7 @@ app.controller("OrganizationController", function ($scope, $http, $rootScope, $l
             $scope.OrganizationPhone = result[0].OrganizationPhone;
             $scope.OrganizationDescription = result[0].OrganizationDescription;
             $scope.OrganizationURL = result[0].OrganizationURL;
+            $scope.OrganizationCode = result[0].OrganizationCode;
             if (result[0].IsActive) {
                 $('#chkActive').prop('checked', true);
             }
@@ -61,6 +63,7 @@ app.controller("OrganizationController", function ($scope, $http, $rootScope, $l
             OrganizationPhone: $scope.OrganizationPhone,
             OrganizationURL: $scope.OrganizationURL,
             OrganizationDescription: $scope.OrganizationDescription,
+            OrganizationCode: $scope.OrganizationCode,
             IsActive: IsActive
         });
         $http({

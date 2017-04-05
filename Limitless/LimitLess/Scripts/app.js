@@ -209,43 +209,44 @@ app.controller('loginController', ['$scope', '$location', 'accountService', '$ti
     $scope.account = { username: $scope.username, password: $scope.password };
     $scope.message = '';
     $scope.login = function () {
-        if ($scope.username == undefined) {
-            toastr["error"]('Please Enter User Id', 'User Authentication');
-        }
-        else if ($scope.pwd == undefined) {
-            toastr["error"]('Please Enter Password', 'User Authentication');
-        }
-        else {
-            var req_data = $.param({
-                Email: $scope.username,
-                Password: $scope.password,
-                UserType:"2"
-            });
-            $http.post("api/Login/GetUserData", req_data, {
-                headers: { 'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8' }
-            }).success(function (data) {
-                $scope.User_Details = JSON.parse(data.UserInformations);
-                if ($scope.User_Details == null) {
-                    toastr["error"]('Please Enter Valid Credential', 'User Authentication');
-                }
-                else {
-                    $cookieStore.put('UserName', $scope.User_Details[0].UserName);
-                    $cookieStore.put('OrganizationID', $scope.User_Details[0].OrganizationID);
-                    $cookieStore.UserName = $scope.User_Details[0].UserName;
-                    $cookieStore.UserID = $scope.User_Details[0].UserID;
-                    $cookieStore.OrganizationID = $scope.User_Details[0].OrganizationID;
-                    $cookieStore.put('UserData', $scope.User_Details);
-                    accountService.login($scope.username, $scope.password).then(function (data) {
-                        toastr["success"]("User loggedin successfully.", 'User Authentication');
-                        $timeout(LoginTime, 1000);
-                    }, function (error) {
-                        toastr["error"](error.error_description, 'User Authentication');
-                        $scope.message = error.error_description;
-                    })
-                }
-            }).error(function (err) {
-            });           
-        }
+        window.location = 'dashboard.html';
+        //if ($scope.username == undefined) {
+        //    toastr["error"]('Please Enter User Id', 'User Authentication');
+        //}
+        //else if ($scope.pwd == undefined) {
+        //    toastr["error"]('Please Enter Password', 'User Authentication');
+        //}
+        //else {
+        //    var req_data = $.param({
+        //        Email: $scope.username,
+        //        Password: $scope.password,
+        //        UserType:"2"
+        //    });
+        //    $http.post("api/Login/GetUserData", req_data, {
+        //        headers: { 'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8' }
+        //    }).success(function (data) {
+        //        $scope.User_Details = JSON.parse(data.UserInformations);
+        //        if ($scope.User_Details == null) {
+        //            toastr["error"]('Please Enter Valid Credential', 'User Authentication');
+        //        }
+        //        else {
+        //            $cookieStore.put('UserName', $scope.User_Details[0].UserName);
+        //            $cookieStore.put('OrganizationID', $scope.User_Details[0].OrganizationID);
+        //            $cookieStore.UserName = $scope.User_Details[0].UserName;
+        //            $cookieStore.UserID = $scope.User_Details[0].UserID;
+        //            $cookieStore.OrganizationID = $scope.User_Details[0].OrganizationID;
+        //            $cookieStore.put('UserData', $scope.User_Details);
+        //            accountService.login($scope.username, $scope.password).then(function (data) {
+        //                toastr["success"]("User loggedin successfully.", 'User Authentication');
+        //                $timeout(LoginTime, 1000);
+        //            }, function (error) {
+        //                toastr["error"](error.error_description, 'User Authentication');
+        //                $scope.message = error.error_description;
+        //            })
+        //        }
+        //    }).error(function (err) {
+        //    });           
+        //}
     }
     $scope.Logout = function () {
         toastr["warning"]("User loggedout successfully.", 'User Authentication');
@@ -263,36 +264,36 @@ function LogOutTime() {
 //Global Services
 
 //http interceptor
-app.config(['$httpProvider', function ($httpProvider) {
-    var interceptor = function (userService, $q, $location) {
-        return {
-            request: function (config) {
-                var currentUser = userService.GetCurrentUser();
-                if (currentUser != null) {
-                    //config.headers['Authorization'] = 'Bearer ' + sessionStorage.access_token;
-                    config.headers.authorization = 'Bearer ' + sessionStorage.access_token;
-                }
-                return config;
-            },
-            responseError: function (rejection) {
-                if (rejection.status === 401) {
-                    toastr["warning"](rejection.statusText, 'Invalid access');
-                    window.location = 'index.html';
-                    return $q.reject(rejection);
-                }
-                if (rejection.status === 403) {
-                    toastr["warning"](rejection.statusText, 'Invalid access');
-                    window.location = 'index.html';
-                    return $q.reject(rejection);
-                }
-                return $q.reject(rejection);
-            }
-        }
-    }
-    var params = ['userService', '$q', '$location'];
-    interceptor.$inject = params;
-    $httpProvider.interceptors.push(interceptor);
-}])
+//app.config(['$httpProvider', function ($httpProvider) {
+//    var interceptor = function (userService, $q, $location) {
+//        return {
+//            request: function (config) {
+//                var currentUser = userService.GetCurrentUser();
+//                if (currentUser != null) {
+//                    //config.headers['Authorization'] = 'Bearer ' + sessionStorage.access_token;
+//                    config.headers.authorization = 'Bearer ' + sessionStorage.access_token;
+//                }
+//                return config;
+//            },
+//            responseError: function (rejection) {
+//                if (rejection.status === 401) {
+//                    toastr["warning"](rejection.statusText, 'Invalid access');
+//                    window.location = 'index.html';
+//                    return $q.reject(rejection);
+//                }
+//                if (rejection.status === 403) {
+//                    toastr["warning"](rejection.statusText, 'Invalid access');
+//                    window.location = 'index.html';
+//                    return $q.reject(rejection);
+//                }
+//                return $q.reject(rejection);
+//            }
+//        }
+//    }
+//    var params = ['userService', '$q', '$location'];
+//    interceptor.$inject = params;
+//    $httpProvider.interceptors.push(interceptor);
+//}])
 //http interceptor
 
 

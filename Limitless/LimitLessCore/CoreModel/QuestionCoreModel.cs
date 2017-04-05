@@ -33,7 +33,9 @@ namespace LimitLessCore.CoreModel
                 model.Difficulty,
                 IsActive,
                 model.QuestionTypeId,
-                model.QuestionImage
+                model.QuestionImage,
+                model.FinalQuestionContent,
+                model.IsDraggable
             };
             return _repository.Save();
         }
@@ -45,13 +47,7 @@ namespace LimitLessCore.CoreModel
             return result;
         }
 
-        public GridResult GetQuestionAnswerList(GridQARequest paginationRequest)
-        {
-            SqlObject.CommandText = StoredProcedures.Questions.GetQuestionAnswerList;
-            SqlObject.Parameters = new object[] { paginationRequest.PageIndex, paginationRequest.PageSize, paginationRequest.OrderBy, paginationRequest.SortDirection, paginationRequest.OrganizationID, paginationRequest.SubjectID };
-            var result = _repository.GridQAList();
-            return result;
-        }
+        
         public ListResult GetList(int OrganizationID)
         {
             SqlObject.CommandText = StoredProcedures.Questions.GetAllQuestions;

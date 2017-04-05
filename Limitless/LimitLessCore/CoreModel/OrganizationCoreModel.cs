@@ -33,6 +33,7 @@ namespace LimitLessCore.CoreModel
                 model.OrganizationPhone,
                 model.OrganizationURL,
                 model.OrganizationDescription,
+                model.OrganizationCode,
                 IsActive
             };
             return _repository.Save();

@@ -5,6 +5,8 @@ using LimitlessEntity.Results;
 using LimitLessRepository;
 using LimitLessRepository.Common;
 using LimitLessRepository.Repositories.Datastore;
+using System.Collections.Generic;
+
 
 namespace LimitLessCore.CoreModel
 {
@@ -87,43 +89,47 @@ namespace LimitLessCore.CoreModel
             return _repository.SaveUserAnswer();
         }
 
-        public void SaveQuestionAnswer(QuestionAnswers model)
+        public GridResult GetQuestionAnswerList(GridQARequest paginationRequest)
         {
-            if(model.QuestionDataSet.Tables[1].Rows.Count>0)
-            {
-                foreach (System.Data.DataRow row in model.QuestionDataSet.Tables[0].Rows)
+            SqlObject.CommandText = StoredProcedures.Questions.GetQuestionAnswerList;
+            SqlObject.Parameters = new object[] { paginationRequest.PageIndex, paginationRequest.PageSize, paginationRequest.OrderBy, paginationRequest.SortDirection, paginationRequest.OrganizationID, paginationRequest.SubjectID };
+            var result = _repository.GridQAList();
+            return result;
+        }
+
+        public void SaveQuestionAnswer(MainQuestionAnswers model)
+        {
+
+                foreach (var row in model.QuestionAnswer)
                 {
                     SqlObject.CommandText = StoredProcedures.Answers.SaveQuestionAnswer;
                     SqlObject.Parameters = new object[]
                     {
-                        row["QuestionID"],
-                        row["AnswerID"],
-                        row["UserID"],
-                        row["AttemptDate"],
-                        row["Streak"]
+                        row.QuestionID,
+                        row.AnswerID,
+                        row.UserID,
+                        row.AttemptDate,
+                        row.Streak
                     };
                     _repository.SaveQuestionAnswer();
                 }
-            }
             
-            if(model.QuestionDataSet.Tables[1].Rows.Count>0)
-            {
-                System.Data.DataRow rows = model.QuestionDataSet.Tables[1].Rows[0];
+            
+
 
                 SqlObject.CommandText = StoredProcedures.Answers.SaveQuestionAnswerSubjective;
                 SqlObject.Parameters = new object[]
                 {
-                    rows["UserID"],
-                    rows["SubObjectiveID"],
-                    rows["RightsCount"],
-                    rows["WrongCount"],
-                    rows["SubObjectiveScoreDate"],
-                    rows["RightsGlobalCount"],
-                    rows["WrongGlobalCount"]
+                    model.SubObjectiveAnswer.UserID,
+                    model.SubObjectiveAnswer.SubObjectiveID,
+                    model.SubObjectiveAnswer.RightsCount,
+                    model.SubObjectiveAnswer.WrongCount,
+                    model.SubObjectiveAnswer.SubObjectiveScoreDate,
+                    model.SubObjectiveAnswer.RightsGlobalCount,
+                    model.SubObjectiveAnswer.WrongGlobalCount
                 };
                 _repository.SaveQuestionAnswerSubjective();
-            }
-
+            
         }
         #endregion
     }

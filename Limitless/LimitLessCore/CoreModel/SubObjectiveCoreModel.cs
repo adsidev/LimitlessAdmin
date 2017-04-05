@@ -37,7 +37,7 @@ namespace LimitLessCore.CoreModel
         public GridResult GridList(GridRequest paginationRequest)
         {
             SqlObject.CommandText = StoredProcedures.SubObjectives.GetSubObjectiveList;
-            SqlObject.Parameters = new object[] { paginationRequest.PageIndex, paginationRequest.PageSize, paginationRequest.OrderBy, paginationRequest.SortDirection ,paginationRequest.OrganizationID};
+            SqlObject.Parameters = new object[] { paginationRequest.PageIndex, paginationRequest.PageSize, paginationRequest.OrderBy, paginationRequest.SortDirection, paginationRequest.OrganizationID };
             var result = _repository.GridList();
             return result;
         }
@@ -63,6 +63,12 @@ namespace LimitLessCore.CoreModel
             SqlObject.Parameters = new object[] { id };
             int result = _repository.Delete(id);
             return result;
+        }
+        public SelectedData GetSubObjectiveIdByCode(string name)
+        {
+            SqlObject.CommandText = StoredProcedures.SubObjectives.GetSubObjectiveIdByCode;
+            SqlObject.Parameters = new object[] { name };
+            return _repository.GetOrgDetails();
         }
         #endregion
     }

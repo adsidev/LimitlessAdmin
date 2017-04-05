@@ -15,6 +15,7 @@
             <table class="table table-responsive mytable board-members">
                 <thead class="table_head">
                     <tr>
+                        <td width="20%" align="left">Topic Code</td>
                         <td width="20%" align="left">Topic ID</td>
                         <td width="20%" align="left">Topic Name</td>
                         <td width="20%" align="center">Status</td>
@@ -24,6 +25,7 @@
                 </thead>
                 <tbody>
                     <tr ng-repeat="sub in Records track by sub.TopicID">
+                        <td align="left">{{sub.TopicCode}}</td>
                         <td align="left">{{sub.TopicID}}</td>
                         <td align="left">{{sub.TopicName}}</td>
                         <td align="center">{{sub.IsActive}}</td>
@@ -46,6 +48,14 @@
                     <h4 class="modal-title">Topic Details</h4>
                 </div>
                 <div class="modal-body">
+                    <div class="col-lg-12 no-pad" style="margin-top:20px;">
+                        <div class="control-group col-lg-6">
+                            <label class="control-label" for="txtTopicCode">Topic Code</label>
+                            <div class="controls">
+                                <input type="text" ng-model="TopicCode" id="txtTopicCode" class="form-control" />
+                            </div>
+                        </div>
+                    </div>
                     <div class="col-lg-12 no-pad" style="margin-top:20px;">
                         <div class="control-group col-lg-6">
                             <label class="control-label" for="txtTopiName">Name</label>

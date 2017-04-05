@@ -26,6 +26,7 @@
                         <td align="left">{{q.Difficulty}}</td>
                         <td align="center">{{q.IsActive}}</td>
                         <td align="center">{{q.QuestionType}} </td>
+                        <td align="center"><img ng-src="{{getImagePath(q.QuestionImage)}}"></td>
                         <td>
                             <span data-toggle="modal" data-target="#myModal" data-id="{{q.QuestionID}}" ng-click="EditQuestion($event)" style="text-decoration:none; cursor:pointer; color: #337ab7 !important;">Edit</span><span style="color:#000 !important;padding-left:5px">|</span>
                             <input type="submit" value="Delete" class="board-members" data-id="{{q.QuestionID}}" ng-click="DeleteQuestion($event)" />
@@ -63,7 +64,7 @@
                     </div>
                     <div class="col-lg-12 no-pad">
                         <div class="control-group col-lg-6">
-                            <label class="control-label" for="txtQuestionContent">Content</label>
+                            <label class="control-label" for="txtQuestionContent">Question Content</label>
                             <div class="controls">
                                 <input type="text" ng-model="QuestionContent" id="txtQuestionContent" class="form-control" />
                             </div>
@@ -97,6 +98,24 @@
                                 </select>
                             </div>
                         </div>
+                    </div>
+
+                    <div class="col-lg-12 no-pad">
+                        <div class="control-group col-lg-6">
+                            <label class="control-label" for="chkIsDraggable">Is Draggable</label>
+                            <div class="controls">
+                                <input id="chkIsDraggable" type="checkbox" ng-checked="IsDraggable" class="small_checkbox" />
+                            </div>
+                        </div>
+                        <div class="control-group col-lg-6">
+                            <label class="control-label" for="txtFinalQuestionContent">Last Content</label>
+                            <div class="controls">
+                                <input type="text" ng-model="FinalQuestionContent" id="txtFinalQuestionContent" class="form-control" />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-12 no-pad">
                         <div class="control-group col-lg-6">
                             <label class="control-label" for="fUQuestionImage">Upload Image</label>
                             <div class="controls">

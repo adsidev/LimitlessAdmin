@@ -240,7 +240,10 @@
             /// Login Validations
             /// </summary>
             public const string DeleteSubObjective = "dbo.Usp_DeleteSubObjective";
-            
+            /// <summary>
+            /// Login Validations
+            /// </summary>
+            public const string GetSubObjectiveIdByCode = "dbo.Usp_GetSubObjectiveIdByCode";
         }
         public class Users
         {

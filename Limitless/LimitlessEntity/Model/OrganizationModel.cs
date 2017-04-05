@@ -10,5 +10,6 @@ namespace LimitlessEntity.Entities.Models
         public string OrganizationDescription { get; set; }
         public string IsActive { get; set; }
         public string CreatedDate { get; set; }
+        public string OrganizationCode { get; set; }
     }
 }

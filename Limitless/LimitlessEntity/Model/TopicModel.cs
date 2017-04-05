@@ -9,5 +9,6 @@ namespace LimitlessEntity.Entities.Models
         public string IsActive { get; set; }
         public string CreatedDate { get; set; }
 
+        public string TopicCode { get; set; }
     }
 }

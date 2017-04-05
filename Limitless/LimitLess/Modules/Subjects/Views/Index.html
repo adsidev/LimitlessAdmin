@@ -10,6 +10,7 @@
             <table class="table table-responsive mytable board-members">
                 <thead class="table_head">
                     <tr>
+                        <td width="20%" align="left">Subject Code</td>
                         <td width="20%" align="left">Subject Name</td>
                         <td width="20%" align="left">Organization Name</td>
                         <td width="20%" align="center">Status</td>
@@ -19,6 +20,7 @@
                 </thead>
                 <tbody>
                     <tr ng-repeat="sub in Records track by sub.SubjectID">
+                        <td align="left">{{sub.SubjectCode}}</td>
                         <td align="left">{{sub.SubjectName}}</td>
                         <td align="left">{{sub.OrganizationName}}</td>
                         <td align="center">{{sub.IsActive}}</td>
@@ -30,17 +32,6 @@
                     </tr>
                 </tbody>
             </table>
-            <ul class="pagination pagination-sm">
-                <li ng-class="{active:0}">
-                    <a href="#" ng-click="firstPage()">First</a>
-                </li>
-                <li ng-repeat="n in range(ItemsByPage.length)">
-                    <a href="#" ng-click="setPage()" ng-bind="n+1">1</a>
-                </li>
-                <li>
-                    <a href="#" ng-click="lastPage()">Last</a>
-                </li>
-            </ul>
         </div>
     </div>
     <input type="hidden" id="hidSubjectID" ng-model="SubjectID" />
@@ -52,36 +43,13 @@
                     <h4 class="modal-title">Subject Details</h4>
                 </div>
                 <div class="modal-body">
-                    <div class="control-group col-lg-6" style="margin-top:20px;">
-                        <label class="control-label" for="txtSubjectName">Subject Name</label>
-                        <div class="controls">
-                            <input type="text" ng-model="SubjectName" id="txtSubjectName" class="form-control" />
-                        </div>
-                    </div>
-                    <div class="control-group col-lg-6" style="margin-top:20px;">
-                        <label class="control-label" for="lastname">Description</label>
-                        <div class="controls">
-                            <input type="text" ng-model="SubjectDescription" id="txtDescription" class="form-control" />
-                        </div>
-                    </div>
                     <div class="col-lg-12 no-pad">
-                        <div class="control-group col-lg-6">
-                            <label class="control-label" for="fUSubjectICON">Subject ICON</label>
+                        <div class="control-group col-lg-6" style="margin-top:20px;">
+                            <label class="control-label" for="txtSubjectName">Subject Code</label>
                             <div class="controls">
-                                <input type="file" ng-model="SubjectICON" id="fUSubjectICON" class="form-control" />
+                                <input type="text" ng-model="SubjectCode" id="txtSubjectCode" class="form-control" />
                             </div>
                         </div>
-                        <div class="control-group col-lg-6">
-                            <label class="control-label" for="txtOrganizationID">Organization Name</label>
-                            <div class="controls">
-                                <select class="form-control" id="ddlOrganizationID" ng-model="OrganizationID">
-                                    <option value="Select" selected="selected">Select</option>
-                                    <option ng-repeat="x in Organizations" value="{{x.OrganizationID}}" ng-selected="x.OrganizationID == OrganizationID">{{x.OrganizationName}}</option>
-                                </select>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-12 no-pad">
                         <div class="control-group col-lg-6">
                             <label class="control-label" for="cHkIsActive">Is Active</label>
                             <div class="controls">
@@ -89,7 +57,38 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                    <div class="col-lg-12 no-pad">
+                        <div class="control-group col-lg-6" style="margin-top:20px;">
+                            <label class="control-label" for="txtSubjectName">Subject Name</label>
+                            <div class="controls">
+                                <input type="text" ng-model="SubjectName" id="txtSubjectName" class="form-control" />
+                            </div>
+                        </div>
+                        <div class="control-group col-lg-6" style="margin-top:20px;">
+                            <label class="control-label" for="lastname">Description</label>
+                            <div class="controls">
+                                <input type="text" ng-model="SubjectDescription" id="txtDescription" class="form-control" />
+                            </div>
+                        </div>
+                    </div>
+                        <div class="col-lg-12 no-pad">
+                            <div class="control-group col-lg-6">
+                                <label class="control-label" for="fUSubjectICON">Subject ICON</label>
+                                <div class="controls">
+                                    <input type="file" ng-model="SubjectICON" id="fUSubjectICON" class="form-control" />
+                                </div>
+                            </div>
+                            <div class="control-group col-lg-6">
+                                <label class="control-label" for="txtOrganizationID">Organization Name</label>
+                                <div class="controls">
+                                    <select class="form-control" id="ddlOrganizationID" ng-model="OrganizationID">
+                                        <option value="Select" selected="selected">Select</option>
+                                        <option ng-repeat="x in Organizations" value="{{x.OrganizationID}}" ng-selected="x.OrganizationID == OrganizationID">{{x.OrganizationName}}</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 <div class="modal-footer">
                     <div class="col-lg-12">
                         <div class="control-group no-pad text-right">

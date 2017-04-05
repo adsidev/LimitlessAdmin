@@ -1,6 +1,6 @@
 ﻿/// <reference path="F:\.NET WorkSpace\Jena's Project\AngularDemoProject\Scripts/Common/app.js" />
 
-app.controller("QuestionController", function ($scope, $http, $location, $cookieStore) {
+app.controller("QuestionController", function ($scope, $http, $location, $cookieStore, $sce) {
     $scope.clear = function () {
         $scope.QuestionID = '';
         $scope.SubObjectiveID = '';
@@ -9,6 +9,9 @@ app.controller("QuestionController", function ($scope, $http, $location, $cookie
         $scope.Difficulty = '';
         $scope.QuestionTypeId = '';
         $scope.IsActive = '';
+        $scope.QuestionImage = '';
+        $scope.FinalQuestionContent = '';
+        $scope.IsDraggable = '';
         $('#chkActive').attr('checked', false);
     };
     $scope.DeleteQuestion = function (e) {
@@ -45,11 +48,18 @@ app.controller("QuestionController", function ($scope, $http, $location, $cookie
             $scope.QuestionContent = result[0].QuestionContent;
             $scope.Difficulty = result[0].Difficulty;
             $scope.QuestionTypeId = result[0].QuestionTypeId;
+            $scope.FinalQuestionContent = result[0].FinalQuestionContent;
             if (result[0].IsActive) {
                 $('#chkActive').prop('checked', true);
             }
             else {
                 $('#chkActive').prop('checked', false);
+            }
+            if (result[0].IsDraggable) {
+                $('#chkIsDraggable').prop('checked', true);
+            }
+            else {
+                $('#chkIsDraggable').prop('checked', false);
             }
         });
     };
@@ -70,17 +80,13 @@ app.controller("QuestionController", function ($scope, $http, $location, $cookie
     var ListInput = $.param({
         OrganizationID: $cookieStore.get('OrganizationID')
     });
-    $http.post("api/Question/GetList", ListInput, {
+    $http.post("api/SubObjective/GetList", ListInput, {
         headers: { 'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8' }
     }).success(function (data) {
         $scope.SubObjectives = JSON.parse(data.List);
     });
 
-    $http.post("api/Question/GetQuestionAnswerList", reqdata, {
-        headers: { 'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8' }
-    }).success(function (data) {
-        $scope.Records = JSON.parse(data.List);
-    });
+    
     $http.get("api/Question/GetQuestionType", {
         headers: { 'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8' }
     }).success(function (data) {
@@ -89,6 +95,7 @@ app.controller("QuestionController", function ($scope, $http, $location, $cookie
 
     var uploadFileToUrl = function (file) {
         var IsActive = $('#chkActive').prop('checked');
+        var IsDraggable = $('#chkIsDraggable').prop('checked');
         var fd = new FormData();
         var imageName = $scope.QuestionImage ? $scope.QuestionImage.name : "";
         fd.append('file', file);
@@ -100,7 +107,9 @@ app.controller("QuestionController", function ($scope, $http, $location, $cookie
             Difficulty: $scope.Difficulty,
             IsActive: IsActive,
             QuestionTypeId: $scope.QuestionTypeId,
-            QuestionImage: imageName
+            QuestionImage: imageName,
+            FinalQuestionContent: FinalQuestionContent,
+            IsDraggable: IsDraggable
         };
         fd.append('parameters', JSON.stringify(params))
         $http.post('api/Question/SaveQuestionWithImage', fd, {
@@ -127,6 +136,7 @@ app.controller("QuestionController", function ($scope, $http, $location, $cookie
         }
         else {
             var IsActive = $('#chkActive').prop('checked');
+            var IsDraggable = $('#chkIsDraggable').prop('checked');
             var params = $.param({
                 QuestionID: $scope.QuestionID,
                 SubObjectiveID: $scope.SubObjectiveID,
@@ -135,7 +145,9 @@ app.controller("QuestionController", function ($scope, $http, $location, $cookie
                 Difficulty: $scope.Difficulty,
                 IsActive: IsActive,
                 QuestionTypeId: $scope.QuestionTypeId,
-                QuestionImage: ""
+                QuestionImage: "",
+                FinalQuestionContent: $scope.FinalQuestionContent,
+                IsDraggable: IsDraggable
             });
             $http({
                 method: 'POST',
@@ -159,6 +171,6 @@ app.controller("QuestionController", function ($scope, $http, $location, $cookie
         }
     };
     $scope.getImagePath = function (imageName) {
-        return $sce.trustAsResourceUrl("/App_Data/question_Image/" + imageName);
+        return $sce.trustAsResourceUrl("/images/question_Image/" + imageName);
     }
 });
